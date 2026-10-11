@@ -1,0 +1,67 @@
+/* PixelSavane : jetons de l'allure, tirés de la charte graphique (planche « 05. Charte graphique »).
+   Parti pris : un studio de production la nuit. Fond noir profond, une seule lumière orange
+   qui désigne l'action, des pixels carrés hérités du logo. */
+:root {
+  /* Couleurs de la charte */
+  --noir: #0E0E10;
+  --orange: #F28C28;
+  --blanc: #FAFAFB;
+  --vert: #3F7C48;
+
+  /* Neutres dérivés, légèrement chauds (teintés vers l'orange) */
+  --surface-1: #161513;
+  --surface-2: #1F1D1A;
+  --trait: #34302B;
+  --trait-fort: #5A5248;
+  --texte: var(--blanc);
+  --texte-doux: #B9B2A8;   /* 8.9:1 sur --noir */
+  --texte-discret: #8E877D; /* 5.4:1 sur --noir */
+  --orange-fonce: #D9761A;
+  --sur-orange: #0E0E10;    /* texte sur bouton orange : 7.9:1 */
+  --vert-clair: #6FB27A;    /* coches sur fond noir : 7.1:1 */
+  --voile: rgba(14, 14, 16, .92); /* dégradé sous les légendes d'images */
+
+  /* Polices de la charte */
+  --police-titre: "Space Grotesk", "Arial Narrow", sans-serif;
+  --police-sous-titre: "Sora", "Segoe UI", sans-serif;
+  --police-texte: "Inter", "Segoe UI", Roboto, sans-serif; /* Inter : imposée par la charte, en texte courant seulement */
+
+  /* Tailles (téléphone d'abord) */
+  --t-xs: 0.8125rem;
+  --t-s: 0.9375rem;
+  --t-m: 1rem;
+  --t-l: 1.25rem;
+  --t-xl: 1.625rem;
+  --t-2xl: 2.125rem;
+  --t-3xl: 2.625rem;
+  --t-prix: 2.25rem;
+
+  /* Espacements : progression, pas une valeur unique */
+  --e-1: 0.25rem;
+  --e-2: 0.5rem;
+  --e-3: 0.75rem;
+  --e-4: 1rem;
+  --e-5: 1.5rem;
+  --e-6: 2rem;
+  --e-7: 3rem;
+  --e-8: 4.5rem;
+  --e-9: 6.5rem;
+
+  /* Deux rayons contrastés */
+  --r-petit: 4px;
+  --r-grand: 18px;
+
+  --largeur: 72rem;
+  --largeur-texte: 38rem;
+  --hauteur-bouton: 3.25rem;
+}
+
+@media (min-width: 900px) {
+  :root {
+    --t-xl: 2rem;
+    --t-2xl: 2.75rem;
+    --t-3xl: 4.25rem;
+    --t-prix: 2.75rem;
+    --e-9: 9rem;
+  }
+}
