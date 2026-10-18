@@ -4,20 +4,173 @@
   "sgi": "Coris Bourse",
   "devise": "XOF",
   "operations": [
-    {"date": "2026-10-13", "sens": "A", "ticker": "SNTS", "nom": "SONATEL SENEGAL", "quantite": 2, "cours": 44950, "brut": 89900, "frais": 1097, "net": 90997, "ref": "ORB250421"},
-    {"date": "2026-10-13", "sens": "A", "ticker": "NTLC", "nom": "NESTLE COTE D'IVOIRE", "quantite": 5, "cours": 15400, "brut": 77000, "frais": 939, "net": 77939, "ref": "ORB250428"},
-    {"date": "2026-10-13", "sens": "A", "ticker": "SHEC", "nom": "VIVO ENERGY COTE D'IVOIRE", "quantite": 15, "cours": 2200, "brut": 33000, "frais": 403, "net": 33403, "ref": "ORB250480"},
-    {"date": "2026-10-13", "sens": "A", "ticker": "ORAC", "nom": "ORANGE CI", "quantite": 2, "cours": 21980, "brut": 43960, "frais": 537, "net": 44497, "ref": "ORB250503"},
-    {"date": "2026-10-16", "sens": "A", "ticker": "TTLC", "nom": "TOTAL COTE D'IVOIRE", "quantite": 7, "cours": 3100, "brut": 21700, "frais": 265, "net": 21965, "ref": "ORB254067"},
-    {"date": "2026-10-16", "sens": "A", "ticker": "SIVC", "nom": "AIR LIQUIDE COTE D'IVOIRE", "quantite": 1, "cours": 1790, "brut": 1790, "frais": 22, "net": 1812, "ref": "ORB254080"}
+    {
+      "date": "2026-10-12",
+      "sens": "A",
+      "ticker": "ETIT",
+      "nom": "ECOBANK TRANSNATIONAL INCORPORATED TOGO",
+      "quantite": 200,
+      "cours": 67,
+      "brut": 13400,
+      "frais": 163,
+      "net": 13563,
+      "ref": "ORB249301"
+    },
+    {
+      "date": "2026-10-12",
+      "sens": "A",
+      "ticker": "TTLC",
+      "nom": "TOTAL COTE D'IVOIRE",
+      "quantite": 10,
+      "cours": 3020,
+      "brut": 30200,
+      "frais": 368,
+      "net": 30568,
+      "ref": "ORB249272"
+    },
+    {
+      "date": "2026-10-12",
+      "sens": "A",
+      "ticker": "BBGC",
+      "nom": "BRIDGE BANK CI",
+      "quantite": 8,
+      "cours": 10500,
+      "brut": 84000,
+      "frais": 1025,
+      "net": 85025,
+      "ref": "ORB249111"
+    },
+    {
+      "date": "2026-10-12",
+      "sens": "A",
+      "ticker": "SAFC",
+      "nom": "SAFCA COTE D'IVOIRE",
+      "quantite": 14,
+      "cours": 4145,
+      "brut": 58030,
+      "frais": 708,
+      "net": 58738,
+      "ref": "ORB249103"
+    },
+    {
+      "date": "2026-10-13",
+      "sens": "A",
+      "ticker": "SNTS",
+      "nom": "SONATEL SENEGAL",
+      "quantite": 2,
+      "cours": 44950,
+      "brut": 89900,
+      "frais": 1097,
+      "net": 90997,
+      "ref": "ORB250421"
+    },
+    {
+      "date": "2026-10-13",
+      "sens": "A",
+      "ticker": "NTLC",
+      "nom": "NESTLE COTE D'IVOIRE",
+      "quantite": 5,
+      "cours": 15400,
+      "brut": 77000,
+      "frais": 939,
+      "net": 77939,
+      "ref": "ORB250428"
+    },
+    {
+      "date": "2026-10-13",
+      "sens": "A",
+      "ticker": "SHEC",
+      "nom": "VIVO ENERGY COTE D'IVOIRE",
+      "quantite": 15,
+      "cours": 2200,
+      "brut": 33000,
+      "frais": 403,
+      "net": 33403,
+      "ref": "ORB250480"
+    },
+    {
+      "date": "2026-10-13",
+      "sens": "A",
+      "ticker": "ORAC",
+      "nom": "ORANGE CI",
+      "quantite": 2,
+      "cours": 21980,
+      "brut": 43960,
+      "frais": 537,
+      "net": 44497,
+      "ref": "ORB250503"
+    },
+    {
+      "date": "2026-10-16",
+      "sens": "A",
+      "ticker": "TTLC",
+      "nom": "TOTAL COTE D'IVOIRE",
+      "quantite": 7,
+      "cours": 3100,
+      "brut": 21700,
+      "frais": 265,
+      "net": 21965,
+      "ref": "ORB254067"
+    },
+    {
+      "date": "2026-10-16",
+      "sens": "A",
+      "ticker": "SIVC",
+      "nom": "AIR LIQUIDE COTE D'IVOIRE",
+      "quantite": 1,
+      "cours": 1790,
+      "brut": 1790,
+      "frais": 22,
+      "net": 1812,
+      "ref": "ORB254080"
+    }
   ],
   "cours": {
-    "SNTS": {"cours": 44950, "date": "2026-10-13", "source": "avis d'opéré"},
-    "NTLC": {"cours": 15400, "date": "2026-10-13", "source": "avis d'opéré"},
-    "SHEC": {"cours": 2200, "date": "2026-10-13", "source": "avis d'opéré"},
-    "ORAC": {"cours": 21980, "date": "2026-10-13", "source": "avis d'opéré"},
-    "TTLC": {"cours": 3100, "date": "2026-10-16", "source": "avis d'opéré"},
-    "SIVC": {"cours": 1790, "date": "2026-10-16", "source": "avis d'opéré"}
+    "SNTS": {
+      "cours": 44950,
+      "date": "2026-10-13",
+      "source": "avis d'opéré"
+    },
+    "NTLC": {
+      "cours": 15400,
+      "date": "2026-10-13",
+      "source": "avis d'opéré"
+    },
+    "SHEC": {
+      "cours": 2200,
+      "date": "2026-10-13",
+      "source": "avis d'opéré"
+    },
+    "ORAC": {
+      "cours": 21980,
+      "date": "2026-10-13",
+      "source": "avis d'opéré"
+    },
+    "TTLC": {
+      "cours": 3100,
+      "date": "2026-10-16",
+      "source": "avis d'opéré"
+    },
+    "SIVC": {
+      "cours": 1790,
+      "date": "2026-10-16",
+      "source": "avis d'opéré"
+    },
+    "SAFC": {
+      "cours": 4145,
+      "date": "2026-10-12",
+      "source": "avis d'opéré"
+    },
+    "BBGC": {
+      "cours": 10500,
+      "date": "2026-10-12",
+      "source": "avis d'opéré"
+    },
+    "ETIT": {
+      "cours": 67,
+      "date": "2026-10-12",
+      "source": "avis d'opéré"
+    }
   },
   "alertes": [],
   "notes": []
