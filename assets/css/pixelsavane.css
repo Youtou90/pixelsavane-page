@@ -433,6 +433,53 @@ body{margin:0;background:#0E0E10}
 .ps-faq .ps-p{padding:0 4px 22px;max-width:44rem}
 @container ps (max-width: 760px){.ps-total{position:static}}
 
+/* Pages de vente par service : même identité, page calme (aucune animation, aucun mouvement au survol) */
+.ps-vente *,.ps-vente *::before,.ps-vente *::after{animation:none!important}
+.ps-vente .ps-card:hover{transform:none;box-shadow:none;border-color:var(--l)}
+.ps-vente .ps-card:hover .ps-media img{transform:none}
+.ps-vente .ps-btn:hover,.ps-vente .ps-btn:active{transform:none}
+.ps-vente .ps-btn--o:hover{box-shadow:none}
+@container ps (max-width: 760px){.ps-vente .ps-btn--xl{padding:0 16px;font-size:16px}}
+.pv-hd__bar{min-height:68px;display:flex;align-items:center;justify-content:space-between;gap:16px}
+.pv-halo{position:absolute;pointer-events:none;background:radial-gradient(closest-side,rgba(242,140,40,.22),rgba(242,140,40,0))}
+.pv-hero{padding-top:clamp(36px,5cqi,80px);overflow:hidden}
+.pv-hero__txt{display:flex;flex-direction:column;gap:22px;align-items:flex-start}
+.pv-ancre{margin:0;font-size:15px;color:var(--t2)}
+.pv-ancre strong{font-family:var(--ft);font-weight:700;font-size:20px;color:var(--w);font-variant-numeric:tabular-nums}
+.pv-visuel{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px;align-items:start}
+.pv-visuel figure{margin:0;position:relative}
+.pv-visuel figure:nth-of-type(2){margin-top:36px}
+.pv-visuel .ps-media{aspect-ratio:3/4}
+.pv-visuel figcaption{position:absolute;left:10px;bottom:10px}
+.pv-visuel--une{grid-template-columns:1fr}
+.pv-visuel--une figure:nth-of-type(2){margin-top:0}
+.pv-visuel--une .ps-media{aspect-ratio:16/10}
+.pv-visuel--libre{display:flex;justify-content:center}
+.pv-recoit{gap:clamp(32px,5cqi,72px)}
+.pv-preuves{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(200px,100%),1fr));gap:14px}
+.pv-preuves figure{margin:0}
+.pv-preuves .ps-media{aspect-ratio:4/5}
+.pv-preuves:not(.pv-preuves--large)>figure:only-child{width:100%;max-width:320px;justify-self:center}
+.pv-preuves--large .ps-media{aspect-ratio:16/10}
+.pv-preuves figcaption{padding:12px 14px;display:flex;flex-direction:column;gap:4px}
+.pv-paiement{margin:0;display:flex;flex-wrap:wrap;align-items:center;gap:8px 14px;font-size:15px;color:var(--t2)}
+.pv-paiement b{font-family:var(--fs);font-weight:600;color:var(--w)}
+.pv-offre{width:100%;max-width:560px;padding:clamp(26px,4cqi,40px);gap:18px;align-items:center;border-color:var(--o);box-shadow:0 0 60px -24px rgba(242,140,40,.45)}
+.ps-vente .pv-offre.ps-card:hover{border-color:var(--o);box-shadow:0 0 60px -24px rgba(242,140,40,.45)}
+.pv-offre .ps-formule__prix{justify-content:center;font-size:clamp(44px,5cqi,60px)}
+.pv-offre .ps-checks{align-self:stretch;text-align:left}
+.pv-offre>.ps-btn{width:100%}
+.pv-offre .pv-paiement{justify-content:center}
+.pv-garantie{padding:26px;gap:12px;background:var(--ink)}
+.pv-preuve-texte{width:100%;max-width:640px}
+.pv-mail{margin:0;font-size:15px;color:var(--t2)}
+.pv-mail a{display:inline-flex;align-items:center;min-height:44px;color:var(--w);text-underline-offset:3px;overflow-wrap:anywhere}
+.pv-ft{border-top:1px solid var(--l);background:#0A0A0B}
+.pv-ft__in{padding-block:40px 32px;display:flex;flex-direction:column;gap:22px}
+.pv-ft__liens{display:flex;flex-wrap:wrap;gap:6px 18px}
+.pv-ft__liens a{color:var(--t2);font-size:14.5px;text-underline-offset:3px}
+.pv-ft__liens a:hover{color:var(--w)}
+
 /* Repli des apparitions au défilement (Safari, Firefox) : main.js ajoute .no-vt puis .is-in */
 .no-vt .ps-rv{opacity:0;transform:translateY(26px)}
 .no-vt .ps-rv.is-in{animation:psRise .9s var(--ease) both}

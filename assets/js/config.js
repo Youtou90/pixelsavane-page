@@ -4,7 +4,8 @@
 window.PS_CONFIG = {
   whatsapp: "237696229416",
 
-  /* Page de vente : là où les clients voient les prix */
+  /* Pages de vente, une par service : là où les clients voient l'offre et le prix.
+     Les liens sont écrits directement dans les pages (cartes services, tableau, page Services). */
   pageDeVente: "https://pixelsavane-page.vercel.app/",
 
   /* Réseaux PixelSavane™ (à venir) */
@@ -19,13 +20,13 @@ window.PS_CONFIG = {
   samuelYoutube: "",
   samuelFacebook: "",
 
-  /* Prix de départ en FCFA : gardés ici pour mémoire, NON affichés sur le site.
-     Les clients voient les prix sur la page de vente. */
+  /* Tarifs de lancement en FCFA : gardés ici pour mémoire, NON affichés sur le site vitrine.
+     Les clients les voient sur chaque page de vente (FichiersDevPagDeVente/outils/generer.py). */
   prix: {
-    pubs: 50000,
-    pagesDeVente: 75000,
-    agents: 100000,
-    sites: 150000,
-    applications: 250000
+    pubs: 30000,          // 2 vidéos UGC + 4 visuels
+    pagesDeVente: 50000,
+    agents: 75000,        // + 20 000 FCFA par mois
+    sites: 100000,
+    applications: 150000  // à partir de, outil simple, sur devis
   }
 };
