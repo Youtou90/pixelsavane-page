@@ -467,6 +467,7 @@ body{margin:0;background:#0E0E10}
 .pv-offre{width:100%;max-width:560px;padding:clamp(26px,4cqi,40px);gap:18px;align-items:center;border-color:var(--o);box-shadow:0 0 60px -24px rgba(242,140,40,.45)}
 .ps-vente .pv-offre.ps-card:hover{border-color:var(--o);box-shadow:0 0 60px -24px rgba(242,140,40,.45)}
 .pv-offre .ps-formule__prix{justify-content:center;font-size:clamp(44px,5cqi,60px)}
+.pv-offre .ps-formule__prix small{flex-basis:100%;text-align:center;margin-bottom:6px;font-size:16px;color:var(--t2)}
 .pv-offre .ps-checks{align-self:stretch;text-align:left}
 .pv-offre>.ps-btn{width:100%}
 .pv-offre .pv-paiement{justify-content:center}
