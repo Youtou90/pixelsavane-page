@@ -2,7 +2,7 @@
    Oscar, c'est ici que tu colles tes liens : ils se remplissent partout d'un coup.
    Un lien laissé vide ("") garde le bouton tel quel, avec la mention « lien à venir ». */
 window.PS_CONFIG = {
-  whatsapp: "237696229416",
+  whatsapp: "237695151026",
 
   /* Pages de vente, une par service : là où les clients voient l'offre et le prix.
      Les liens sont écrits directement dans les pages (cartes services, tableau, page Services). */

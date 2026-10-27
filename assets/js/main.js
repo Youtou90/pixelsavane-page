@@ -3,7 +3,7 @@
   "use strict";
 
   var C = window.PS_CONFIG || {};
-  var WA = C.whatsapp || "237696229416";
+  var WA = C.whatsapp || "237695151026";
   var reduit = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
   /* Liens WhatsApp avec message pré-rempli : <a data-wa="Bonjour…"> */
