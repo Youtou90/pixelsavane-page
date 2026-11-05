@@ -7,8 +7,8 @@ body{margin:0;background:#0E0E10}
 .ps-sec{position:relative;padding-block:clamp(72px,8.5cqi,128px)}
 .ps-bt{border-top:1px solid var(--l)}
 .ps-alt{background:var(--s1)}
-.ps-h1{margin:0;font-family:var(--ft);font-weight:700;font-size:clamp(2.5rem,5.4cqi,5rem);line-height:.98;letter-spacing:-.035em;text-wrap:balance}
-.ps-h2{margin:0;font-family:var(--ft);font-weight:700;font-size:clamp(1.9375rem,3.6cqi,3.375rem);line-height:1.04;letter-spacing:-.03em;text-wrap:balance}
+.ps-h1{margin:0;font-family:var(--ft);font-weight:700;font-size:clamp(min(2.5rem,12.5cqi),5.4cqi,5rem);line-height:.98;letter-spacing:-.035em;text-wrap:balance;overflow-wrap:break-word}
+.ps-h2{margin:0;font-family:var(--ft);font-weight:700;font-size:clamp(min(1.9375rem,10cqi),3.6cqi,3.375rem);line-height:1.04;letter-spacing:-.03em;text-wrap:balance;overflow-wrap:break-word}
 .ps-h3{margin:0;font-family:var(--fs);font-weight:600;font-size:clamp(1.125rem,1.45cqi,1.3125rem);line-height:1.3;letter-spacing:-.01em}
 .ps-eye{margin:0;display:inline-flex;align-items:center;gap:10px;font-family:var(--fs);font-weight:600;font-size:0.78125rem;line-height:1.2;letter-spacing:.14em;text-transform:uppercase;color:var(--o)}
 .ps-eye::before{content:"";width:8px;height:8px;background:var(--o);flex:none}
@@ -234,7 +234,7 @@ body{margin:0;background:#0E0E10}
 
 /* Dernier appel */
 .ps-final{position:relative;max-width:860px;display:flex;flex-direction:column;align-items:center;text-align:center;gap:22px}
-.ps-final .ps-h1{font-size:clamp(2.25rem,4.4cqi,4rem)}
+.ps-final .ps-h1{font-size:clamp(min(2.25rem,11.5cqi),4.4cqi,4rem)}
 
 /* Barre WhatsApp mobile */
 .ps-mbar{position:sticky;bottom:0;z-index:40;padding:10px 16px 12px;background:rgba(14,14,16,.9);-webkit-backdrop-filter:blur(14px);backdrop-filter:blur(14px)}
@@ -455,7 +455,11 @@ body{margin:0;background:#0E0E10}
 /* Le logo n'est pas un lien ici : il ne doit pas réagir au survol comme s'il était cliquable */
 .ps-vente .ps-logo img{transition:none;transform:none!important}
 @container ps (max-width: 760px){.ps-vente .ps-btn--xl{padding:0 16px;font-size:1rem}}
-.pv-hd__bar{min-height:68px;display:flex;align-items:center;justify-content:space-between;gap:16px}
+/* Texte agrandi par le visiteur : les boutons passent sur deux lignes au lieu d'être coupés */
+@container ps (max-width: 760px){.ps-vente .ps-btn{white-space:normal;text-align:center;line-height:1.2;padding-block:8px}}
+.pv-hd__bar{min-height:68px;display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:8px 16px;padding-block:8px}
+/* Petits téléphones (iPhone SE) : en-tête resserré pour que le bouton WhatsApp tienne entier sur la ligne du logo */
+@container ps (max-width: 360px){.pv-hd__bar{column-gap:8px;padding-inline:16px}.pv-hd__bar .ps-logo{gap:8px}.pv-hd__bar .ps-logo__nom{font-size:1.125rem}.ps-hd__btn{padding:0 10px;gap:6px}}
 .pv-halo{position:absolute;pointer-events:none;background:radial-gradient(closest-side,rgba(242,140,40,.22),rgba(242,140,40,0))}
 .pv-hero{padding-top:clamp(36px,5cqi,80px);overflow:hidden}
 .pv-hero__txt{display:flex;flex-direction:column;gap:22px;align-items:flex-start}
