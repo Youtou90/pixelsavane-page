@@ -429,6 +429,10 @@ body{margin:0;background:#0E0E10}
 .ps-faq details{border-bottom:1px solid var(--l)}
 .ps-faq summary{display:flex;align-items:center;justify-content:space-between;gap:16px;min-height:64px;padding:12px 4px;cursor:pointer;list-style:none;font-family:var(--fs);font-weight:600;font-size:1.0625rem;line-height:1.35}
 .ps-faq summary::-webkit-details-marker{display:none}
+/* Retour à l'appui, immédiat : la ligne s'éclaire et le « + » s'allume avant même le relâchement */
+.ps-faq summary{-webkit-tap-highlight-color:transparent;border-radius:4px}
+.ps-faq summary:active{background:var(--s2)}
+.ps-faq summary:active::after{border-color:var(--o);transition-duration:0s}
 .ps-faq summary::after{content:"+";flex:none;width:32px;height:32px;border-radius:4px;border:1px solid var(--l2);display:flex;align-items:center;justify-content:center;font-family:var(--ft);font-size:1.25rem;color:var(--o);transition:transform .3s var(--ease),background-color .3s}
 .ps-faq details[open] summary::after{transform:rotate(45deg);background:var(--s2)}
 .ps-faq summary:focus-visible{outline:2px solid var(--w);outline-offset:3px}
