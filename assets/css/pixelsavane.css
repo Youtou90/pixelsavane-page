@@ -444,6 +444,8 @@ body{margin:0;background:#0E0E10}
 /* Le toucher reste visible : léger enfoncement immédiat, c'est un retour, pas une décoration */
 .ps-vente .ps-btn:active{transform:scale(.97);transition-duration:.08s}
 @media (hover:hover){.ps-vente .ps-btn--o:hover{box-shadow:none}}
+/* Le logo n'est pas un lien ici : il ne doit pas réagir au survol comme s'il était cliquable */
+.ps-vente .ps-logo img{transition:none;transform:none!important}
 @container ps (max-width: 760px){.ps-vente .ps-btn--xl{padding:0 16px;font-size:1rem}}
 .pv-hd__bar{min-height:68px;display:flex;align-items:center;justify-content:space-between;gap:16px}
 .pv-halo{position:absolute;pointer-events:none;background:radial-gradient(closest-side,rgba(242,140,40,.22),rgba(242,140,40,0))}
