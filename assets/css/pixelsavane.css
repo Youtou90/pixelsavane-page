@@ -493,3 +493,15 @@ body{margin:0;background:#0E0E10}
 .no-vt .ps-rv.is-in{animation:psRise .9s var(--ease) both}
 .no-vt .ps-grow{transform:scaleX(0);transform-origin:left}
 .no-vt .ps-grow.is-in{animation:psGrow 1.4s var(--ease) both}
+
+/* Réglages d'accessibilité du système : surfaces floutées rendues pleines et nettes */
+@media (prefers-reduced-transparency: reduce){
+.ps-hd,.ps-mbar,.ps-tag--d,.ps-portrait figcaption,.ps-zoom{-webkit-backdrop-filter:none;backdrop-filter:none}
+.ps-hd,.ps-mbar{background:var(--ink)}
+.ps-tag--d,.ps-portrait figcaption{background:var(--ink)}
+.ps-zoom{background:#0A0A0B}
+}
+@media (prefers-contrast: more){
+.ps-hd,.ps-mbar,.ps-tag--d,.ps-portrait figcaption{-webkit-backdrop-filter:none;backdrop-filter:none;background:var(--ink);border-color:var(--t2)}
+.ps-card,.ps-faq details,.ps-faq{border-color:var(--l2)}
+}
