@@ -14,7 +14,9 @@ body{margin:0;background:#0E0E10}
 .ps-eye::before{content:"";width:8px;height:8px;background:var(--o);flex:none}
 .ps-lead{margin:0;max-width:36rem;font-size:clamp(1.09375rem,1.45cqi,1.28125rem);line-height:1.6;color:var(--t2);text-wrap:pretty}
 .ps-p{margin:0;font-size:1.03125rem;line-height:1.65;color:var(--t2);text-wrap:pretty}
-.ps-sm{margin:0;font-size:0.84375rem;line-height:1.5;color:var(--t3)}
+.ps-sm{margin:0;font-size:0.84375rem;line-height:1.5;letter-spacing:.01em;color:var(--t3)}
+/* Approche selon la taille : très serrée seulement quand les titres sont grands, plus ouverte sur téléphone */
+@container ps (max-width: 760px){.ps-h1{letter-spacing:-.025em}.ps-h2{letter-spacing:-.02em}}
 .ps-num{font-family:var(--ft);font-weight:700;font-variant-numeric:tabular-nums;letter-spacing:-.02em}
 .ps-acc{color:var(--o)}
 .ps-btn{position:relative;display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:52px;padding:0 24px;border-radius:4px;border:1px solid transparent;font-family:var(--fs);font-weight:600;font-size:1rem;line-height:1;letter-spacing:.005em;text-decoration:none;white-space:nowrap;cursor:pointer;transition:transform .25s var(--ease),box-shadow .3s var(--ease),background-color .25s,border-color .25s,color .25s;-webkit-tap-highlight-color:transparent}
