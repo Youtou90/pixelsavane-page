@@ -2,7 +2,7 @@ body{margin:0;background:#0E0E10}
 /* Toucher : réponse immédiate, sans attendre un éventuel double toucher (zoom) */
 .ps a,.ps button,.ps summary{touch-action:manipulation}
 /* Pas de flash gris natif au toucher : chaque élément tactile a son propre état appuyé */
-html{-webkit-tap-highlight-color:transparent}
+html{-webkit-tap-highlight-color:transparent;-webkit-text-size-adjust:100%;text-size-adjust:100%}
 .pv-mail a:active,.pv-ft__liens a:active{color:var(--o)}
 /* Un bouton est une commande, pas du texte : l'appui long ne sélectionne pas son libellé ni n'ouvre l'aperçu du lien */
 .ps-btn,.ps-faq summary{-webkit-user-select:none;user-select:none;-webkit-touch-callout:none}
