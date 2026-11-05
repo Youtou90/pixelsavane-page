@@ -4,6 +4,8 @@ body{margin:0;background:#0E0E10}
 /* Pas de flash gris natif au toucher : chaque élément tactile a son propre état appuyé */
 html{-webkit-tap-highlight-color:transparent}
 .pv-mail a:active,.pv-ft__liens a:active{color:var(--o)}
+/* Un bouton est une commande, pas du texte : l'appui long ne sélectionne pas son libellé ni n'ouvre l'aperçu du lien */
+.ps-btn,.ps-faq summary{-webkit-user-select:none;user-select:none;-webkit-touch-callout:none}
 .ps,.ps-c{--o:#F28C28;--o2:#FFA24D;--o3:#D9761A;--ink:#0E0E10;--w:#FAFAFB;--t2:#B9B2A8;--t3:#8E877D;--s1:#161513;--s2:#1F1D1A;--l:#34302B;--l2:#5A5248;--v:#6FB27A;--ease:cubic-bezier(.2,.7,.2,1);--ft:"Space Grotesk","Arial Narrow",sans-serif;--fs:Sora,"Segoe UI",sans-serif;--fb:Inter,"Segoe UI",Roboto,sans-serif;--fm:"JetBrains Mono",ui-monospace,Consolas,monospace;color:var(--w);font:400 1.0625rem/1.65 var(--fb);-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;font-kerning:normal;font-feature-settings:"kern","liga","calt"}
 .ps{container:ps/inline-size;width:100%;background:var(--ink);overflow-x:clip}
 .ps *,.ps-c *{box-sizing:border-box}
