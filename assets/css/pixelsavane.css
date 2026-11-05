@@ -4,6 +4,8 @@ body{margin:0;background:#0E0E10}
 .ps *,.ps-c *{box-sizing:border-box}
 .ps ::selection,.ps-c ::selection{background:var(--o);color:var(--ink)}
 .ps-wrap{max-width:1240px;margin:0 auto;padding-inline:clamp(20px,4cqi,56px)}
+/* iPhone en paysage : le texte s'écarte de l'encoche, le fond continue dessous (viewport-fit=cover) */
+@supports (padding:max(0px)){.ps-wrap{padding-left:max(clamp(20px,4cqi,56px),env(safe-area-inset-left,0px));padding-right:max(clamp(20px,4cqi,56px),env(safe-area-inset-right,0px))}}
 .ps-sec{position:relative;padding-block:clamp(72px,8.5cqi,128px)}
 .ps-bt{border-top:1px solid var(--l)}
 .ps-alt{background:var(--s1)}
@@ -237,7 +239,7 @@ body{margin:0;background:#0E0E10}
 .ps-final .ps-h1{font-size:clamp(min(2.25rem,11.5cqi),4.4cqi,4rem)}
 
 /* Barre WhatsApp mobile */
-.ps-mbar{position:sticky;bottom:0;z-index:40;padding:10px 16px 12px;background:rgba(14,14,16,.9);-webkit-backdrop-filter:blur(14px);backdrop-filter:blur(14px)}
+.ps-mbar{position:sticky;bottom:0;z-index:40;padding:10px max(16px,env(safe-area-inset-right,0px)) calc(12px + env(safe-area-inset-bottom,0px)) max(16px,env(safe-area-inset-left,0px));background:rgba(14,14,16,.9);-webkit-backdrop-filter:blur(14px);backdrop-filter:blur(14px)}
 /* Pas de trait dur : un léger fondu là où le contenu passe sous la barre */
 .ps-mbar::before{content:"";position:absolute;left:0;right:0;bottom:100%;height:20px;background:linear-gradient(to top,rgba(14,14,16,.55),rgba(14,14,16,0));pointer-events:none}
 .ps-mbar .ps-btn{width:100%}
@@ -459,7 +461,7 @@ body{margin:0;background:#0E0E10}
 @container ps (max-width: 760px){.ps-vente .ps-btn{white-space:normal;text-align:center;line-height:1.2;padding-block:8px}}
 .pv-hd__bar{min-height:68px;display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:8px 16px;padding-block:8px}
 /* Petits téléphones (iPhone SE) : en-tête resserré pour que le bouton WhatsApp tienne entier sur la ligne du logo */
-@container ps (max-width: 360px){.pv-hd__bar{column-gap:8px;padding-inline:16px}.pv-hd__bar .ps-logo{gap:8px}.pv-hd__bar .ps-logo__nom{font-size:1.125rem}.ps-hd__btn{padding:0 10px;gap:6px}}
+@container ps (max-width: 360px){.pv-hd__bar{column-gap:8px;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}.pv-hd__bar .ps-logo{gap:8px}.pv-hd__bar .ps-logo__nom{font-size:1.125rem}.ps-hd__btn{padding:0 10px;gap:6px}}
 .pv-halo{position:absolute;pointer-events:none;background:radial-gradient(closest-side,rgba(242,140,40,.22),rgba(242,140,40,0))}
 .pv-hero{padding-top:clamp(36px,5cqi,80px);overflow:hidden}
 .pv-hero__txt{display:flex;flex-direction:column;gap:22px;align-items:flex-start}
