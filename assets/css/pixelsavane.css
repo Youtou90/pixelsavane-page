@@ -437,7 +437,9 @@ body{margin:0;background:#0E0E10}
 .ps-vente *,.ps-vente *::before,.ps-vente *::after{animation:none!important}
 .ps-vente .ps-card:hover{transform:none;box-shadow:none;border-color:var(--l)}
 .ps-vente .ps-card:hover .ps-media img{transform:none}
-.ps-vente .ps-btn:hover,.ps-vente .ps-btn:active{transform:none}
+.ps-vente .ps-btn:hover{transform:none}
+/* Le toucher reste visible : léger enfoncement immédiat, c'est un retour, pas une décoration */
+.ps-vente .ps-btn:active{transform:scale(.97);transition-duration:.08s}
 .ps-vente .ps-btn--o:hover{box-shadow:none}
 @container ps (max-width: 760px){.ps-vente .ps-btn--xl{padding:0 16px;font-size:16px}}
 .pv-hd__bar{min-height:68px;display:flex;align-items:center;justify-content:space-between;gap:16px}
