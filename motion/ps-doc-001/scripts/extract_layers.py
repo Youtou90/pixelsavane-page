@@ -8,7 +8,8 @@ import numpy as np
 from PIL import Image
 from scipy import ndimage as nd
 
-src = sys.argv[1] if len(sys.argv) > 1 else '../../assets/img/logo-pixelsavane.jpg'
+# Source par défaut : fichier logo tel que téléversé par Oscar (commit 39584a3), avec l'ancienne signature.
+src = sys.argv[1] if len(sys.argv) > 1 else '../sources/logo-pixelsavane_original_upload-39584a3.jpg'
 rgb = np.asarray(Image.open(src).convert('RGB')).astype(np.float32)
 H, W, _ = rgb.shape
 mx = rgb.max(2); mn = rgb.min(2)
@@ -29,7 +30,7 @@ symbol = (yy >= 200) & (yy < 640)
 cluster = symbol & (((yy < 300) & (xx < 355)) | ((yy >= 300) & (yy < 448) & (xx < 384)) | ((yy >= 448) & (yy < 482) & (xx < 362)) | ((yy >= 482) & (yy < 505) & (xx < 340)))
 s_letter = symbol & ~cluster & (xx > 500) & (sat > 0.35)
 p_letter = symbol & ~cluster & ~s_letter
-word = (yy >= 640) & (yy < 795)
+word = (yy >= 640) & (yy < 786)  # l'ancienne signature commence à y=786 : exclue
 swoosh = (yy >= 840) & (yy < 900) & (sat > 0.35)
 
 save(cluster, 'ps-pixels.png')
@@ -57,7 +58,7 @@ for nm in ['ps-pixels.png', 'ps-p.png', 'ps-s.png', 'ps-wordmark.png', 'ps-swoos
     L = np.asarray(Image.open('public/' + nm)).astype(np.float32)
     a = L[..., 3:] / 255
     rec = L[..., :3] * a + rec * (1 - a)
-keep = ~((yy >= 795) & (yy < 900) & (sat <= 0.35))  # hors ancienne ligne de signature (retirée volontairement)
+keep = ~((yy >= 786) & (yy < 900) & (sat <= 0.35))  # hors ancienne signature « Des contenus qui font vendre. » (retirée volontairement)
 err = np.abs(rec - rgb)[keep]
 print(f'{len(squares)} carrés ; erreur de recomposition moy={err.mean():.3f} max={err.max():.1f}')
 

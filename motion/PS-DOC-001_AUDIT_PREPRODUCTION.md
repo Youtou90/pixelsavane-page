@@ -1,4 +1,6 @@
 # PS-DOC-001 — Film institutionnel PixelSavane (180 s)
+
+> Mise à jour v1.2 : le prototype a été déplacé de `motion/ps-001-a/` vers le projet modulaire `motion/ps-doc-001/`, et les médias originaux sont rangés à part dans `motion/sources/`. Voir `ps-doc-001/RAPPORT_TECHNIQUE.md`.
 ## Phases 1 à 4 : audit, préproduction, prototype, présentation pour validation
 
 Rédigé par l'ingénieur de production (Claude Code), à l'attention du directeur artistique et d'Oscar YOUTOU.

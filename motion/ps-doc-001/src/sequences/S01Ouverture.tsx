@@ -1,27 +1,16 @@
-import React, {useEffect, useMemo, useState} from 'react';
-import {
-  AbsoluteFill,
-  Audio,
-  continueRender,
-  delayRender,
-  Easing,
-  Img,
-  interpolate,
-  random,
-  staticFile,
-  useCurrentFrame,
-} from 'remotion';
-import '@fontsource/montserrat/400.css';
-import '@fontsource/inter/400.css';
-import {C, LOGO_X, LOGO_Y, s, toFrame} from './brand';
-import squaresData from '../public/squares.json';
-import pointsData from '../public/points.json';
+import React, {useMemo} from 'react';
+import {AbsoluteFill, Audio, Easing, Img, interpolate, random, staticFile, useCurrentFrame} from 'remotion';
+import {C, LOGO_X, LOGO_Y, s, SIGNATURE, toFrame} from '../system/brand';
+import {useBrandFonts} from '../system/fonts';
+import {clamp, easeIn, easeInOut, easeOut, lerp} from '../system/motion';
+import {Glint as GlintBase} from '../system/Glint';
+import squaresData from '../../public/squares.json';
+import pointsData from '../../public/points.json';
 
-const easeOut = Easing.bezier(0.16, 1, 0.3, 1);
-const easeInOut = Easing.bezier(0.65, 0, 0.35, 1);
-const easeIn = Easing.bezier(0.55, 0, 1, 0.45);
-const clamp = {extrapolateLeft: 'clamp', extrapolateRight: 'clamp'} as const;
-const lerp = (a: number, b: number, u: number) => a + (b - a) * u;
+/**
+ * SÉQUENCE 01 (0–15 s) — Ouverture / logo animé PS-001-A.
+ * Calques extraits du fichier logo original d'Oscar (motion/sources/), posés à l'échelle 1:1.
+ */
 
 const CX = 960;
 const CY = 540;
@@ -40,7 +29,6 @@ type Particle = {
   seed: number;
 };
 
-const SIGNATURE = 'Le numérique au service de votre croissance.';
 
 function buildParticles(): Particle[] {
   const list: Particle[] = [];
@@ -82,37 +70,19 @@ function buildParticles(): Particle[] {
   return list;
 }
 
-const Glint: React.FC<{src: string; t: number; angle: number; opacity?: number}> = ({src, t, angle, opacity = 0.55}) => {
-  // reflet lumineux qui balaie la forme exacte du calque (masque = calque du logo)
-  if (t <= 0 || t >= 1) return null;
-  const pos = lerp(-30, 130, t);
-  return (
-    <div
-      style={{
-        position: 'absolute', left: LOGO_X, top: LOGO_Y, width: 1080, height: 1080,
-        WebkitMaskImage: `url(${src})`, WebkitMaskSize: '1080px 1080px', maskImage: `url(${src})`,
-        background: `linear-gradient(${angle}deg, transparent ${pos - 12}%, rgba(255,246,230,${opacity}) ${pos}%, transparent ${pos + 12}%)`,
-        mixBlendMode: 'screen',
-      }}
-    />
-  );
-};
+const Glint: React.FC<{src: string; t: number; angle: number; opacity?: number}> = (p) => (
+  <GlintBase {...p} left={LOGO_X} top={LOGO_Y} width={1080} height={1080} />
+);
 
-// Signature : 'inter' = charte PS-DOC-001 (Inter Regular, textes) ; 'montserrat' = version v1.0 calée sur le dessin du logo.
-export type OpeningProps = {signatureFont: 'inter' | 'montserrat'};
-const SIG_STYLE = {
-  inter: {fontFamily: 'Inter', fontSize: 30.3, letterSpacing: '0.12em', shift: 11, dy: 1},
-  montserrat: {fontFamily: 'Montserrat', fontSize: 31.2, letterSpacing: '0.08em', shift: 10, dy: 0},
-};
+// Signature officielle — Inter Regular (charte). v1.2 : +28 % par rapport à la v1.1 (30,3 px) à la demande de la DA.
+export type OpeningProps = {withAudio?: boolean};
+const SIG = {fontSize: 38.8, letterSpacing: '0.07em', top: 797, shift: 11};
+// Le trait orange (raster d'origine, non déformé) suit la signature agrandie : simple translation.
+const SWOOSH_DX = 36;
+const SWOOSH_DY = 9;
 
-export const PSOpening: React.FC<OpeningProps> = ({signatureFont = 'inter'}) => {
-  const sig = SIG_STYLE[signatureFont];
-  // attendre le chargement de la police de la signature avant de rendre
-  const [handle] = useState(() => delayRender('fonts'));
-  useEffect(() => {
-    Promise.all([document.fonts.load('400 36px Montserrat'), document.fonts.load('400 36px Inter')])
-      .then(() => continueRender(handle));
-  }, [handle]);
+export const S01Ouverture: React.FC<OpeningProps> = ({withAudio = true}) => {
+  useBrandFonts();
   const f = useCurrentFrame();
   const sec = f / 25;
   const particles = useMemo(buildParticles, []);
@@ -158,7 +128,7 @@ export const PSOpening: React.FC<OpeningProps> = ({signatureFont = 'inter'}) => 
 
   return (
     <AbsoluteFill style={{backgroundColor: '#000'}}>
-      <Audio src={staticFile('sound.wav')} />
+      {withAudio && <Audio src={staticFile('sound.wav')} />}
       <AbsoluteFill style={{backgroundColor: C.noir, opacity: bgMix}} />
 
       <AbsoluteFill style={{transform: `translateY(${camY}px) scale(${cam})`, transformOrigin: '960px 540px'}}>
@@ -257,9 +227,9 @@ export const PSOpening: React.FC<OpeningProps> = ({signatureFont = 'inter'}) => 
         <Glint src={staticFile('ps-wordmark.png')} t={interpolate(sec, [13.0, 13.9], [0, 1], clamp)} angle={100} opacity={0.4} />
 
         {/* signature officielle recomposée en typographie (police selon la charte) */}
-        <div style={{position: 'absolute', left: 0, width: 1920, top: toFrame(0, 797).y + sig.dy, textAlign: 'center',
-          fontFamily: sig.fontFamily, fontWeight: 400, fontSize: sig.fontSize, letterSpacing: sig.letterSpacing, color: C.blanc, whiteSpace: 'pre'}}>
-          <span style={{display: 'inline-block', transform: `translateX(${sig.shift}px)`}}>
+        <div style={{position: 'absolute', left: 0, width: 1920, top: toFrame(0, SIG.top).y, textAlign: 'center',
+          fontFamily: 'Inter', fontWeight: 400, fontSize: SIG.fontSize, letterSpacing: SIG.letterSpacing, color: C.blanc, whiteSpace: 'pre'}}>
+          <span style={{display: 'inline-block', transform: `translateX(${SIG.shift}px)`}}>
             {SIGNATURE.split('').map((ch, i) => {
               const u = interpolate(sec, [14 + i * 0.011, 14.32 + i * 0.011], [0, 1], {...clamp, easing: easeOut});
               return (
@@ -269,7 +239,7 @@ export const PSOpening: React.FC<OpeningProps> = ({signatureFont = 'inter'}) => 
             })}
           </span>
         </div>
-        <Img src={staticFile('ps-swoosh.png')} style={{position: 'absolute', left: LOGO_X, top: LOGO_Y, width: 1080, height: 1080,
+        <Img src={staticFile('ps-swoosh.png')} style={{position: 'absolute', left: LOGO_X + SWOOSH_DX, top: LOGO_Y + SWOOSH_DY, width: 1080, height: 1080,
           clipPath: `inset(0 ${100 - lerp(54.5, 84, swoosh)}% 0 0)`, opacity: swoosh > 0 ? 1 : 0}} />
       </AbsoluteFill>
 
