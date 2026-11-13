@@ -6,8 +6,9 @@
 
 | Livrable | Fichier |
 |---|---|
-| Vidéo MP4 15 s | `out/PixelSavane_Ouverture_PS-001-A_1080p25.mp4` |
-| Capture de la dernière image (frame 374) | `out/derniere-image.png` |
+| Vidéo MP4 15 s, v1.1 (signature Inter, charte PS-DOC-001) | `out/PixelSavane_Ouverture_PS-001-A_v1.1_Inter_1080p25.mp4` |
+| Vidéo MP4 15 s, v1.0 (signature Montserrat) | `out/PixelSavane_Ouverture_PS-001-A_v1.0_Montserrat_1080p25.mp4` |
+| Captures de la dernière image (frame 374) | `out/derniere-image_v1.1_Inter.png`, `out/derniere-image_v1.0_Montserrat.png` |
 | Planche des 8 temps du scénario | `out/storyboard.jpg` |
 | Code source Remotion | `src/` (`PSOpening.tsx`, `brand.ts`, `Root.tsx`, `index.ts`) |
 | Découpe du logo en calques | `scripts/extract_layers.py` → `public/ps-*.png`, `squares.json`, `points.json` |
@@ -29,7 +30,7 @@
 - **Fichier source.** `/mnt/data/1000324473.png` n'existe pas dans cet environnement. J'ai utilisé le logo officiel du dépôt, `assets/img/logo-pixelsavane.jpg` (1080×1080). Il comporte le même symbole PS et le même wordmark, et sa signature est déjà la nouvelle : l'ancienne signature « Des contenus qui font vendre » n'apparaît nulle part.
 - **Aucun redessin, aucune IA.** `extract_layers.py` découpe le raster original en 5 calques transparents (nuage de pixels, P avec le bouton lecture, S, wordmark, trait orange). Le découpage se fait uniquement par masques géométriques et colorimétriques. L'alpha est « dé-prémultiplié » sur fond noir, donc les calques superposés reconstituent la source : écart moyen 0,8/255, écart max 5/255 (bruit JPEG des bords).
 - **Échelle 1:1.** Les calques sont posés à leur taille native (1 pixel source = 1 pixel vidéo) sur la dernière image. Le léger travelling avant (0,93 → 1,00) se termine exactement à 1,00 à 14,4 s, donc l'image finale est à pleine netteté, sans aucun agrandissement.
-- **Signature recomposée.** « Le numérique au service de votre croissance. » est retirée du raster et réécrite en texte vectoriel, en Montserrat Regular 31,2 px avec un interlettrage de 0,08 em. La police est sous licence libre OFL, via `@fontsource/montserrat`. Taille, interlettrage et position ont été calés au pixel sur le logo officiel : hauteur de capitale 22 px, largeur 802 px contre 804 px dans la source. Le trait orange d'origine (raster) est conservé et se dessine de gauche à droite.
+- **Signature recomposée.** « Le numérique au service de votre croissance. » est retirée du raster et réécrite en texte vectoriel, en Inter Regular 30,3 px avec un interlettrage de 0,12 em (v1.1, charte PS-DOC-001), ou en Montserrat Regular 31,2 px avec 0,08 em (v1.0). Ces deux polices sont sous licence libre OFL, via `@fontsource`. Taille, interlettrage et position ont été calés au pixel sur le logo officiel : hauteur de capitale 22 px, largeur 802 px contre 804 px dans la source. Le trait orange d'origine (raster) est conservé et se dessine de gauche à droite.
 
 ## 4. Déroulé (25 fps)
 
@@ -61,8 +62,9 @@ npm install
 npm run layers   # découpe le logo source en calques (public/)
 npm run sound    # génère public/sound.wav
 npm run studio   # prévisualisation interactive (optionnel)
-npm run render   # → out/PixelSavane_Ouverture_PS-001-A_1080p25.mp4
-npm run still    # → out/derniere-image.png
+npm run render              # → v1.1 Inter
+npm run render:montserrat   # → v1.0 Montserrat
+npm run still               # → out/derniere-image_v1.1_Inter.png
 ```
 
 Pour utiliser un autre fichier source (par exemple `1000324473.png`) : `python3 scripts/extract_layers.py <chemin>`. Les masques de découpe supposent la même mise en page 1080×1080 que le logo officiel.

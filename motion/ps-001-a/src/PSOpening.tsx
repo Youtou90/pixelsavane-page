@@ -12,7 +12,7 @@ import {
   useCurrentFrame,
 } from 'remotion';
 import '@fontsource/montserrat/400.css';
-import '@fontsource/montserrat/500.css';
+import '@fontsource/inter/400.css';
 import {C, LOGO_X, LOGO_Y, s, toFrame} from './brand';
 import squaresData from '../public/squares.json';
 import pointsData from '../public/points.json';
@@ -98,11 +98,19 @@ const Glint: React.FC<{src: string; t: number; angle: number; opacity?: number}>
   );
 };
 
-export const PSOpening: React.FC = () => {
+// Signature : 'inter' = charte PS-DOC-001 (Inter Regular, textes) ; 'montserrat' = version v1.0 calée sur le dessin du logo.
+export type OpeningProps = {signatureFont: 'inter' | 'montserrat'};
+const SIG_STYLE = {
+  inter: {fontFamily: 'Inter', fontSize: 30.3, letterSpacing: '0.12em', shift: 11, dy: 1},
+  montserrat: {fontFamily: 'Montserrat', fontSize: 31.2, letterSpacing: '0.08em', shift: 10, dy: 0},
+};
+
+export const PSOpening: React.FC<OpeningProps> = ({signatureFont = 'inter'}) => {
+  const sig = SIG_STYLE[signatureFont];
   // attendre le chargement de la police de la signature avant de rendre
-  const [handle] = useState(() => delayRender('Montserrat'));
+  const [handle] = useState(() => delayRender('fonts'));
   useEffect(() => {
-    Promise.all([document.fonts.load('400 36px Montserrat'), document.fonts.load('500 36px Montserrat')])
+    Promise.all([document.fonts.load('400 36px Montserrat'), document.fonts.load('400 36px Inter')])
       .then(() => continueRender(handle));
   }, [handle]);
   const f = useCurrentFrame();
@@ -248,10 +256,10 @@ export const PSOpening: React.FC = () => {
         )}
         <Glint src={staticFile('ps-wordmark.png')} t={interpolate(sec, [13.0, 13.9], [0, 1], clamp)} angle={100} opacity={0.4} />
 
-        {/* signature officielle recomposée en typographie (Montserrat) */}
-        <div style={{position: 'absolute', left: 0, width: 1920, top: toFrame(0, 797).y, textAlign: 'center',
-          fontFamily: 'Montserrat', fontWeight: 400, fontSize: 31.2, letterSpacing: '0.08em', color: C.blanc, whiteSpace: 'pre'}}>
-          <span style={{display: 'inline-block', transform: 'translateX(10px)'}}>
+        {/* signature officielle recomposée en typographie (police selon la charte) */}
+        <div style={{position: 'absolute', left: 0, width: 1920, top: toFrame(0, 797).y + sig.dy, textAlign: 'center',
+          fontFamily: sig.fontFamily, fontWeight: 400, fontSize: sig.fontSize, letterSpacing: sig.letterSpacing, color: C.blanc, whiteSpace: 'pre'}}>
+          <span style={{display: 'inline-block', transform: `translateX(${sig.shift}px)`}}>
             {SIGNATURE.split('').map((ch, i) => {
               const u = interpolate(sec, [14 + i * 0.011, 14.32 + i * 0.011], [0, 1], {...clamp, easing: easeOut});
               return (
