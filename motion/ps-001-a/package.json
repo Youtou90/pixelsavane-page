@@ -1,0 +1,26 @@
+{
+  "name": "pixelsavane-ouverture-ps-001-a",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Ouverture 15 s PixelSavane \u2014 Remotion",
+  "scripts": {
+    "layers": "python3 scripts/extract_layers.py ../../assets/img/logo-pixelsavane.jpg",
+    "sound": "python3 scripts/sound_design.py",
+    "studio": "remotion studio",
+    "render": "remotion render src/index.ts PSOpening out/PixelSavane_Ouverture_PS-001-A_1080p25.mp4 --codec=h264 --crf=14 --pixel-format=yuv420p --color-space=bt709 --audio-codec=aac --audio-bitrate=320k --x264-preset=slow --browser-executable=$(ls -d /opt/pw-browsers/chromium_headless_shell-*/*/chrome-headless-shell | head -1)",
+    "still": "remotion still src/index.ts PSOpening out/derniere-image.png --frame=374 --browser-executable=$(ls -d /opt/pw-browsers/chromium_headless_shell-*/*/chrome-headless-shell | head -1)"
+  },
+  "dependencies": {
+    "@fontsource/montserrat": "^5.3.0",
+    "@remotion/bundler": "^4.0.543",
+    "@remotion/cli": "^4.0.543",
+    "@remotion/renderer": "^4.0.543",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "remotion": "^4.0.543",
+    "typescript": "^7.0.2"
+  },
+  "devDependencies": {
+    "@types/react": "^18.3.31"
+  }
+}
