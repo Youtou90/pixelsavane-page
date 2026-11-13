@@ -149,6 +149,23 @@ Transitions : vague de pixels (front orange, cœur noir) à chaque coupe. Habill
 - **Résolution des visuels source.** Les visuels du site font 670 à 1080 px de large. Ils sont présentés en cadres (diptyque, téléphones, cartes) pour éviter tout agrandissement fort. Seule exception : l'image de droite du diptyque 01 est agrandie de 11 %.
 - **Casting.** Les démonstrations 02 à 04 montrent surtout des personnes non africaines, faute d'autres visuels sans marque réelle. Pour qu'un dirigeant africain s'y reconnaisse, de nouveaux visuels avec un casting africain et des marques fictives seraient préférables (voir `S03_SOURCES_ET_DROITS.md`, § 3).
 
+## 6 ter. Séquence S03 v1.1 — révision artistique (en attente des images)
+
+**Statut :** code et mise en page prêts ; **images à fournir par Oscar** (décision du 13/11 : Oscar produit les images avec son outil habituel, dont il maîtrise les droits). La v1.0 est archivée (`out/archives/`, code dans `src/sequences/S03Creativite_v1_0.tsx`).
+
+- **Commande d'images.** `motion/S03_v1.1_COMMANDE_IMAGES.md` liste 12 images obligatoires et 1 facultative : noms de fichiers, formats, résolutions minimales, indications de prompt, règles (aucun texte ni logo dans les images, casting africain, palette noir et orange, aucune marque réelle).
+- **Dépôt.** Les images vont dans `motion/sources/s03-v1.1/`. `npm run prepare:s03` les copie telles quelles dans `public/s03v11/` et enregistre leur taille et leur empreinte SHA-256 (`available.json`).
+- **Maquette de mise en page.** `out/PixelSavane_S03_v1.1_maquette-mise-en-page_1080p25.mp4` montre la composition définitive (35 s, 875 images), avec un cadre « Image à fournir » à la place de chaque image attendue.
+
+| Démonstration | Ce que fait la v1.1 |
+|---|---|
+| 01 Wata Fufu | Trois ou quatre plans plein cadre 2,39:1 (héros, texture en gros plan, conditionnement, service) enchaînés en fondus avec mouvements de caméra opposés, lumière publicitaire orange. Nom « WATA FUFU » et « Farine de fufu » composés au montage. Mention « visuel publicitaire de démonstration », pour ne pas présenter les images comme documentaires |
+| 02 UGC | Vrai cadre 9:16 (506 × 900) sans fausse interface. Trois plans en coupes franches avec la même créatrice. Sous-titres en Space Grotesk 42 px sur pastilles contrastées, étiquette « Bissap Kéla · marque fictive ». Trois annotations de savoir-faire (accroche, sous-titres, format) |
+| 03 SAYÉ | Mini-campagne : identité de marque commune (nom, sous-titre), photographie produit, portrait publicitaire et photographie éditoriale révélés en rideau, avec leur légende |
+| 04 Maison Adjoa | Une marque, trois formats cohérents. Titres, accroches et boutons d'action composés au montage pour une lisibilité parfaite : « Nouveautés du week-end » et « Commander » (4:5), « Fait maison, chaque matin. » (1:1), « Ouvert dès 7 h » et « Commander maintenant » (9:16) |
+
+Dès réception des images : `npm run prepare:s03 && npm run render:s03 && npm run stills:s03`, puis contrôle visuel et livraison de S03 v1.1 avec quatre captures et le registre des droits mis à jour.
+
 ## 7. Organisation
 
 ```
@@ -183,6 +200,8 @@ Recommandation pour la suite : quand les rushes et les médias HD arriveront (ce
 - [x] Logo officiel haute résolution (`1000324473.png`, reçu le 13/11)
 - [ ] **Validation de l'ouverture v1.4 par la DA**
 - [x] Validation de S02 v1.3 par la DA
-- [ ] **Validation de S03 v1.0 par la DA** (préalable à S04)
+- [x] Revue de S03 v1.0 par la DA (révision v1.1 demandée)
+- [ ] **Images S03 v1.1 à fournir par Oscar** (`motion/S03_v1.1_COMMANDE_IMAGES.md`)
+- [ ] **Validation de S03 v1.1 par la DA** (préalable à S04)
 - [ ] Statut de Wata Fufu, outil et licence des visuels IA du site (voir `S03_SOURCES_ET_DROITS.md`)
 - [ ] Enregistrement définitif de la voix off (préalable à toute autre séquence)
