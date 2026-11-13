@@ -27,3 +27,26 @@ for name, ratio in EXPECTED.items():
     print(f'  OK : {name}{ext} {w}×{h}')
 json.dump(avail, open('public/s03v11/available.json', 'w'), indent=1)
 print(f'{len(avail)}/{len(EXPECTED)} images disponibles')
+
+# ——— Wata Fufu : matériel réel transmis le 13/11 (publications de la campagne) ———
+# Recadrages exacts des zones photographiques (pixels inchangés, enregistrés sans perte en PNG)
+# + copies intégrales des publications. Source : motion/sources/s03-v1.1/recus-2026-11-13/
+R = '../sources/s03-v1.1/recus-2026-11-13'
+CROPS = {
+    'wf-texture.png': ('1000250139.jpg', (95, 255, 935, 745)),      # gros plan texture
+    'wf-boules.png': ('1000250101.jpg', (140, 300, 905, 712)),     # conditionnement en boules
+    'wf-sac.png': ('1000250140.jpg', (55, 215, 965, 875)),          # sac en volume
+}
+wf = {}
+for dst, (src, box) in CROPS.items():
+    if not os.path.exists(f'{R}/{src}'): continue
+    im = Image.open(f'{R}/{src}').convert('RGB').crop(box)
+    im.save(f'public/s03v11/{dst}')
+    wf[dst[:-4]] = dict(file=f's03v11/{dst}', w=im.width, h=im.height, src=src, box=box)
+for src in ['1000250101.jpg', '1000250139.jpg', '1000250152.jpg']:
+    if os.path.exists(f'{R}/{src}'):
+        shutil.copyfile(f'{R}/{src}', f'public/s03v11/wf-post-{src}')
+        w, h = Image.open(f'{R}/{src}').size
+        wf[f'post-{src[:-4]}'] = dict(file=f's03v11/wf-post-{src}', w=w, h=h, src=src)
+json.dump(wf, open('public/s03v11/watafufu-reel.json', 'w'), indent=1)
+print('Wata Fufu (réel) :', ', '.join(wf))

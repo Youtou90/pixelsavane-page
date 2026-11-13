@@ -166,6 +166,22 @@ Transitions : vague de pixels (front orange, cœur noir) à chaque coupe. Habill
 
 Dès réception des images : `npm run prepare:s03 && npm run render:s03 && npm run stills:s03`, puis contrôle visuel et livraison de S03 v1.1 avec quatre captures et le registre des droits mis à jour.
 
+### Mise à jour du 13/11 : matériel réel reçu (12 visuels)
+
+Le détail des 12 visuels reçus est dans `motion/sources/s03-v1.1/recus-2026-11-13/README.md` (originaux en lecture seule, empreintes SHA-256).
+
+- **Démonstration 01, Wata Fufu : réalisée avec le matériel réel.** Trois plans tirés de recadrages exacts des publications de la marque (zones photographiques, pixels inchangés) :
+  - « Texture » : gros plan du fufu ;
+  - « Conditionnement » : boules emballées, bol et fufu cuit ;
+  - « Volume » : sac.
+
+  Chaque plan est un cadre net de 1180 × 620, avec le même plan flouté et assombri en plein écran derrière (effet de profondeur de champ qui masque l'agrandissement d'environ 1,3 à 1,5 fois), un mouvement de caméra lent et une lumière orange. Le nom « WATA FUFU · Fufu frais · Est-Cameroun » est composé au montage. Le plan se termine sur trois publications entières de la campagne (« Déclinaison en publications pour les réseaux sociaux »). Capture : `out/S03_v1.1_capture-1-pub-cinema_wata-fufu_110.png`.
+- **Non utilisées :**
+  - les cinq affiches « PixelSavana » : autre nom, logo et couleur que la charte, chiffres d'engagement présentés comme réels, logos de plateformes réelles ;
+  - `1000251162.png` : version HD du visuel « voyage » déjà connu, sans emploi dans le cahier des charges v1.1 ;
+  - `1000250151.jpg` : doublon.
+- **Toujours manquantes** (voir `motion/S03_v1.1_COMMANDE_IMAGES.md`) : 02 UGC (`ugc-1` à `ugc-3`), 03 SAYÉ (`saye-produit`, `saye-portrait`, `saye-editorial`), 04 Maison Adjoa (`adjoa-45`, `adjoa-11`, `adjoa-916`). La maquette `out/PixelSavane_S03_v1.1_maquette-mise-en-page_1080p25.mp4` a été mise à jour : démonstration 01 définitive, cadres d'attente pour 02 à 04.
+
 ## 7. Organisation
 
 ```

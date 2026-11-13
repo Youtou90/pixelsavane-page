@@ -7,6 +7,7 @@ import {PixelWipe} from '../system/PixelWipe';
 import {FilmGrain} from '../system/FilmGrain';
 import {ChapterTag, DemoLabel, EndCard, Scrim, Shot, Title} from './S03Creativite_v1_0';
 import available from '../../public/s03v11/available.json';
+import wfReel from '../../public/s03v11/watafufu-reel.json';
 
 /**
  * SÉQUENCE 03 — « La créativité au service des marques » — v1.1, maquette muette (35 s).
@@ -42,48 +43,80 @@ const Pic: React.FC<{name: string; ratio: string; w: number; h: number; zoom?: n
 
 const fade = (t: number, a: number, b: number, d = 0.25) => interpolate(t, [a - d, a, b - d, b], [0, 1, 1, 0], clamp);
 
-// ——— 01 · Publicité cinématographique : Wata Fufu ———
+// ——— 01 · Publicité cinématographique : Wata Fufu (matériel réel de la campagne, transmis le 13/11) ———
+const WF = wfReel as Record<string, {file: string; w: number; h: number}>;
+const WF_SHOTS = [
+  {n: 'wf-texture', a: 0.0, b: 2.5, cap: 'Texture'},
+  {n: 'wf-boules', a: 2.5, b: 4.8, cap: 'Conditionnement'},
+  {n: 'wf-sac', a: 4.8, b: 6.1, cap: 'Volume'},
+];
+const WF_POSTS = ['post-1000250101', 'post-1000250139', 'post-1000250152'];
 const Demo1: React.FC = () => {
   const t = useCurrentFrame() / FPS, len = CUT[1] - CUT[0];
-  const BAR = 140, W = 1920, H = 1080 - 2 * BAR;
-  const withService = has('watafufu-service');
-  const shots = withService
-    ? [{n: 'watafufu-hero', a: 0, b: 2.3}, {n: 'watafufu-texture', a: 2.3, b: 4.2}, {n: 'watafufu-conditionnement', a: 4.2, b: 5.9}, {n: 'watafufu-service', a: 5.9, b: len + 0.3}]
-    : [{n: 'watafufu-hero', a: 0, b: 2.6}, {n: 'watafufu-texture', a: 2.6, b: 4.8}, {n: 'watafufu-conditionnement', a: 4.8, b: len + 0.3}];
-  const brand = interpolate(t, [0.7, 1.5, 2.0, 2.4], [0, 1, 1, 0], clamp);
-  const endBrand = interpolate(t, [len - 1.6, len - 1.0], [0, 1], {...clamp, easing: easeOut});
+  const BAR = 140, H = 1080 - 2 * BAR;
+  const WX = 640, WY = BAR + 90, WW = 1180, WH = 620; // fenêtre nette (profondeur de champ simulée autour)
+  const posts = interpolate(t, [5.6, 6.4], [0, 1], {...clamp, easing: easeOut});
+  const brand = interpolate(t, [0.6, 1.4, 5.4, 5.9], [0, 1, 1, 0], clamp);
   return (
     <AbsoluteFill style={{background: '#000'}}>
-      {shots.map((s, i) => {
-        const o = i === 0 ? interpolate(t, [s.b - 0.25, s.b], [1, 0], clamp) : fade(t, s.a + 0.25, s.b);
+      {WF_SHOTS.map((sh, i) => {
+        const a = WF[sh.n];
+        if (!a) return null;
+        const o = i === 0 ? interpolate(t, [sh.b - 0.25, sh.b], [1, 0], clamp)
+          : i === WF_SHOTS.length - 1 ? interpolate(t, [sh.a, sh.a + 0.25, 5.9, 6.4], [0, 1, 1, 0], clamp) : fade(t, sh.a + 0.25, sh.b);
         if (o <= 0) return null;
-        const u = (t - s.a) / (s.b - s.a);
+        const u = Math.max(0, (t - sh.a) / (sh.b - sh.a + 0.6));
+        const src = staticFile(a.file);
         return (
-          <div key={s.n} style={{position: 'absolute', left: 0, top: BAR, width: W, height: H, overflow: 'hidden', opacity: o}}>
-            <Pic name={s.n} ratio="16:9" w={W} h={H} zoom={lerp(1.0, 1.07, u)} px={i % 2 ? lerp(-12, 12, u) : lerp(12, -12, u)} />
-          </div>
+          <React.Fragment key={sh.n}>
+            {/* arrière-plan plein cadre : même image, floutée et assombrie (profondeur de champ) */}
+            <div style={{position: 'absolute', left: 0, top: BAR, width: 1920, height: H, overflow: 'hidden', opacity: o}}>
+              <Shot src={src} nat={[a.w, a.h]} w={1920} h={H} zoom={1.1} style={{filter: 'blur(30px) brightness(0.42) saturate(1.1)'}} />
+            </div>
+            {/* plan net */}
+            <div style={{position: 'absolute', left: WX, top: WY, width: WW, height: WH, overflow: 'hidden', opacity: o, borderRadius: 4, zIndex: 11,
+              boxShadow: '0 40px 100px rgba(0,0,0,0.65)'}}>
+              <Shot src={src} nat={[a.w, a.h]} w={WW} h={WH} zoom={lerp(1.0, 1.08, u)} px={i % 2 ? lerp(-14, 14, u) : lerp(14, -14, u)} />
+              <div style={{position: 'absolute', inset: 0, background: `linear-gradient(115deg, ${C.orange}33 0%, ${C.orange}00 35%, rgba(0,0,0,0) 70%, rgba(0,0,0,0.15) 100%)`, mixBlendMode: 'soft-light'}} />
+            </div>
+            <div style={{position: 'absolute', left: WX + 28, top: WY + 24, zIndex: 12, ...FONTS.texte, fontSize: 15, letterSpacing: '0.24em', color: C.blanc, opacity: o * 0.9, textShadow: '0 1px 8px rgba(0,0,0,0.6)'}}>
+              {sh.cap.toUpperCase()}
+            </div>
+          </React.Fragment>
         );
       })}
       {/* lumière publicitaire : balayage orange discret */}
       <div style={{position: 'absolute', left: lerp(-700, 1400, t / len), top: 80, width: 1100, height: 920, borderRadius: '50%',
-        background: `radial-gradient(ellipse, ${C.orange}40 0%, ${C.orange}00 60%)`, mixBlendMode: 'screen', opacity: 0.7}} />
+        background: `radial-gradient(ellipse, ${C.orange}36 0%, ${C.orange}00 60%)`, mixBlendMode: 'screen', opacity: 0.7}} />
       {/* nom du produit, composé au montage */}
-      <div style={{position: 'absolute', right: 140, top: 420, textAlign: 'right', opacity: brand, transform: `translateY(${(1 - brand) * 14}px)`, zIndex: 12}}>
-        <div style={{...FONTS.titre, fontSize: 92, letterSpacing: '0.16em', color: C.blanc, textShadow: '0 6px 30px rgba(0,0,0,0.6)'}}>WATA FUFU</div>
-        <div style={{...FONTS.sousTitre, fontSize: 26, color: C.blanc, opacity: 0.9}}>Farine de fufu</div>
+      <div style={{position: 'absolute', left: WX + WW - 40, top: WY + WH - 150, transform: `translateX(-100%) translateY(${(1 - brand) * 12}px)`, textAlign: 'right', opacity: brand, zIndex: 12}}>
+        <div style={{...FONTS.titre, fontSize: 76, letterSpacing: '0.16em', color: C.blanc, textShadow: '0 6px 30px rgba(0,0,0,0.7)', whiteSpace: 'nowrap'}}>WATA FUFU</div>
+        <div style={{...FONTS.sousTitre, fontSize: 24, color: C.blanc, opacity: 0.92, textShadow: '0 2px 12px rgba(0,0,0,0.7)'}}>Fufu frais · Est-Cameroun</div>
       </div>
-      <div style={{position: 'absolute', right: 140, bottom: BAR + 50, textAlign: 'right', opacity: endBrand, zIndex: 12}}>
-        <div style={{...FONTS.titre, fontSize: 64, letterSpacing: '0.16em', color: C.blanc, textShadow: '0 6px 30px rgba(0,0,0,0.6)'}}>WATA FUFU</div>
-        <div style={{width: lerp(0, 160, endBrand), height: 3, background: C.orange, marginLeft: 'auto', marginTop: 10}} />
+      {/* présentation commerciale : les publications de la campagne */}
+      {posts > 0 && WF_POSTS.map((n, i) => {
+        const a = WF[n];
+        if (!a) return null;
+        const u = interpolate(t, [5.6 + i * 0.18, 6.4 + i * 0.18], [0, 1], {...clamp, easing: easeOut});
+        const S = 400;
+        return (
+          <div key={n} style={{position: 'absolute', left: 700 + i * 380, top: BAR + 130 + (1 - u) * 80 + (i === 1 ? -20 : 0), width: S, height: S, opacity: u,
+            transform: `rotate(${(i - 1) * 3}deg)`, boxShadow: '0 30px 80px rgba(0,0,0,0.6)', borderRadius: 6, overflow: 'hidden', zIndex: 13 + i}}>
+            <Shot src={staticFile(a.file)} nat={[a.w, a.h]} w={S} h={S} zoom={1} />
+          </div>
+        );
+      })}
+      <div style={{position: 'absolute', left: 700, top: BAR + 590, ...FONTS.sousTitre, fontSize: 22, color: C.blanc, opacity: posts * 0.9, zIndex: 16}}>
+        Déclinaison en publications pour les réseaux sociaux
       </div>
       <Scrim />
       <div style={{position: 'absolute', left: 0, top: 0, width: 1920, height: BAR, background: '#000', zIndex: 15}} />
       <div style={{position: 'absolute', left: 0, bottom: 0, width: 1920, height: BAR, background: '#000', zIndex: 15}} />
       <div style={{position: 'absolute', right: 96, top: 58, zIndex: 16, ...FONTS.texte, fontSize: 15, letterSpacing: '0.18em', color: C.gris}}>
-        VISUEL PUBLICITAIRE DE DÉMONSTRATION · 2,39:1
+        VISUELS PUBLICITAIRES · 2,39:1
       </div>
-      <DemoLabel n="01" title="Publicité cinématographique" sub="Produit physique · gros plans, texture, conditionnement"
-        note="Wata Fufu · démonstration PixelSavane, images publicitaires (non documentaires)" t={t} len={len} bottom={170} />
+      <DemoLabel n="01" title="Publicité cinématographique" sub="Produit physique · texture, conditionnement, déclinaisons"
+        note="Wata Fufu · visuels publicitaires de la marque (images non documentaires)" t={t} len={len} bottom={170} />
     </AbsoluteFill>
   );
 };
