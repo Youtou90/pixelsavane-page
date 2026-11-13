@@ -1,6 +1,6 @@
-# PS-DOC-001 — Rapport technique · Ouverture v1.2 et proposition S02
+# PS-DOC-001 — Rapport technique · Ouverture v1.3
 
-**Statut : soumis à la validation du directeur artistique.** Le master de 180 s n'est pas commencé (voir § 7).
+**Statut : soumise à la validation du directeur artistique.** Aucune autre séquence ne sera produite avant cette validation.
 
 ---
 
@@ -8,93 +8,56 @@
 
 | Livrable | Fichier |
 |---|---|
-| Vidéo d'ouverture v1.2 définitive (15 s) | `PixelSavane_S01_Ouverture_v1.2_1080p25.mp4` |
-| Dernière image en PNG (image 374) | `S01_derniere-image_v1.2.png` |
-| Test de lisibilité mobile | `S01_test-lisibilite-mobile_v1.2.png` |
-| Proposition visuelle S02 « Fondateur » (25 s, sans son) | `PixelSavane_S02_Fondateur_proposition_1080p25.mp4` |
-| Images clés S02 | `S02_styleframe_070.png` (titre), `_260.png` (panneaux), `_470.png` (identification) |
-| Archives (v1.1 acceptée comme base) | `archives/` |
-| Code source | `src/` (voir § 6) |
+| **Vidéo finale de l'ouverture v1.3** | `PixelSavane_S01_Ouverture_v1.3_1080p25.mp4` |
+| **Dernière image (image 374) en PNG** | `S01_derniere-image_v1.3.png` |
+| Planche des 8 temps | `S01_storyboard_v1.3.jpg` |
+| Code source | `src/sequences/S01Ouverture.tsx` (séquence), `src/system/` (briques communes), `scripts/` (découpe du logo, son) |
+| Versions précédentes | `archives/` (v1.1, v1.2) |
 
-## 2. Corrections A demandées par la DA
+## 2. Corrections de la validation PS-DOC-001-A
 
-### A.1–A.2 — Comparaison du logo avec le fichier officiel
-
-Le fichier `1000324473.png` n'a toujours pas été transmis. La comparaison a donc été faite avec **le seul fichier d'Oscar disponible** : le logo qu'il a lui-même téléversé dans le dépôt (compte Youtou90, commit `39584a3` du 27/10/2026).
-
-Constat important : le logo utilisé en v1.0 et v1.1 (`assets/img/logo-pixelsavane.jpg`, version actuelle) **n'était pas ce fichier d'origine**. C'est une version dérivée, créée le 01/11/2026 (commit `f24c2a2`) pour remplacer l'ancienne signature par la nouvelle, puis réenregistrée en JPEG. La mesure pixel par pixel entre les deux versions donne :
-
-| Zone | Écart maximal | Interprétation |
+| # | Demande | Réalisation v1.3 |
 |---|---|---|
-| Symbole PS (pixels, P, triangle de lecture, S, dégradés) | ≤ 20/255 sur 268 pixels isolés, moyenne 0,44 | Bruit de recompression JPEG, invisible. Aucune différence de forme, de couleur ni de dégradé |
-| Wordmark « PixelSavane » | < 40/255, moyenne < 1 | Idem |
-| Zone de signature | jusqu'à 255/255 | Remplacement volontaire du slogan |
+| 1 | Les particules forment le symbole PS, convergence progressive et contrôlée | **Convergence en deux temps.** De 6,0 à 7,8 s, les 412 particules quittent le nuage et forment un **essaim lâche** qui dessine déjà le PS, avec un léger flottement. Ensuite, **chaque particule se verrouille une à une sur son pixel exact**, et ce verrouillage dévoile sous elle une tuile de 17 px découpée dans le **vrai calque du logo** : les particules construisent littéralement le symbole. Ordre : les 16 carrés du nuage de pixels (7,35–7,8 s), puis le P du pied du fût vers la boucle (7,9–9,75 s), puis le S de la tête vers la queue (9,85–11,7 s). Une fois chaque lettre complète, le calque officiel entier prend le relais (bords antialiasés compris), avec un reflet discret |
+| 2 | Logo officiel importé, non reconstruit, proportions, dégradés et pixels préservés | Voir § 3 |
+| 3 | Wordmark animé sans couper les lettres, mot complet visible à la fin | Le wordmark officiel est découpé en **10 éléments entiers** (P · i · x · e · l · Sa · v · a · n · e ; le « S » et le « a » se touchent dans le dessin d'origine et restent soudés). Chaque élément apparaît **en entier** (fondu, montée de 18 px, mise au point), en cascade de 11,9 à 12,95 s. Plus aucun balayage ne coupe une lettre. L'union des 10 éléments reproduit le calque wordmark à l'identique (écart d'alpha : 0) |
+| 4 | Signature exacte, lisible en 1920 × 1080 | Texte exact : « Le numérique au service de votre croissance. » (une seule constante dans le code, `SIGNATURE` dans `src/system/brand.ts`). Inter Regular 38,8 px : capitales de 28 px, minuscules de 21 px, blanc #FAFAFA sur noir. Taille validée en v1.2 (+28 %) |
+| 5 | Logo complet centré, fond noir, lumière orange discrète, logo immobile à la fin | Bloc complet (symbole, wordmark, signature, trait) mesuré sur la dernière image : centre à **(959,5 ; 539,5)** pour (960 ; 540). Fond #0E0E10, halo orange réduit (opacité 0,26), vignettage. **Plan totalement fixe de 13,48 s à 15,00 s (1,52 s)** : caméra posée dès 12,6 s, particules d'ambiance éteintes, aucun scintillement. Mesuré sur le MP4 : écart entre ces images ≤ 6/255 (bruit d'encodage seulement) |
+| 6 | 15 s, 25 fps, 1920 × 1080, MP4 H.264 | Voir § 4 |
 
-**Correction appliquée en v1.2 :** les calques sont désormais extraits **directement du fichier d'origine d'Oscar** (copie intacte, en lecture seule, dans `motion/sources/`). L'ancienne signature est entièrement exclue : aucun pixel de « Des contenus qui font vendre. » ne subsiste dans les calques (vérification : 0 pixel visible sous la ligne y = 786 dans les calques symbole et wordmark). Les calques superposés reconstituent le fichier d'origine avec un écart moyen de 0,8/255.
+Calendrier ajusté pour libérer le plan fixe final : le wordmark arrive à 11,9 s (au lieu de 12 s) et la signature à 12,7 s (au lieu de 14 s). Les autres temps du scénario sont inchangés.
 
-**Réserve :** l'identité stricte avec `1000324473.png` ne pourra être confirmée qu'à réception de ce fichier. Dès qu'il sera dans `motion/sources/`, il suffit de relancer `npm run layers` pour régénérer les calques depuis la source haute résolution, sans toucher au code de l'animation.
+## 3. Confirmation : logo officiel importé, non redessiné
 
-### A.3 — Signature agrandie de 28 %
+- **Source.** C'est le fichier logo téléversé par le fondateur lui-même (compte GitHub Youtou90, commit `39584a3` du 27/10/2026). Il est conservé intact, en lecture seule, dans `motion/sources/` (SHA-256 `80f1ba81…c525f4`).
+- **Méthode.** `scripts/extract_layers.py` **découpe** ce fichier en calques transparents (nuage de pixels, P avec triangle de lecture, S, lettres du wordmark, trait orange) au moyen de masques géométriques et colorimétriques. Aucun tracé, aucune vectorisation, aucune IA. L'ancienne signature est exclue des calques.
+- **Proportions.** Les calques sont affichés à l'échelle **1:1** sur l'image finale : aucun redimensionnement, aucune déformation. Le seul mouvement d'échelle est le travelling uniforme (0,93 → 1,00), terminé à 12,6 s.
+- **Vérification sur la dernière image.** La zone symbole + wordmark de `S01_derniere-image_v1.3.png`, comparée pixel par pixel au fichier du fondateur, donne un écart moyen de **0,05/255** (99 % des pixels ≤ 2/255). Dégradés et pixels sont donc préservés.
+- **Réserve maintenue.** Le fichier `1000324473.png` cité dans le dossier n'a toujours pas été transmis à l'environnement. S'il diffère du fichier téléversé, il suffit de le déposer dans `motion/sources/` et de lancer `npm run layers` puis `npm run render:s01` ; aucun code d'animation n'est à modifier.
 
-| | v1.1 | v1.2 |
-|---|---|---|
-| Police | Inter Regular | Inter Regular |
-| Corps | 30,3 px | **38,8 px (+28 %)** |
-| Hauteur des capitales | 22 px | 28 px |
-| Interlettrage | 0,12 em | 0,07 em |
-| Largeur de la ligne | 804 px | 947 px (wordmark : 832 px) |
+## 4. Paramètres vidéo et audio (mesurés avec ffprobe et ffmpeg)
 
-Point d'arbitrage pour la DA : avec l'interlettrage d'origine, +28 % aurait donné une ligne de 996 px, qui dépasse le wordmark de 20 %. J'ai resserré l'interlettrage pour garder un bloc compact. La taille des lettres est bien +28 %. La valeur se règle dans une seule constante (`SIG` dans `src/sequences/S01Ouverture.tsx`).
+| Paramètre | Valeur |
+|---|---|
+| Conteneur / codec | MP4, H.264 High, x264 CRF 14, preset slow (≈ 2,5 Mb/s) |
+| Image | 1920 × 1080, 16:9, yuv420p, BT.709, plage TV |
+| Cadence et durée | 25/1 fps, **375 images, piste vidéo de 15,000 s exactement** (le conteneur affiche 15,019 s à cause du remplissage technique des trames AAC) |
+| Audio | AAC-LC 320 kb/s, 48 kHz, stéréo ; −15,9 LUFS intégré, crête −1,0 dBFS |
+| Ouverture | noir vidéo pur (Y max = 16) de 0 à 1,95 s, silence jusqu'à 1,4 s |
+| Son v1.3 | recalé : clics cristallins de verrouillage pendant la construction du P et du S, impacts à 7,95 s et 9,85 s, souffle et nappe sur le wordmark (11,7 s), carillon sur la signature (12,7 s), nappe tenue pendant le plan fixe puis fondu |
 
-Le trait orange d'origine suit la signature par simple translation (+36 px, +9 px), sans déformation, pour rester sous « votre croissance ». L'ensemble du bloc reste centré verticalement (centre à y = 538 sur 540).
+## 5. Ressources utilisées
 
-### A.4 — Lisibilité sur mobile (`S01_test-lisibilite-mobile_v1.2.png`)
-
-Simulation sur un écran de téléphone standard (390 × 844 points) :
-
-| Lecture | Hauteur des capitales v1.1 | v1.2 | Verdict |
+| Ressource | Origine | Droits | Usage |
 |---|---|---|---|
-| Téléphone horizontal, plein écran | 8,0 pt | **10,2 pt** | Lisible, l'équivalent d'un texte de 14 pt |
-| Téléphone vertical, vidéo 16:9 intégrée dans le fil | 4,5 pt | 5,7 pt | Trop petit pour une lecture confortable |
-
-Le cas vertical est une limite du format 16:9 lui-même. Elle sera traitée dans les versions **9:16 et 1:1** prévues au dossier, où la signature sera composée plus grande. Je ne propose pas de grossir davantage la version 16:9, ce qui déséquilibrerait le logo.
-
-### A.5–A.6 — Composition et intégrité
-
-- Le fond reste noir (#000 puis #0E0E10), avec un éclairage orange #F28C28.
-- Le logo est affiché à l'échelle 1:1 sur l'image finale, sans étirement ni redimensionnement non proportionnel. La seule mise à l'échelle est le léger travelling (0,93 → 1,00), toujours uniforme.
-
-## 3. Paramètres vidéo et audio (mesurés avec ffprobe et ffmpeg)
-
-| Paramètre | S01 Ouverture v1.2 | S02 proposition |
-|---|---|---|
-| Conteneur | MP4 | MP4 |
-| Vidéo | H.264 High, 1920×1080, 16:9 | idem |
-| Cadence | 25/1 fps, 375 images | 25/1 fps, 625 images |
-| Durée | 15,0 s | 25,0 s |
-| Pixels | yuv420p, BT.709, plage TV | idem |
-| Encodage | x264 CRF 14, preset slow, ≈ 2,5 Mb/s | idem, ≈ 1,8 Mb/s |
-| Audio | AAC-LC 320 kb/s, 48 kHz, stéréo | sans son (maquette) |
-| Loudness | −16,5 LUFS intégré, LRA 6,5 LU, crête −1,1 dBFS | — |
-| Ouverture | noir vidéo pur (Y max = 16) de 0 à 1,95 s | — |
-| Contrôle de la dernière image | image 374 du MP4 contre le PNG : écart moyen 1,5/255 (compression) | — |
-| SHA-256 | `b4e02b59…7953e4` | `82c21c02…4a44` |
-
-## 4. Rapport des ressources utilisées
-
-| Ressource | Origine | Licence / droits | Usage |
-|---|---|---|---|
-| Logo PixelSavane | Fichier d'Oscar, commit `39584a3` (`motion/sources/`) | Propriété PixelSavane | S01 : calques extraits sans redessin |
-| Portrait d'Oscar YOUTOU | Fichier d'Oscar, commit `c639ed4` (`motion/sources/`), 820×1081 | Propriété du fondateur | S02 : affiché à 92–96 % de sa taille native, jamais agrandi, sans retouche |
-| Inter, Space Grotesk, Sora | `@fontsource` (npm) | SIL Open Font License 1.1 | Textes, titres, sous-titres |
-| Sound design S01 | Synthétisé localement (`scripts/sound_design.py`) | Création originale, aucun sample | Bande son S01 |
-| Pictogrammes S02 | Dessinés en grilles de carrés dans le code | Création originale | S02 |
-| Remotion 4, React 18 | npm | Remotion : gratuit pour les particuliers et les entreprises de 3 personnes au plus. React : MIT | Moteur de rendu |
-| FFmpeg / x264 | Système | LGPL / GPL | Encodage |
+| Logo PixelSavane | Fichier téléversé par le fondateur (`motion/sources/`) | Propriété PixelSavane | Calques découpés, échelle 1:1 |
+| Inter | `@fontsource/inter` | SIL Open Font License 1.1 | Signature |
+| Son | Synthétisé localement (`scripts/sound_design.py`) | Création originale, aucun sample | Bande son |
+| Remotion 4 + React 18, FFmpeg/x264 | npm, système | Remotion : gratuit jusqu'à 3 personnes ; MIT ; LGPL/GPL | Rendu et encodage |
 
 Aucune image générée par IA, aucune banque d'images, aucune API payante.
 
-## 5. Proposition visuelle S02 — « La naissance d'une conviction » (25 s)
+## 6. Proposition visuelle S02 (présentée en v1.2, en attente d'avis) — « La naissance d'une conviction » (25 s)
 
 | Temps | Contenu |
 |---|---|
@@ -118,7 +81,7 @@ Questions pour la DA sur S02 :
 2. Le portrait est placé à droite, avec le nom à gauche. Faut-il le garder ainsi ou le centrer ?
 3. Pour un portrait en plein cadre, il faudra le fichier `1000323407.png` en haute définition.
 
-## 6. Organisation (point D)
+## 7. Organisation
 
 ```
 motion/
@@ -143,11 +106,11 @@ Commandes : `npm install`, puis `npm run layers`, `npm run sound`, `npm run rend
 
 Recommandation pour la suite : quand les rushes et les médias HD arriveront (centaines de Mo), les stocker avec Git LFS ou sur un Google Drive dédié, et ne garder dans Git que leur manifeste SHA-256.
 
-## 7. En attente avant le master de 180 s (point C)
+## 8. En attente avant les autres séquences
 
 - [ ] Logo officiel haute résolution `1000324473.png`
 - [ ] Portrait original `1000323407.png`
 - [ ] Script de narration validé
 - [ ] Charte graphique (présentations)
 - [ ] Liste des créations PixelSavane utilisables dans le film
-- [ ] Validation de l'ouverture v1.2 et de la proposition S02 par la DA
+- [ ] **Validation de l'ouverture v1.3 par la DA** (préalable à toute autre séquence)

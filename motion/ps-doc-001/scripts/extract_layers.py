@@ -75,3 +75,37 @@ def sample(mask, step, name):
 pts = dict(p=sample(p_letter, 17, 'p'), s=sample(s_letter, 17, 's'))
 json.dump(pts, open('public/points.json', 'w'))
 print('points P', len(pts['p']), 'S', len(pts['s']))
+
+# Wordmark découpé en lettres ENTIÈRES (aucune lettre coupée à l'animation).
+# Composantes connexes ; chaque pixel semi-transparent est attribué à la lettre la plus proche.
+# « Sa » se touchent dans le dessin d'origine : ils restent un seul élément. Union des lettres = calque wordmark exact.
+WM = np.asarray(Image.open('public/ps-wordmark.png'))
+wa = WM[..., 3]
+lab, n = nd.label(wa > 128)
+_, (iy, ix) = nd.distance_transform_edt(lab == 0, return_indices=True)
+owner = lab[iy, ix] * (wa > 0)
+objs = nd.find_objects(lab)
+# fusion du point du i avec son fût (même colonne, au-dessus)
+comps = []
+for k, o in enumerate(objs):
+    comps.append(dict(ids=[k + 1], x0=o[1].start, x1=o[1].stop, y0=o[0].start, y1=o[0].stop))
+comps.sort(key=lambda c: c['x0'])
+merged = []
+for c in comps:
+    if merged and c['x0'] < merged[-1]['x1'] and (c['y1'] <= 680 or merged[-1]['y1'] <= 680) and abs(c['x0'] - merged[-1]['x0']) < 6:
+        m = merged[-1]; m['ids'] += c['ids']; m['x0'] = min(m['x0'], c['x0']); m['x1'] = max(m['x1'], c['x1']); m['y0'] = min(m['y0'], c['y0']); m['y1'] = max(m['y1'], c['y1'])
+    else:
+        merged.append(c)
+letters = []
+for i, c in enumerate(merged):
+    mask = np.isin(owner, c['ids'])
+    ys, xs = np.where(mask)
+    x0, x1, y0, y1 = xs.min(), xs.max() + 1, ys.min(), ys.max() + 1
+    L = WM.copy(); L[..., 3] = np.where(mask, wa, 0)
+    Image.fromarray(L[y0:y1, x0:x1], 'RGBA').save(f'public/wm-{i:02d}.png')
+    letters.append(dict(file=f'wm-{i:02d}.png', x=int(x0), y=int(y0), w=int(x1 - x0), h=int(y1 - y0)))
+json.dump(letters, open('public/wordmark-letters.json', 'w'), indent=1)
+rec = np.zeros(WM.shape[:2])
+for l in letters:
+    rec[l['y']:l['y'] + l['h'], l['x']:l['x'] + l['w']] += np.asarray(Image.open('public/' + l['file']))[..., 3]
+print(f'wordmark : {len(letters)} éléments entiers ; écart d\'alpha avec le calque complet = {np.abs(rec - wa).max():.0f}')

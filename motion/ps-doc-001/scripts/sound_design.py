@@ -1,4 +1,4 @@
-"""Sound design cinématique 15 s, 100 % synthétisé (numpy/scipy) : aucun sample, aucune licence.
+"""Sound design cinématique 15 s (calé sur l'ouverture v1.3), 100 % synthétisé (numpy/scipy) : aucun sample, aucune licence.
 Calé sur le scénario PS-001-A (25 fps). Sortie : public/sound.wav (48 kHz, stéréo, 24 bits -> 16 bits PCM).
 """
 import numpy as np, wave
@@ -73,25 +73,31 @@ def impact(f0=48, dur=3.5, bright=0.5):
     thump = lp(rng.standard_normal(n), 900) * np.exp(-tt * 28)
     air = hp(rng.standard_normal(n), 4000) * np.exp(-tt * 9) * bright
     return sub * 0.9 + thump * 0.6 + air * 0.25
-add(impact(46, 4.0, 0.4), 8.0, gain=0.42)
-add(impact(52, 4.0, 0.9), 10.0, gain=0.36)
+add(impact(46, 4.0, 0.4), 7.95, gain=0.42)
+add(impact(52, 3.5, 0.9), 9.85, gain=0.36)
 # chatoiement « orange » du S : accord brillant
 for k, f in enumerate([880.0, 1108.7, 1318.5, 1760.0]):
-    add(ping(f, 2.6, 0.4), 10.0 + 0.04 * k, pan=(-0.5 + k / 3), gain=0.05)
+    add(ping(f, 2.6, 0.4), 9.85 + 0.04 * k, pan=(-0.5 + k / 3), gain=0.05)
+
+# 5b) Verrouillage des pixels : micro-clics cristallins pendant la construction du P (7,9–9,75 s) et du S (9,85–11,7 s)
+for (a, b, base) in [(7.9, 9.75, 2637.0), (9.85, 11.7, 3135.96)]:
+    for i in range(46):
+        st = a + (b - a) * (i / 46) + rng.uniform(-0.02, 0.02)
+        add(ping(base * rng.choice([1, 1.122, 1.335]), 0.18, 0.3), st, pan=rng.uniform(-0.5, 0.5), gain=0.03)
 
 # 6) Wordmark (12 s) : souffle aérien + nappe d'accord qui s'ouvre (La majeur 9)
 n = int(2.2 * SR); w = bp(rng.standard_normal(n), 1500, 9000) * np.sin(np.linspace(0, np.pi, n)) ** 3
-add(w, 11.9, pan=-0.6, gain=0.06); add(w[::-1].copy(), 11.9, pan=0.6, gain=0.06)
+add(w, 11.7, pan=-0.6, gain=0.06); add(w[::-1].copy(), 11.7, pan=0.6, gain=0.06)
 def pad(freqs, dur):
     n = int(dur * SR); tt = np.arange(n) / SR
     s = sum(np.sin(2 * np.pi * f * tt + np.sin(2 * np.pi * 0.2 * tt) * 0.3) + 0.3 * np.sin(2 * np.pi * f * 2.001 * tt) for f in freqs)
     e = np.clip(tt / 1.4, 0, 1) ** 2 * np.clip((dur - tt) / 1.0, 0, 1)
     return lp(s, 2500) * e / len(freqs)
-add(pad([220.0, 277.18, 329.63, 493.88], 3.1), 11.9, gain=0.20)
+add(pad([220.0, 277.18, 329.63, 493.88], 3.3), 11.7, gain=0.20)  # tenue pendant le plan final fixe
 
-# 7) Signature (14 s) : carillon final doux qui résout
-add(ping(1760.0, 1.0, 0.3), 14.05, pan=0.2, gain=0.08)
-add(ping(1318.5, 1.0, 0.3), 14.0, pan=-0.2, gain=0.08)
+# 7) Signature (12,7 s) : carillon final doux qui résout
+add(ping(1760.0, 1.6, 0.3), 12.75, pan=0.2, gain=0.08)
+add(ping(1318.5, 1.6, 0.3), 12.7, pan=-0.2, gain=0.08)
 
 # Réverbération (IR synthétique à décroissance exponentielle, stéréo décorrélée)
 def ir(seed, dur=2.6):
