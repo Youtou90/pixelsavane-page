@@ -2,6 +2,7 @@ import React from 'react';
 import {Composition} from 'remotion';
 import {S01Ouverture} from './sequences/S01Ouverture';
 import {S02Fondateur} from './sequences/S02Fondateur';
+import {S03Creativite} from './sequences/S03Creativite';
 
 // Une composition par séquence (25 fps, 1920×1080). Le master 180 s assemblera ces composants
 // avec <Series> une fois les ressources officielles et le script reçus.
@@ -11,5 +12,6 @@ export const Root: React.FC = () => (
   <>
     <Composition id="S01-Ouverture" component={S01Ouverture} durationInFrames={375} {...common} defaultProps={{withAudio: true}} />
     <Composition id="S02-Fondateur" component={S02Fondateur} durationInFrames={625} {...common} />
+    <Composition id="S03-Creativite" component={S03Creativite} durationInFrames={875} {...common} />
   </>
 );

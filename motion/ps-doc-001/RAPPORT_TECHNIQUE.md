@@ -113,6 +113,42 @@ Paramètres mesurés : H.264 High, 1920 × 1080, 16:9, yuv420p BT.709, **25/1 fp
 
 Un filigrane discret en bas à gauche (« Maquette S02 v1.3 · muette ») signale la maquette. Il sera retiré au montage final.
 
+## 6 bis. Séquence S03 v1.0 — « La créativité au service des marques » (35 s, muette)
+
+**Statut : soumise à la validation du directeur artistique.** S04 ne sera pas commencée avant cette validation.
+
+### Livrables
+
+| Livrable | Fichier |
+|---|---|
+| Vidéo | `out/PixelSavane_S03_Creativite_v1.0_1080p25.mp4` |
+| Capture 1 : publicité cinématographique (7,0 s) | `out/S03_v1.0_capture-1-pub-cinema_175.png` |
+| Capture 2 : UGC et avatar IA (15,2 s) | `out/S03_v1.0_capture-2-ugc_380.png` |
+| Capture 3 : photographie premium (22,4 s) | `out/S03_v1.0_capture-3-photo-premium_560.png` |
+| Capture 4 : réseaux sociaux (30,0 s) | `out/S03_v1.0_capture-4-reseaux-sociaux_750.png` |
+| Code source | `src/sequences/S03Creativite.tsx` ; nouvelles briques `src/system/PixelWipe.tsx`, `FilmGrain.tsx`, `Phone.tsx` ; `scripts/prepare_s03.py` |
+| Sources des visuels et droits | `S03_SOURCES_ET_DROITS.md` |
+
+Paramètres mesurés : H.264 High, 1920 × 1080, 16:9, yuv420p BT.709, **25/1 fps, 875 images, 35,000 s**, **sans piste audio**. Débit ≈ 7,7 Mb/s (33,8 Mo) : le grain de film et les photos détaillées demandent ce débit pour éviter les blocs de compression.
+
+### Déroulé
+
+| Temps | Contenu |
+|---|---|
+| 0–3,0 s | Titre « 03 · La créativité au service des marques » |
+| 3,0–10,4 s | **01 · Publicité cinématographique, produit physique.** Diptyque au format cinéma 2,39:1 (bandes noires), deux plans révélés en volets avec mouvements de caméra opposés, filet orange, fuite de lumière orange, grain |
+| 10,4–17,8 s | **02 · Publicité UGC.** Vidéo de créateur au format 9:16 dans un téléphone générique (barre de progression, compte fictif, sous-titres animés façon UGC, étiquette « Thé glacé · marque fictive »), avatar IA en second plan, ambiance floutée |
+| 17,8–25,2 s | **03 · Photographie commerciale premium.** Mise en page éditoriale : image de campagne beauté révélée en rideau, typographie « ÉCLAT · marque fictive », colonne portrait noir et blanc et affiche de mode |
+| 25,2–32,6 s | **04 · Contenus réseaux sociaux.** Trois formats flottants (publicité 4:5, post carré 1:1, story 9:16), compte fictif `@marque.demo`, aucun chiffre d'audience inventé |
+| 32,6–35 s | Carton de fin : **PixelSavane** (lettres du wordmark officiel) et « Le numérique au service de votre croissance. » |
+
+Transitions : vague de pixels (front orange, cœur noir) à chaque coupe. Habillage : repère de chapitre, numéro et titre de démonstration (Space Grotesk Bold), sous-titre (Sora SemiBold), mention de démonstration (Inter), grain de film et vignettage.
+
+### Limites de cette v1.0
+
+- **Résolution des visuels source.** Les visuels du site font 670 à 1080 px de large. Ils sont présentés en cadres (diptyque, téléphones, cartes) pour éviter tout agrandissement fort. Seule exception : l'image de droite du diptyque 01 est agrandie de 11 %.
+- **Casting.** Les démonstrations 02 à 04 montrent surtout des personnes non africaines, faute d'autres visuels sans marque réelle. Pour qu'un dirigeant africain s'y reconnaisse, de nouveaux visuels avec un casting africain et des marques fictives seraient préférables (voir `S03_SOURCES_ET_DROITS.md`, § 3).
+
 ## 7. Organisation
 
 ```
@@ -146,5 +182,7 @@ Recommandation pour la suite : quand les rushes et les médias HD arriveront (ce
 - [ ] Liste des créations PixelSavane utilisables dans le film
 - [x] Logo officiel haute résolution (`1000324473.png`, reçu le 13/11)
 - [ ] **Validation de l'ouverture v1.4 par la DA**
-- [ ] **Validation de S02 v1.3 par la DA** (préalable à S03)
+- [x] Validation de S02 v1.3 par la DA
+- [ ] **Validation de S03 v1.0 par la DA** (préalable à S04)
+- [ ] Statut de Wata Fufu, outil et licence des visuels IA du site (voir `S03_SOURCES_ET_DROITS.md`)
 - [ ] Enregistrement définitif de la voix off (préalable à toute autre séquence)

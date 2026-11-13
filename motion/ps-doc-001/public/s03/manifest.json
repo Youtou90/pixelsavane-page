@@ -1,0 +1,92 @@
+[
+ {
+  "file": "watafufu-conditionnement.jpg",
+  "source": "assets/img/demo-watafufu-conditionnement.jpg",
+  "size": [
+   1080,
+   1080
+  ],
+  "sha256": "60a7e4a812eb3958fd3e9ec0518c734a20dc7b816ee8dfda599dc3ef4141c584"
+ },
+ {
+  "file": "watafufu-accord.jpg",
+  "source": "assets/img/demo-watafufu-accord.jpg",
+  "size": [
+   864,
+   1079
+  ],
+  "sha256": "a91ff6d359bb52f50dd3225b3680793720666348b984fa40480067ab5174ce4c"
+ },
+ {
+  "file": "ugc-selfie.jpg",
+  "source": "assets/img/ugc-selfie.jpg",
+  "size": [
+   768,
+   1376
+  ],
+  "sha256": "6fb596eb2184c0049afa8c03eaf973dc8cf7fabacf6ed1ee28ee8e77b382a0c0"
+ },
+ {
+  "file": "avatar-portrait-rue.jpg",
+  "source": "assets/img/ia-portrait-rue.jpg",
+  "size": [
+   670,
+   1200
+  ],
+  "sha256": "1d35656a8acf11260421ab67d09edb5faf59aaf0c949b4631a32c708fe5fe3ab"
+ },
+ {
+  "file": "photo-beaute.jpg",
+  "source": "assets/img/demo-portrait-beaute.jpg",
+  "size": [
+   864,
+   1079
+  ],
+  "sha256": "336840a31fddb12d72c3b0404fc9eb79a68da174477305793c0eb96c97f1ba0f"
+ },
+ {
+  "file": "photo-noir-blanc.jpg",
+  "source": "assets/img/ia-portrait-noir-blanc.jpg",
+  "size": [
+   895,
+   1200
+  ],
+  "sha256": "e599cac8cb419d29f0d850aec33d3330a5272fb304b19cb4e50e378d225c19fd"
+ },
+ {
+  "file": "photo-affiche-mode.jpg",
+  "source": "assets/img/ia-affiche-mode.jpg",
+  "size": [
+   966,
+   1200
+  ],
+  "sha256": "371072419b01489814984fc942f1a1c78c63366b73da3ca9d209762adf83aac7"
+ },
+ {
+  "file": "social-projecteur.jpg",
+  "source": "assets/img/projecteur-noel.jpg",
+  "size": [
+   899,
+   1080
+  ],
+  "sha256": "1ef78f1df5bff16b046e046924a9f2fb8c814a7dd948c2eb94557b1bfa811c25"
+ },
+ {
+  "file": "social-voyage.jpg",
+  "source": "assets/img/demo-voyage.jpg",
+  "size": [
+   1080,
+   1080
+  ],
+  "sha256": "081d960a45eff453aa4ee8428e945dc0584eed9204cab0941ef980d80e2b6b0f"
+ },
+ {
+  "file": "social-salon.jpg",
+  "source": "assets/img/ia-lifestyle-salon.jpg",
+  "size": [
+   669,
+   1200
+  ],
+  "sha256": "524e4b66d347616507811e76546dc5c145ec0f24eba5071ee1b45f7657cefb9e"
+ }
+]
