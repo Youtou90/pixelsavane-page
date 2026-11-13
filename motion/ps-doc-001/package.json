@@ -4,11 +4,11 @@
   "private": true,
   "description": "Film institutionnel PixelSavane PS-DOC-001 — moteur Remotion modulaire (une composition par séquence)",
   "scripts": {
-    "layers": "python3 scripts/extract_layers.py ../sources/logo-pixelsavane_original_upload-39584a3.jpg",
+    "layers": "python3 scripts/extract_layers.py ../sources/1000324473.png",
     "sound": "python3 scripts/sound_design.py",
     "studio": "remotion studio src/index.ts",
-    "render:s01": "remotion render src/index.ts S01-Ouverture out/PixelSavane_S01_Ouverture_v1.3_1080p25.mp4 --codec=h264 --crf=14 --pixel-format=yuv420p --color-space=bt709 --audio-codec=aac --audio-bitrate=320k --x264-preset=slow --browser-executable=$(ls -d /opt/pw-browsers/chromium_headless_shell-*/*/chrome-headless-shell | head -1)",
-    "still:s01": "remotion still src/index.ts S01-Ouverture out/S01_derniere-image_v1.3.png --frame=374 --browser-executable=$(ls -d /opt/pw-browsers/chromium_headless_shell-*/*/chrome-headless-shell | head -1)",
+    "render:s01": "remotion render src/index.ts S01-Ouverture out/PixelSavane_S01_Ouverture_v1.4_1080p25.mp4 --codec=h264 --crf=14 --pixel-format=yuv420p --color-space=bt709 --audio-codec=aac --audio-bitrate=320k --x264-preset=slow --browser-executable=$(ls -d /opt/pw-browsers/chromium_headless_shell-*/*/chrome-headless-shell | head -1)",
+    "still:s01": "remotion still src/index.ts S01-Ouverture out/S01_derniere-image_v1.4.png --frame=374 --browser-executable=$(ls -d /opt/pw-browsers/chromium_headless_shell-*/*/chrome-headless-shell | head -1)",
     "render:s02": "remotion render src/index.ts S02-Fondateur out/PixelSavane_S02_Fondateur_proposition_1080p25.mp4 --codec=h264 --crf=14 --pixel-format=yuv420p --color-space=bt709 --audio-codec=aac --audio-bitrate=320k --x264-preset=slow --browser-executable=$(ls -d /opt/pw-browsers/chromium_headless_shell-*/*/chrome-headless-shell | head -1)"
   },
   "dependencies": {

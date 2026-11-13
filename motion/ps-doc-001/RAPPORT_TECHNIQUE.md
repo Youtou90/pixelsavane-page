@@ -1,45 +1,57 @@
-# PS-DOC-001 — Rapport technique · Ouverture v1.3
+# PS-DOC-001 — Rapport technique · Ouverture v1.4
 
 **Statut : soumise à la validation du directeur artistique.** Aucune autre séquence ne sera produite avant cette validation.
 
 ---
 
-## 1. Livrables (`motion/ps-doc-001/out/`)
+## 0. Nouveautés v1.4 : logo officiel `1000324473.png`
+
+- **Import.** Le logo officiel transmis par le fondateur (PNG 1254×1254) est archivé intact dans `motion/sources/1000324473.png`, en lecture seule (SHA-256 `ef2a067d…12f5d7`). C'est désormais la **seule source** des calques du logo.
+- **Vérification.** Il s'agit du même dessin que le fichier 1080 px utilisé jusqu'en v1.3, en plus haute définition : rapport exact de 1,161, contenu aux mêmes positions relatives.
+- **Découpe.** `scripts/extract_layers.py` est devenu indépendant de la résolution. Il découpe le fichier HD en calques (nuage de pixels, P avec triangle de lecture, S, trait orange) et en **11 lettres entières** (P · i · x · e · l · S · a · v · a · n · e : dans le fichier HD, le S et le a ne se touchent plus).
+  - Recomposition des calques par rapport au fichier officiel : écart moyen **0,14/255**.
+  - Pixels de l'ancienne signature restant dans les calques : **0**.
+- **Affichage.** Les calques HD sont affichés dans le même cadre de mise en page qu'en v1.3, par **réduction uniforme ×0,861** (identique en largeur et en hauteur, donc proportions intactes). Une réduction depuis un fichier plus grand donne une image plus nette que l'ancien fichier 1080 px. La composition validée (taille, centrage, signature, trait) ne change pas.
+- **Intégrité sur la dernière image.** Symbole et wordmark, comparés au fichier officiel réduit au même cadre :
+  - intérieur des formes : écart moyen **0,87/255** ;
+  - 2 px de bord : écart moyen 17,6/255, dû au filtre de réduction du navigateur (un autre filtre que celui de référence), pas à la forme.
+- **Signature.** Seule la signature est remplacée : « Le numérique au service de votre croissance. », avec le point final du texte validé par la DA. Pour retirer le point, il suffit de modifier la constante `SIGNATURE` dans `src/system/brand.ts`.
+
+ (`motion/ps-doc-001/out/`)
 
 | Livrable | Fichier |
 |---|---|
-| **Vidéo finale de l'ouverture v1.3** | `PixelSavane_S01_Ouverture_v1.3_1080p25.mp4` |
-| **Dernière image (image 374) en PNG** | `S01_derniere-image_v1.3.png` |
-| Planche des 8 temps | `S01_storyboard_v1.3.jpg` |
+| **Vidéo finale de l'ouverture v1.4** | `PixelSavane_S01_Ouverture_v1.4_1080p25.mp4` |
+| **Dernière image (image 374) en PNG** | `S01_derniere-image_v1.4.png` |
 | Code source | `src/sequences/S01Ouverture.tsx` (séquence), `src/system/` (briques communes), `scripts/` (découpe du logo, son) |
-| Versions précédentes | `archives/` (v1.1, v1.2) |
+| Versions précédentes | `archives/` (v1.1 à v1.3) |
 
 ## 2. Corrections de la validation PS-DOC-001-A
 
-| # | Demande | Réalisation v1.3 |
+| # | Demande | Réalisation (v1.3, conservée en v1.4) |
 |---|---|---|
 | 1 | Les particules forment le symbole PS, convergence progressive et contrôlée | **Convergence en deux temps.** De 6,0 à 7,8 s, les 412 particules quittent le nuage et forment un **essaim lâche** qui dessine déjà le PS, avec un léger flottement. Ensuite, **chaque particule se verrouille une à une sur son pixel exact**, et ce verrouillage dévoile sous elle une tuile de 17 px découpée dans le **vrai calque du logo** : les particules construisent littéralement le symbole. Ordre : les 16 carrés du nuage de pixels (7,35–7,8 s), puis le P du pied du fût vers la boucle (7,9–9,75 s), puis le S de la tête vers la queue (9,85–11,7 s). Une fois chaque lettre complète, le calque officiel entier prend le relais (bords antialiasés compris), avec un reflet discret |
 | 2 | Logo officiel importé, non reconstruit, proportions, dégradés et pixels préservés | Voir § 3 |
-| 3 | Wordmark animé sans couper les lettres, mot complet visible à la fin | Le wordmark officiel est découpé en **10 éléments entiers** (P · i · x · e · l · Sa · v · a · n · e ; le « S » et le « a » se touchent dans le dessin d'origine et restent soudés). Chaque élément apparaît **en entier** (fondu, montée de 18 px, mise au point), en cascade de 11,9 à 12,95 s. Plus aucun balayage ne coupe une lettre. L'union des 10 éléments reproduit le calque wordmark à l'identique (écart d'alpha : 0) |
+| 3 | Wordmark animé sans couper les lettres, mot complet visible à la fin | Le wordmark officiel est découpé en **lettres entières** : 11 en v1.4 à partir du fichier HD (10 en v1.3, où le S et le a se touchaient). Chaque lettre apparaît **en entier** (fondu, montée de 18 px, mise au point), en cascade de 11,9 à 13 s. Plus aucun balayage ne coupe une lettre. L'union des lettres reproduit le calque wordmark à l'identique (écart d'alpha : 0) |
 | 4 | Signature exacte, lisible en 1920 × 1080 | Texte exact : « Le numérique au service de votre croissance. » (une seule constante dans le code, `SIGNATURE` dans `src/system/brand.ts`). Inter Regular 38,8 px : capitales de 28 px, minuscules de 21 px, blanc #FAFAFA sur noir. Taille validée en v1.2 (+28 %) |
-| 5 | Logo complet centré, fond noir, lumière orange discrète, logo immobile à la fin | Bloc complet (symbole, wordmark, signature, trait) mesuré sur la dernière image : centre à **(959,5 ; 539,5)** pour (960 ; 540). Fond #0E0E10, halo orange réduit (opacité 0,26), vignettage. **Plan totalement fixe de 13,48 s à 15,00 s (1,52 s)** : caméra posée dès 12,6 s, particules d'ambiance éteintes, aucun scintillement. Mesuré sur le MP4 : écart entre ces images ≤ 6/255 (bruit d'encodage seulement) |
+| 5 | Logo complet centré, fond noir, lumière orange discrète, logo immobile à la fin | Bloc complet (symbole, wordmark, signature, trait) mesuré sur la dernière image : centre à **(959,5 ; 539,5)** pour (960 ; 540). Fond #0E0E10, halo orange réduit (opacité 0,26), vignettage. **Plan totalement fixe de 13,44 s à 15,00 s (1,56 s, mesuré en v1.4)** : caméra posée dès 12,6 s, particules d'ambiance éteintes, aucun scintillement. Mesuré sur le MP4 : écart entre ces images ≤ 6/255 (bruit d'encodage seulement) |
 | 6 | 15 s, 25 fps, 1920 × 1080, MP4 H.264 | Voir § 4 |
 
 Calendrier ajusté pour libérer le plan fixe final : le wordmark arrive à 11,9 s (au lieu de 12 s) et la signature à 12,7 s (au lieu de 14 s). Les autres temps du scénario sont inchangés.
 
-## 3. Confirmation : logo officiel importé, non redessiné
+## 3. Historique v1.3 : origine du logo avant réception du fichier officiel
 
 - **Source.** C'est le fichier logo téléversé par le fondateur lui-même (compte GitHub Youtou90, commit `39584a3` du 27/10/2026). Il est conservé intact, en lecture seule, dans `motion/sources/` (SHA-256 `80f1ba81…c525f4`).
 - **Méthode.** `scripts/extract_layers.py` **découpe** ce fichier en calques transparents (nuage de pixels, P avec triangle de lecture, S, lettres du wordmark, trait orange) au moyen de masques géométriques et colorimétriques. Aucun tracé, aucune vectorisation, aucune IA. L'ancienne signature est exclue des calques.
 - **Proportions.** Les calques sont affichés à l'échelle **1:1** sur l'image finale : aucun redimensionnement, aucune déformation. Le seul mouvement d'échelle est le travelling uniforme (0,93 → 1,00), terminé à 12,6 s.
-- **Vérification sur la dernière image.** La zone symbole + wordmark de `S01_derniere-image_v1.3.png`, comparée pixel par pixel au fichier du fondateur, donne un écart moyen de **0,05/255** (99 % des pixels ≤ 2/255). Dégradés et pixels sont donc préservés.
-- **Réserve maintenue.** Le fichier `1000324473.png` cité dans le dossier n'a toujours pas été transmis à l'environnement. S'il diffère du fichier téléversé, il suffit de le déposer dans `motion/sources/` et de lancer `npm run layers` puis `npm run render:s01` ; aucun code d'animation n'est à modifier.
+- **Vérification sur la dernière image.** La zone symbole + wordmark de `S01_derniere-image_v1.4.png`, comparée pixel par pixel au fichier du fondateur, donne un écart moyen de **0,05/255** (99 % des pixels ≤ 2/255). Dégradés et pixels sont donc préservés.
+- **Réserve levée en v1.4** : `1000324473.png` a été reçu et sert désormais de source (voir § 0).
 
 ## 4. Paramètres vidéo et audio (mesurés avec ffprobe et ffmpeg)
 
 | Paramètre | Valeur |
 |---|---|
-| Conteneur / codec | MP4, H.264 High, x264 CRF 14, preset slow (≈ 2,5 Mb/s) |
+| Conteneur / codec | MP4, H.264 High, x264 CRF 14, preset slow (≈ 2,3 Mb/s) |
 | Image | 1920 × 1080, 16:9, yuv420p, BT.709, plage TV |
 | Cadence et durée | 25/1 fps, **375 images, piste vidéo de 15,000 s exactement** (le conteneur affiche 15,019 s à cause du remplissage technique des trames AAC) |
 | Audio | AAC-LC 320 kb/s, 48 kHz, stéréo ; −15,9 LUFS intégré, crête −1,0 dBFS |
@@ -50,7 +62,7 @@ Calendrier ajusté pour libérer le plan fixe final : le wordmark arrive à 11,9
 
 | Ressource | Origine | Droits | Usage |
 |---|---|---|---|
-| Logo PixelSavane | Fichier téléversé par le fondateur (`motion/sources/`) | Propriété PixelSavane | Calques découpés, échelle 1:1 |
+| Logo PixelSavane | `motion/sources/1000324473.png`, transmis par le fondateur | Propriété PixelSavane | Calques découpés, réduction uniforme ×0,861 |
 | Inter | `@fontsource/inter` | SIL Open Font License 1.1 | Signature |
 | Son | Synthétisé localement (`scripts/sound_design.py`) | Création originale, aucun sample | Bande son |
 | Remotion 4 + React 18, FFmpeg/x264 | npm, système | Remotion : gratuit jusqu'à 3 personnes ; MIT ; LGPL/GPL | Rendu et encodage |
@@ -108,9 +120,9 @@ Recommandation pour la suite : quand les rushes et les médias HD arriveront (ce
 
 ## 8. En attente avant les autres séquences
 
-- [ ] Logo officiel haute résolution `1000324473.png`
 - [ ] Portrait original `1000323407.png`
 - [ ] Script de narration validé
 - [ ] Charte graphique (présentations)
 - [ ] Liste des créations PixelSavane utilisables dans le film
-- [ ] **Validation de l'ouverture v1.3 par la DA** (préalable à toute autre séquence)
+- [x] Logo officiel haute résolution (`1000324473.png`, reçu le 13/11)
+- [ ] **Validation de l'ouverture v1.4 par la DA** (préalable à toute autre séquence)

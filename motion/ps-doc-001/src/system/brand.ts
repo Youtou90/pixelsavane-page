@@ -9,8 +9,8 @@ export const C = {
 export const FPS = 25;
 export const s = (sec: number) => Math.round(sec * FPS); // secondes -> frames
 
-// Le logo source (1080x1080) est posé à l'échelle 1:1 (aucune perte de qualité).
-// Décalage pour centrer le bloc symbole + wordmark + signature (y 223→876 dans la source) dans le 1920x1080.
+// Repère de mise en page du logo : un carré de 1080 unités (le logo officiel 1254 px y est affiché par réduction
+// uniforme ×0,861). Décalage pour centrer le bloc symbole + wordmark + signature dans le 1920x1080.
 export const LOGO_X = 413;
 export const LOGO_Y = -14;
 export const toFrame = (x: number, y: number) => ({x: x + LOGO_X, y: y + LOGO_Y});

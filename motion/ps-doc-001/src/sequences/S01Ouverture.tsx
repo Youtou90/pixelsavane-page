@@ -12,13 +12,13 @@ const letters = lettersData as {file: string; x: number; y: number; w: number; h
 
 /**
  * SÉQUENCE 01 (0–15 s) — Ouverture / logo animé PS-001-A.
- * Calques extraits du fichier logo original d'Oscar (motion/sources/), posés à l'échelle 1:1.
+ * Calques découpés dans le logo officiel motion/sources/1000324473.png (jamais redessinés).
  */
 
 const CX = 960;
 const CY = 540;
 const FOCAL = 900; // profondeur de champ : projection perspective des particules
-const CELL = 17; // pas d'échantillonnage du P et du S = taille d'une tuile du vrai logo
+const CELL = pointsData.cell; // pas d'échantillonnage du P et du S = taille d'une tuile du vrai logo (≈ 17,2 unités)
 const LOCK_DUR = 0.45; // durée du dernier trajet essaim → pixel exact
 // Calendrier de la convergence en deux temps (s)
 const LOCK = {gather0: 6.0, c0: 7.35, p0: 7.9, s0: 9.85, span: 1.4};
@@ -252,7 +252,8 @@ export const S01Ouverture: React.FC<OpeningProps> = ({withAudio = true}) => {
             boxShadow: `0 0 ${18 * seedIn}px ${C.orange}, 0 0 ${60 * seedIn}px ${C.orange}99`}} />
         )}
 
-        {/* logo officiel : calques importés du fichier du fondateur, échelle 1:1, proportions intactes */}
+        {/* logo officiel 1000324473.png (1254 px) : calques découpés dans le fichier, affichés dans un cadre de 1080 unités
+            (réduction uniforme ×0,861, identique en largeur et en hauteur : proportions intactes) */}
         <Img src={staticFile('ps-pixels.png')} style={{...layer, opacity: pixelsIn}} />
         <Img src={staticFile('ps-p.png')} style={{...layer, opacity: pFull}} />
         <Glint src={staticFile('ps-p.png')} t={interpolate(sec, [P_DONE, P_DONE + 0.8], [0, 1], clamp)} angle={110} opacity={0.4} />
@@ -292,7 +293,7 @@ export const S01Ouverture: React.FC<OpeningProps> = ({withAudio = true}) => {
   );
 };
 
-// Tuile 17×17 px découpée dans le calque officiel (background-position) : aucun redessin.
+// Tuile carrée découpée dans le calque officiel (background-position) : aucun redessin.
 function tile(file: string, pt: Particle, opacity: number, brightness: number): React.CSSProperties {
   const x = pt.qx - CELL / 2, y = pt.qy - CELL / 2;
   return {
