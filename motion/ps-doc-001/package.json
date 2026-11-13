@@ -9,7 +9,9 @@
     "studio": "remotion studio src/index.ts",
     "render:s01": "remotion render src/index.ts S01-Ouverture out/PixelSavane_S01_Ouverture_v1.4_1080p25.mp4 --codec=h264 --crf=14 --pixel-format=yuv420p --color-space=bt709 --audio-codec=aac --audio-bitrate=320k --x264-preset=slow --browser-executable=$(ls -d /opt/pw-browsers/chromium_headless_shell-*/*/chrome-headless-shell | head -1)",
     "still:s01": "remotion still src/index.ts S01-Ouverture out/S01_derniere-image_v1.4.png --frame=374 --browser-executable=$(ls -d /opt/pw-browsers/chromium_headless_shell-*/*/chrome-headless-shell | head -1)",
-    "render:s02": "remotion render src/index.ts S02-Fondateur out/PixelSavane_S02_Fondateur_proposition_1080p25.mp4 --codec=h264 --crf=14 --pixel-format=yuv420p --color-space=bt709 --audio-codec=aac --audio-bitrate=320k --x264-preset=slow --browser-executable=$(ls -d /opt/pw-browsers/chromium_headless_shell-*/*/chrome-headless-shell | head -1)"
+    "render:s02": "remotion render src/index.ts S02-Fondateur out/PixelSavane_S02_Fondateur_v1.3_1080p25.mp4 --codec=h264 --crf=14 --pixel-format=yuv420p --color-space=bt709 --audio-codec=aac --audio-bitrate=320k --x264-preset=slow --browser-executable=$(ls -d /opt/pw-browsers/chromium_headless_shell-*/*/chrome-headless-shell | head -1)",
+    "prepare:s02": "python3 scripts/prepare_s02.py",
+    "stills:s02": "remotion still src/index.ts S02-Fondateur out/S02_v1.3_capture-1-panneaux_225.png --frame=225 --browser-executable=$(ls -d /opt/pw-browsers/chromium_headless_shell-*/*/chrome-headless-shell | head -1) && remotion still src/index.ts S02-Fondateur out/S02_v1.3_capture-2-revelation_305.png --frame=305 --browser-executable=$(ls -d /opt/pw-browsers/chromium_headless_shell-*/*/chrome-headless-shell | head -1) && remotion still src/index.ts S02-Fondateur out/S02_v1.3_capture-3-identification_500.png --frame=500 --browser-executable=$(ls -d /opt/pw-browsers/chromium_headless_shell-*/*/chrome-headless-shell | head -1)"
   },
   "dependencies": {
     "@fontsource/inter": "^5.3.0",

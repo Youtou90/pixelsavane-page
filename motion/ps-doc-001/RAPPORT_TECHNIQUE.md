@@ -17,7 +17,7 @@
   - 2 px de bord : écart moyen 17,6/255, dû au filtre de réduction du navigateur (un autre filtre que celui de référence), pas à la forme.
 - **Signature.** Seule la signature est remplacée : « Le numérique au service de votre croissance. », avec le point final du texte validé par la DA. Pour retirer le point, il suffit de modifier la constante `SIGNATURE` dans `src/system/brand.ts`.
 
- (`motion/ps-doc-001/out/`)
+## 1. Livrables S01 (`motion/ps-doc-001/out/`)
 
 | Livrable | Fichier |
 |---|---|
@@ -63,35 +63,55 @@ Calendrier ajusté pour libérer le plan fixe final : le wordmark arrive à 11,9
 | Ressource | Origine | Droits | Usage |
 |---|---|---|---|
 | Logo PixelSavane | `motion/sources/1000324473.png`, transmis par le fondateur | Propriété PixelSavane | Calques découpés, réduction uniforme ×0,861 |
-| Inter | `@fontsource/inter` | SIL Open Font License 1.1 | Signature |
-| Son | Synthétisé localement (`scripts/sound_design.py`) | Création originale, aucun sample | Bande son |
+| Portrait d'Oscar YOUTOU | `motion/sources/1000338417.png`, transmis par le fondateur | Propriété du fondateur | S02 : affiché tel quel, échelle ≤ 0,94, sans retouche |
+| Inter, Space Grotesk, Sora | `@fontsource` | SIL Open Font License 1.1 | Signature, titres, sous-titres |
+| Pictogrammes S02 | Dessinés au trait dans `scripts/prepare_s02.py` | Création originale | Panneaux S02 |
+| Son | Synthétisé localement (`scripts/sound_design.py`) | Création originale, aucun sample | Bande son S01 (S02 muette) |
 | Remotion 4 + React 18, FFmpeg/x264 | npm, système | Remotion : gratuit jusqu'à 3 personnes ; MIT ; LGPL/GPL | Rendu et encodage |
 
 Aucune image générée par IA, aucune banque d'images, aucune API payante.
 
-## 6. Proposition visuelle S02 (présentée en v1.2, en attente d'avis) — « La naissance d'une conviction » (25 s)
+## 6. Séquence S02 v1.3 — « La naissance d'une conviction » (25 s, muette)
+
+**Statut : soumise à la validation du directeur artistique.** S03 ne sera pas commencée avant cette validation, et S01 v1.4 n'a pas été modifiée.
+
+### 6.1 Livrables
+
+| Livrable | Fichier |
+|---|---|
+| Vidéo | `out/PixelSavane_S02_Fondateur_v1.3_1080p25.mp4` |
+| Capture 1 : panneaux (9,0 s) | `out/S02_v1.3_capture-1-panneaux_225.png` |
+| Capture 2 : révélation par pixels (12,2 s) | `out/S02_v1.3_capture-2-revelation_305.png` |
+| Capture 3 : identification (20,0 s) | `out/S02_v1.3_capture-3-identification_500.png` |
+| Code source | `src/sequences/S02Fondateur.tsx`, `scripts/prepare_s02.py` |
+| Version précédente | `out/archives/` (maquette v1.2) |
+
+Paramètres mesurés : H.264 High, 1920 × 1080, 16:9, yuv420p BT.709, **25/1 fps, 625 images, 25,000 s**, **aucune piste audio** (maquette muette, sans voix artificielle). Débit ≈ 7,4 Mb/s : la mosaïque de pixels et le tissu imprimé sont riches en détails, et ce débit évite les artefacts de compression.
+
+### 6.2 Corrections demandées
+
+| # | Demande | Réalisation |
+|---|---|---|
+| 1 | Portrait : première des trois nouvelles photos, mains jointes, vêtement imprimé | **`1000338417.png`**, la première des trois par ordre de numéro (assis dans le fauteuil, mains jointes, wax vert, bleu et jaune, fond studio). Copie identique octet pour octet de `motion/sources/` (vérifiée avec `cmp`). Aucune retouche, aucun filtre, aucune IA. L'ancienne photo en blanc et gris est retirée du projet. Recadrage : on rogne seulement 116 px en bas de l'image (jambes) ; visage et vêtement sont entiers |
+| 2 | Révélation progressive par pixels, puis caméra lente, portrait grand | De 10,5 à 11,4 s, les panneaux se brisent : leurs pixels s'envolent. **550 carrés** partent des panneaux et volent vers le cadre du portrait. Ils se posent **du visage vers l'extérieur** (11,4 → 13,4 s) en formant une **mosaïque** (couleur moyenne de la photo à chaque endroit), où l'on reconnaît déjà Oscar. Puis chaque carré se résout en **photo nette** (découpe exacte de l'original), et la photo entière prend le relais à 14,3 s. **Caméra numérique** : travelling avant lent de 1,00 à 1,08, centré sur le visage, avec léger panoramique (11,2 → 25 s). Le portrait occupe **toute la hauteur** de l'image (1080 px) sur la moitié droite (990 px de large). Échelle d'affichage maximale : 0,868 × 1,08 = **0,94, donc jamais d'agrandissement** au-delà de la résolution native |
+| 3 | Pictogrammes premium, pixels conservés, rien d'enfantin | Pictogrammes **dessinés au trait** (vectoriel), puis **rasterisés sur une grille fine de 30 × 30** : trait d'un seul pixel calé sur la grille, pixels de 7 px au pas de 9 px. Le **blanc domine**, avec des **accents orange rares** (flèche de croissance, fermoir, auvent, fenêtres éclairées). Panneaux sombres avec bordure fine, numéro 01–04 en Sora, filet orange, halo orange discret en pied. Chaque pixel se pose un à un, du haut vers le bas |
+| 4 | Identification | **OSCAR YOUTOU** en Space Grotesk Bold 88 px, filet dégradé orange, puis **Fondateur et Directeur Créatif** en Sora SemiBold 34 px. Entrée à 14,9 s, sortie à 24,1 s |
+| 5 | Audio | Aucune voix artificielle. La vidéo est livrée **sans piste audio** en attendant l'enregistrement définitif |
+
+### 6.3 Déroulé
 
 | Temps | Contenu |
 |---|---|
-| 0–3,7 s | Titre de chapitre : « 02 » en Sora orange, « La naissance d'une conviction » en Space Grotesk Bold 92 px, filet orange |
-| 3,4–11,6 s | Quatre panneaux **Entrepreneurs · PME · Commerçants · Entreprises** : pictogrammes qui s'assemblent pixel par pixel, libellés en Sora SemiBold |
-| 10,6–11,8 s | Les pixels des panneaux s'envolent vers la droite, vers la zone du portrait |
-| 11,7–14,4 s | **Portrait réel d'Oscar** révélé par une grille de carrés de 38 px, du visage vers l'extérieur, avec un éclat orange à chaque carré. Mouvement lent (Ken Burns 1,00 → 1,04, sans jamais dépasser la résolution native), bords fondus dans le noir de la charte |
-| 14,6–24 s | Identification : carré orange, **Oscar YOUTOU** (Space Grotesk Bold 84 px), filet dégradé orange, **Fondateur et Directeur Créatif** (Sora SemiBold 34 px) |
-| 23,4–25 s | Sortie au noir |
+| 0,4–3,7 s | Titre « 02 · La naissance d'une conviction » |
+| 3,4–10,5 s | Les quatre panneaux entrent l'un après l'autre et leurs pictogrammes s'assemblent pixel par pixel |
+| 10,5–11,4 s | Les panneaux se dissolvent et leurs pixels s'envolent vers la droite |
+| 11,4–13,4 s | Mosaïque du portrait, du visage vers l'extérieur |
+| 12,0–14,7 s | Chaque carré se résout en photo nette ; photo entière à 14,3 s |
+| 11,2–25 s | Travelling avant lent sur le visage |
+| 14,9–24,1 s | Identification |
+| 24,2–25 s | Fondu au noir |
 
-Règles respectées :
-
-- La photo d'Oscar est affichée telle quelle : ni retouche, ni IA, ni mise en scène inventée.
-- Les « entrepreneurs, PME, commerçants » sont représentés en **motion design pur** en attendant des photos réelles autorisées. Aucune personne fictive n'est fabriquée.
-- Aucun texte de narration n'est inventé : la maquette est muette tant que le script validé n'est pas transmis.
-- Un filigrane « Maquette S02 » signale qu'il s'agit d'une proposition. Il disparaîtra en production.
-
-Questions pour la DA sur S02 :
-
-1. Les pictogrammes sont-ils une piste à garder en complément des futures photos réelles, ou seulement un emplacement provisoire ?
-2. Le portrait est placé à droite, avec le nom à gauche. Faut-il le garder ainsi ou le centrer ?
-3. Pour un portrait en plein cadre, il faudra le fichier `1000323407.png` en haute définition.
+Un filigrane discret en bas à gauche (« Maquette S02 v1.3 · muette ») signale la maquette. Il sera retiré au montage final.
 
 ## 7. Organisation
 
@@ -125,4 +145,6 @@ Recommandation pour la suite : quand les rushes et les médias HD arriveront (ce
 - [ ] Charte graphique (présentations)
 - [ ] Liste des créations PixelSavane utilisables dans le film
 - [x] Logo officiel haute résolution (`1000324473.png`, reçu le 13/11)
-- [ ] **Validation de l'ouverture v1.4 par la DA** (préalable à toute autre séquence)
+- [ ] **Validation de l'ouverture v1.4 par la DA**
+- [ ] **Validation de S02 v1.3 par la DA** (préalable à S03)
+- [ ] Enregistrement définitif de la voix off (préalable à toute autre séquence)
