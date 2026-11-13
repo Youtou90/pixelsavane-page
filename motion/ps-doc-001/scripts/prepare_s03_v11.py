@@ -5,24 +5,31 @@ Copie chaque image attendue dans public/s03v11/ et écrit public/s03v11/availabl
 import json, hashlib, shutil, os
 from PIL import Image
 
+# Ordre de correction DA « S03 v1.1 » (rév. 2) : Wata Fufu = matériel réel (voir plus bas) ;
+# UGC = A créatrice (3 images) + B avatar IA (image ou vidéo) ; cosmétique = ÉCLAT ; réseaux sociaux = Maison Adjoa.
 EXPECTED = {
-    'watafufu-hero': '16:9', 'watafufu-texture': '16:9', 'watafufu-conditionnement': '16:9', 'watafufu-service': '16:9',
     'ugc-1': '9:16', 'ugc-2': '9:16', 'ugc-3': '9:16',
-    'saye-produit': '4:5', 'saye-portrait': '4:5', 'saye-editorial': '4:5',
+    'avatar-ia': '9:16',
+    'eclat-produit': '4:5', 'eclat-portrait': '4:5',
     'adjoa-45': '4:5', 'adjoa-11': '1:1', 'adjoa-916': '9:16',
 }
+OPTIONAL = {'eclat-affiche-fond': '4:5'}
+EXPECTED.update(OPTIONAL)
 SRC = '../sources/s03-v1.1'
 os.makedirs('public/s03v11', exist_ok=True)
 avail = {}
 for name, ratio in EXPECTED.items():
-    found = next((f'{SRC}/{name}{ext}' for ext in ('.png', '.jpg', '.jpeg', '.webp') if os.path.exists(f'{SRC}/{name}{ext}')), None)
+    found = next((f'{SRC}/{name}{ext}' for ext in (('.mp4', '.mov', '.png', '.jpg', '.jpeg', '.webp') if name == 'avatar-ia' else ('.png', '.jpg', '.jpeg', '.webp')) if os.path.exists(f'{SRC}/{name}{ext}')), None)
     if not found:
         print(f'  manquante : {name} ({ratio})'); continue
     ext = os.path.splitext(found)[1]
     dst = f'public/s03v11/{name}{ext}'
     shutil.copyfile(found, dst)
-    w, h = Image.open(found).size
-    avail[name] = dict(file=f's03v11/{name}{ext}', w=w, h=h, ratio=ratio,
+    if ext in ('.mp4', '.mov'):
+        w, h = 1080, 1920  # vidéo verticale attendue (dimensions vérifiées au rendu)
+    else:
+        w, h = Image.open(found).size
+    avail[name] = dict(file=f's03v11/{name}{ext}', w=w, h=h, ratio=ratio, video=ext in ('.mp4', '.mov'),
                        sha256=hashlib.sha256(open(found, 'rb').read()).hexdigest())
     print(f'  OK : {name}{ext} {w}×{h}')
 json.dump(avail, open('public/s03v11/available.json', 'w'), indent=1)
@@ -33,9 +40,10 @@ print(f'{len(avail)}/{len(EXPECTED)} images disponibles')
 # + copies intégrales des publications. Source : motion/sources/s03-v1.1/recus-2026-11-13/
 R = '../sources/s03-v1.1/recus-2026-11-13'
 CROPS = {
-    'wf-texture.png': ('1000250139.jpg', (95, 255, 935, 745)),      # gros plan texture
+    'wf-texture.png': ('1000250139.jpg', (95, 255, 935, 745)),      # gros plan texture du fufu
     'wf-boules.png': ('1000250101.jpg', (140, 300, 905, 712)),     # conditionnement en boules
-    'wf-sac.png': ('1000250140.jpg', (55, 215, 965, 875)),          # sac en volume
+    'wf-sac.png': ('1000250140.jpg', (55, 215, 965, 875)),          # sac en volume (plan large)
+    'wf-sac-gros-plan.png': ('1000250100.jpg', (255, 250, 750, 640)),  # gros plan du sac : tissage, coutures, étiquette
 }
 wf = {}
 for dst, (src, box) in CROPS.items():

@@ -182,6 +182,20 @@ Le détail des 12 visuels reçus est dans `motion/sources/s03-v1.1/recus-2026-11
   - `1000250151.jpg` : doublon.
 - **Toujours manquantes** (voir `motion/S03_v1.1_COMMANDE_IMAGES.md`) : 02 UGC (`ugc-1` à `ugc-3`), 03 SAYÉ (`saye-produit`, `saye-portrait`, `saye-editorial`), 04 Maison Adjoa (`adjoa-45`, `adjoa-11`, `adjoa-916`). La maquette `out/PixelSavane_S03_v1.1_maquette-mise-en-page_1080p25.mp4` a été mise à jour : démonstration 01 définitive, cadres d'attente pour 02 à 04.
 
+### Ordre de correction S03 v1.1 (révision 2 de la DA)
+
+- **01 Wata Fufu · B2B** (matériel réel) :
+  - **0 à 3,3 s** : diptyque de gros plans, « L'emballage » (sac : tissage, coutures, étiquette) et « Le produit » (texture) ;
+  - **3,3 à 5,6 s** : « Le conditionnement » ;
+  - **5,4 à 7,4 s** : écran « Offre professionnelle · Sacs disponibles en volume », avec trois publications réelles et leurs messages repris mot pour mot.
+
+  Plans nets affichés à au plus 1,3 fois leur taille, sur un fond flou assombri. Légendes sur pastilles sombres pour rester lisibles. Captures : `out/S03_v1.1_capture-1-wata-fufu-b2b_110.png` et `out/S03_v1.1_capture-1b-wata-fufu-offre-b2b_245.png`.
+- **02 UGC** : deux cadres 9:16 côte à côte, nettement distingués (« A · Créatrice UGC », « B · Avatar IA »). La mise au point passe de A à B à 4 s. Sous-titres français en Space Grotesk 34 px sur pastilles contrastées. L'avatar B accepte une **vidéo** (`avatar-ia.mp4`, lue sans le son pour la maquette) ou une image. Les annotations décoratives de la version précédente sont supprimées (« ne pas multiplier les effets »).
+- **03 ÉCLAT** : un seul produit (sérum visage), trois visuels sous une identité commune : photographie produit, portrait publicitaire, et **affiche commerciale composée au montage** (titre « Révélez votre éclat. », bouton « Découvrir », mention « marque fictive »). Les photos éditoriales sans rapport avec la campagne sont supprimées.
+- **04 Maison Adjoa** : une campagne en trois compositions propres à chaque format (4:5 : titre en haut et bouton en bas ; 1:1 : accroche en bas à gauche ; 9:16 : marque et horaire en haut, bouton centré dans la zone sûre).
+- **Signature finale corrigée.** Le carton de fin est désormais rendu **au-dessus** du grain et du vignettage. Logo officiel et signature en Inter 38 px, couleur **#FAFAFA exacte** (mesurée : 250, 250, 250) sur #0E0E10, contraste d'environ 18:1. Bloc centré, mesuré à (959,5 ; 539) pour (960 ; 540). Capture : `out/S03_v1.1_capture-5-signature_855.png`.
+- **En attente** : visuels des démonstrations 02 à 04, détaillés dans `motion/S03_v1.1_COMMANDE_IMAGES.md` (révision 2). Sources et droits : `S03_v1.1_SOURCES_ET_DROITS.md`. La maquette `out/PixelSavane_S03_v1.1_maquette-mise-en-page_1080p25.mp4` (35 s, 875 images) montre l'état actuel.
+
 ## 7. Organisation
 
 ```
