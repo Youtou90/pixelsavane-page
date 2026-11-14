@@ -285,12 +285,12 @@ const Demo4: React.FC = () => {
   return (
     <AbsoluteFill style={{background: C.noir}}>
       <div style={{position: 'absolute', left: 560, top: 100, width: 1360, height: 950, borderRadius: '50%', background: `radial-gradient(ellipse, ${C.orange}22 0%, ${C.orange}00 62%)`}} />
-      <div style={{position: 'absolute', left: 620, top: 150, opacity: u(0), display: 'flex', alignItems: 'baseline', gap: 18}}>
+      <div style={{position: 'absolute', zIndex: 11, left: 620, top: 150, opacity: u(0), display: 'flex', alignItems: 'baseline', gap: 18}}>
         <div style={{...FONTS.titre, fontSize: 34, letterSpacing: '0.3em', color: C.blanc}}>MAISON ADJOA</div>
         <div style={{...FONTS.texte, fontSize: 16, color: C.gris}}>pâtisserie artisanale · marque fictive</div>
       </div>
       {/* 4:5 — titre en haut, bouton en bas */}
-      <div style={{position: 'absolute', left: 620, top: 240 + (1 - u(0.1)) * 120, opacity: u(0.1)}}>
+      <div style={{position: 'absolute', zIndex: 11, left: 620, top: 240 + (1 - u(0.1)) * 120, opacity: u(0.1)}}>
         <div style={{position: 'relative', width: 400, height: 500, borderRadius: 16, overflow: 'hidden', boxShadow: '0 30px 70px rgba(0,0,0,0.55)'}}>
           <Pic name="adjoa-45" ratio="4:5" w={400} h={500} zoom={lerp(1, 1.04, t / len)} />
           <div style={{position: 'absolute', inset: 0, background: shade}} />
@@ -303,7 +303,7 @@ const Demo4: React.FC = () => {
         {label('Publicité 4:5')}
       </div>
       {/* 1:1 — accroche courte en bas à gauche */}
-      <div style={{position: 'absolute', left: 1050, top: 300 + (1 - u(0.45)) * 120, opacity: u(0.45)}}>
+      <div style={{position: 'absolute', zIndex: 11, left: 1050, top: 300 + (1 - u(0.45)) * 120, opacity: u(0.45)}}>
         <div style={{position: 'relative', width: 400, height: 400, borderRadius: 16, overflow: 'hidden', boxShadow: '0 30px 70px rgba(0,0,0,0.55)'}}>
           <Pic name="adjoa-11" ratio="1:1" w={400} h={400} zoom={lerp(1.04, 1, t / len)} />
           <div style={{position: 'absolute', inset: 0, background: 'linear-gradient(0deg, rgba(14,14,16,0.85) 0%, rgba(14,14,16,0) 45%)'}} />
@@ -312,9 +312,9 @@ const Demo4: React.FC = () => {
         {label('Publication 1:1')}
       </div>
       {/* 9:16 — marque et horaire en haut, bouton centré en bas, zone sûre respectée */}
-      <div style={{position: 'absolute', left: 1490, top: 200 + (1 - u(0.8)) * 120, opacity: u(0.8)}}>
+      <div style={{position: 'absolute', zIndex: 11, left: 1490, top: 200 + (1 - u(0.8)) * 120, opacity: u(0.8)}}>
         <div style={{position: 'relative', width: 320, height: 569, borderRadius: 22, overflow: 'hidden', boxShadow: '0 30px 70px rgba(0,0,0,0.55)'}}>
-          <Pic name="adjoa-916" ratio="9:16" w={320} h={569} zoom={lerp(1, 1.05, t / len)} oy={0.45} />
+          <Pic name="adjoa-916" ratio="9:16" w={320} h={569} zoom={lerp(1.22, 1.28, t / len)} ox={0.62} oy={0.42} />
           <div style={{position: 'absolute', inset: 0, background: shade}} />
           <div style={{position: 'absolute', left: 22, right: 22, top: 44}}>
             <div style={{...FONTS.sousTitre, fontSize: 16, letterSpacing: '0.2em', color: C.orange}}>MAISON ADJOA</div>

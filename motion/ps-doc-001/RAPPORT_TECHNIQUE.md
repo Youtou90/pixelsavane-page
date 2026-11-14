@@ -214,6 +214,20 @@ Le détail des 12 visuels reçus est dans `motion/sources/s03-v1.1/recus-2026-11
 - **Export v1.2** : `npm run render:s03-final` enchaîne le contrôle, puis le MP4 `out/PixelSavane_S03_Creativite_v1.2_1080p25.mp4` et 5 captures. Il ne s'exécute que si le contrôle est entièrement vert.
 - **État au 14/11** : 0/9 ressources principales reçues, export bloqué.
 
+### 14/11 : campagne Maison Adjoa générée
+
+- **Demande d'Oscar** : générer un visuel professionnel hyperréaliste pour Maison Adjoa ; aucun « look IA », y compris dans la vidéo finale.
+- **Outil** : Higgsfield, compte d'Oscar (offre gratuite, 10 crédits). GPT Image 2.6 est réservé aux abonnés : refusé, aucun crédit débité. Nano Banana Pro en 2K, à 2 crédits par image : **8 crédits utilisés, 2 restants**.
+- **Réseau** : ajout du serveur `d8j0ntlcm91z4.cloudfront.net`, où Higgsfield stocke les images, à l'environnement « Par défaut ». Approuvé par l'utilisateur.
+- **Résultat** :
+  - **adjoa-45** (4:5, 1856 × 2304) : viennoiseries et tartes mangue-coco dans une boutique de Douala, lumière de fenêtre ;
+  - **adjoa-11** (1:1, 2048 × 2048) : mains de la pâtissière au tamis ;
+  - **adjoa-916** (9:16, 1536 × 2752) : pâtissière souriante avec sa planche.
+
+  La 1:1 et la 9:16 sont générées avec la 4:5 comme référence, pour la cohérence. Un premier essai 4:5 a été rejeté : il avait un aplat sombre artificiel. Examen en pleine résolution (mains, visage, textures) : aucun défaut typique d'IA retenu.
+- **Montage** : les trois formats passent au-dessus du voile de lisibilité. La story est légèrement recadrée (×1,25) sur la pâtissière, avec un affichage d'environ 0,26× la source, donc sans agrandissement. Aperçu interne : `work/apercu-demo4.png`.
+- **Contrôle** : 3/9 ressources reçues. Le seul point bloquant pour Adjoa est la **vérification de l'usage commercial** des images de l'offre gratuite Higgsfield.
+
 ## 7. Organisation
 
 ```

@@ -1,1 +1,26 @@
-{}
+{
+ "adjoa-45": {
+  "file": "s03v11/adjoa-45.png",
+  "w": 1856,
+  "h": 2304,
+  "ratio": "4:5",
+  "video": false,
+  "sha256": "3f8a867db117ca1d56d41432c792dc8d21085242861ebfc40691aa4f5cfc0315"
+ },
+ "adjoa-11": {
+  "file": "s03v11/adjoa-11.png",
+  "w": 2048,
+  "h": 2048,
+  "ratio": "1:1",
+  "video": false,
+  "sha256": "f1b24013327cba46dbf19a3fe8737df6a72efd026a5cfacce56425049b6c8000"
+ },
+ "adjoa-916": {
+  "file": "s03v11/adjoa-916.png",
+  "w": 1536,
+  "h": 2752,
+  "ratio": "9:16",
+  "video": false,
+  "sha256": "15776ebcbcdb772b385bef1ce4e07a5b4ea1088ef72b53203aee67d3d2d6360f"
+ }
+}

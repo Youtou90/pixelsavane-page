@@ -190,25 +190,29 @@
     1600,
     2000
    ],
-   "statut": "manquante",
-   "fichier_original": null,
-   "sha256": null,
-   "dimensions": null,
-   "outil": null,
-   "date_generation": null,
+   "statut": "reçue",
+   "fichier_original": "motion/sources/s03-v1.1/adjoa-45.png",
+   "sha256": "3f8a867db117ca1d56d41432c792dc8d21085242861ebfc40691aa4f5cfc0315",
+   "dimensions": [
+    1856,
+    2304
+   ],
+   "outil": "Higgsfield (compte d'Oscar, offre gratuite), modèle demandé nano_banana_pro, exécuté par l'API comme « nano_banana_2 » ; résolution 2K ; job d43962c7-152e-4ad1-9386-95ea0ac6b35b",
+   "date_generation": "2026-11-14",
    "licence": {
     "usage_commercial_verifie": false,
     "source_conditions": null,
-    "remarque": null
+    "remarque": "NON VÉRIFIÉ : conditions d'usage commercial des images générées avec l'offre gratuite Higgsfield à confirmer (conditions générales Higgsfield et conditions du modèle Google). Coût : 2 crédits."
    },
    "controle_visuel": {
-    "casting_africain": null,
-    "aucun_texte": null,
-    "aucun_logo_tiers": null,
-    "photorealisme": null,
-    "coherence_campagne": null,
-    "verifie_par": null,
-    "date": null
+    "casting_africain": true,
+    "aucun_texte": true,
+    "aucun_logo_tiers": true,
+    "photorealisme": true,
+    "coherence_campagne": true,
+    "verifie_par": "Claude (ingénieur de production), examen en pleine résolution",
+    "date": "2026-11-14",
+    "note": "Aucune personne. Viennoiseries, tartes mangue-coco, comptoir en bois, lumière de fenêtre, mur ocre en haut pour le titre. Feuilletage, sucre et bois crédibles en pleine résolution ; aucun texte ni logo."
    }
   },
   {
@@ -220,25 +224,29 @@
     1600,
     1600
    ],
-   "statut": "manquante",
-   "fichier_original": null,
-   "sha256": null,
-   "dimensions": null,
-   "outil": null,
-   "date_generation": null,
+   "statut": "reçue",
+   "fichier_original": "motion/sources/s03-v1.1/adjoa-11.png",
+   "sha256": "f1b24013327cba46dbf19a3fe8737df6a72efd026a5cfacce56425049b6c8000",
+   "dimensions": [
+    2048,
+    2048
+   ],
+   "outil": "Higgsfield (compte d'Oscar, offre gratuite), modèle demandé nano_banana_pro, exécuté par l'API comme « nano_banana_2 » ; résolution 2K ; job 9e7ab75f-3169-4067-ac44-22d25277df6e ; image de référence : job d43962c7 (cohérence de campagne)",
+   "date_generation": "2026-11-14",
    "licence": {
     "usage_commercial_verifie": false,
     "source_conditions": null,
-    "remarque": null
+    "remarque": "NON VÉRIFIÉ : conditions d'usage commercial des images générées avec l'offre gratuite Higgsfield à confirmer (conditions générales Higgsfield et conditions du modèle Google). Coût : 2 crédits."
    },
    "controle_visuel": {
-    "casting_africain": null,
-    "aucun_texte": null,
-    "aucun_logo_tiers": null,
-    "photorealisme": null,
-    "coherence_campagne": null,
-    "verifie_par": null,
-    "date": null
+    "casting_africain": true,
+    "aucun_texte": true,
+    "aucun_logo_tiers": true,
+    "photorealisme": true,
+    "coherence_campagne": true,
+    "verifie_par": "Claude (ingénieur de production), examen en pleine résolution",
+    "date": "2026-11-14",
+    "note": "Mains d'une pâtissière africaine (peau foncée) au tamis ; mains et doigts corrects en pleine résolution. Même comptoir, mêmes tartes. Mur plus clair que sur le 4:5 (écart mineur). Aucun texte ni logo."
    }
   },
   {
@@ -250,25 +258,29 @@
     1080,
     1920
    ],
-   "statut": "manquante",
-   "fichier_original": null,
-   "sha256": null,
-   "dimensions": null,
-   "outil": null,
-   "date_generation": null,
+   "statut": "reçue",
+   "fichier_original": "motion/sources/s03-v1.1/adjoa-916.png",
+   "sha256": "15776ebcbcdb772b385bef1ce4e07a5b4ea1088ef72b53203aee67d3d2d6360f",
+   "dimensions": [
+    1536,
+    2752
+   ],
+   "outil": "Higgsfield (compte d'Oscar, offre gratuite), modèle demandé nano_banana_pro, exécuté par l'API comme « nano_banana_2 » ; résolution 2K ; job 37ebebd6-e489-4340-88fc-023d1e7d950e ; image de référence : job d43962c7 (cohérence de campagne)",
+   "date_generation": "2026-11-14",
    "licence": {
     "usage_commercial_verifie": false,
     "source_conditions": null,
-    "remarque": null
+    "remarque": "NON VÉRIFIÉ : conditions d'usage commercial des images générées avec l'offre gratuite Higgsfield à confirmer (conditions générales Higgsfield et conditions du modèle Google). Coût : 2 crédits."
    },
    "controle_visuel": {
-    "casting_africain": null,
-    "aucun_texte": null,
-    "aucun_logo_tiers": null,
-    "photorealisme": null,
-    "coherence_campagne": null,
-    "verifie_par": null,
-    "date": null
+    "casting_africain": true,
+    "aucun_texte": true,
+    "aucun_logo_tiers": true,
+    "photorealisme": true,
+    "coherence_campagne": true,
+    "verifie_par": "Claude (ingénieur de production), examen en pleine résolution",
+    "date": "2026-11-14",
+    "note": "Pâtissière africaine souriante tenant une planche de viennoiseries ; visage et mains naturels en pleine résolution. Même mur ocre, même comptoir. Personnage petit dans le cadre (recadrage léger au montage). Aucun texte ni logo."
    }
   },
   {
@@ -368,5 +380,13 @@
   "Maison Adjoa": "Marque FICTIVE inventée pour la démonstration 04 (pâtisserie artisanale). Elle n'appartient ni à Oscar ni à PixelSavane, et ne désigne aucune entreprise réelle. Signalée « marque fictive, projet de démonstration » à l'écran. Oscar précise le 14/11/2026 qu'elle ne lui appartient pas.",
   "ÉCLAT": "Marque fictive de démonstration (démonstration 03), signalée comme telle à l'écran.",
   "Bissap Kéla": "Marque fictive de démonstration (démonstration 02), signalée comme telle à l'écran."
- }
+ },
+ "generations_ecartees": [
+  {
+   "job": "ee6f6201-ba57-4b07-bc16-fb76d15cb195",
+   "fichier": "motion/sources/s03-v1.1/generation-higgsfield/adjoa-45_ee6f6201.png",
+   "motif": "Aplat sombre artificiel sur le tiers supérieur (look IA), mur de briques peu africain. Remplacée par d43962c7.",
+   "cout": "2 crédits"
+  }
+ ]
 }
