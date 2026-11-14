@@ -12,6 +12,8 @@ export const Root: React.FC = () => (
   <>
     <Composition id="S01-Ouverture" component={S01Ouverture} durationInFrames={375} {...common} defaultProps={{withAudio: true}} />
     <Composition id="S02-Fondateur" component={S02Fondateur} durationInFrames={625} {...common} />
-    <Composition id="S03-Creativite" component={S03Creativite} durationInFrames={875} {...common} />
+    <Composition id="S03-Creativite" component={S03Creativite} durationInFrames={875} {...common} defaultProps={{final: false}} />
+    {/* export définitif : refuse tout emplacement vide (ressource manquante = échec du rendu) */}
+    <Composition id="S03-Creativite-Final" component={S03Creativite} durationInFrames={875} {...common} defaultProps={{final: true}} />
   </>
 );

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {createContext, useContext} from 'react';
 import {AbsoluteFill, Img, interpolate, OffthreadVideo, random, Sequence, staticFile, useCurrentFrame} from 'remotion';
 import {C, FONTS, SIGNATURE} from '../system/brand';
 import {useBrandFonts} from '../system/fonts';
@@ -28,10 +28,15 @@ const AV = available as Record<string, Asset>;
 const WF = wfReel as Record<string, Asset>;
 const fade = (t: number, a: number, b: number, d = 0.25) => interpolate(t, [a - d, a, b - d, b], [0, 1, 1, 0], clamp);
 
-// Image (ou vidéo) fournie en cadrage « cover », sinon cadre d'attente lisible
+// MODE FINAL : en export définitif (composition S03-Creativite-Final), une ressource manquante fait échouer le rendu
+// au lieu d'afficher un cadre « Image à fournir ». Aucune version finale ne peut donc contenir d'emplacement vide.
+const FinalMode = createContext(false);
+
+// Image (ou vidéo) fournie en cadrage « cover », sinon cadre d'attente lisible (maquette interne uniquement)
 const Pic: React.FC<{name: string; ratio: string; w: number; h: number; zoom?: number; ox?: number; oy?: number; px?: number; style?: React.CSSProperties}> = ({
   name, ratio, w, h, zoom = 1, ox = 0.5, oy = 0.5, px = 0, style,
 }) => {
+  const final = useContext(FinalMode);
   const a = AV[name];
   if (a?.video) {
     return (
@@ -41,6 +46,7 @@ const Pic: React.FC<{name: string; ratio: string; w: number; h: number; zoom?: n
     );
   }
   if (a) return <Shot src={staticFile(a.file)} nat={[a.w, a.h]} w={w} h={h} zoom={zoom} ox={ox} oy={oy} px={px} style={style} />;
+  if (final) throw new Error(`S03 MODE FINAL : ressource « ${name} » manquante. Export définitif refusé (voir S03_v1.2_LISTE_DE_CONTROLE.md).`);
   return (
     <div style={{position: 'absolute', width: w, height: h, background: '#141416', border: `2px dashed ${C.orange}88`,
       display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', gap: 8, boxSizing: 'border-box', ...style}}>
@@ -363,7 +369,7 @@ const EndCard: React.FC = () => {
   );
 };
 
-export const S03Creativite: React.FC = () => {
+export const S03Creativite: React.FC<{final?: boolean}> = ({final = false}) => {
   useBrandFonts();
   const f = useCurrentFrame();
   const t = f / FPS;
@@ -372,6 +378,7 @@ export const S03Creativite: React.FC = () => {
   const missing = Object.keys({'ugc-1': 1, 'ugc-2': 1, 'ugc-3': 1, 'avatar-ia': 1, 'eclat-produit': 1, 'eclat-portrait': 1, 'adjoa-45': 1, 'adjoa-11': 1, 'adjoa-916': 1})
     .filter((k) => !AV[k]).length;
   return (
+    <FinalMode.Provider value={final}>
     <AbsoluteFill style={{backgroundColor: C.noir}}>
       <Sequence from={0} durationInFrames={sec(CUT[0])}><Title /></Sequence>
       <Sequence from={sec(CUT[0])} durationInFrames={sec(CUT[1] - CUT[0])}><Demo1 /></Sequence>
@@ -388,11 +395,12 @@ export const S03Creativite: React.FC = () => {
       {/* carton de fin rendu au-dessus du grain et du vignettage : contraste intact de la signature */}
       <Sequence from={sec(CUT[4])} durationInFrames={sec(DUR - CUT[4])}><AbsoluteFill style={{opacity: endOut}}><EndCard /></AbsoluteFill></Sequence>
       {CUT.map((c) => <PixelWipe key={c} t={t - c} />)}
-      {t < CUT[4] && (
+      {!final && t < CUT[4] && (
         <div style={{position: 'absolute', right: 40, top: 22, ...FONTS.texte, fontSize: 14, color: C.gris, opacity: 0.6}}>
-          Maquette S03 v1.1 · muette{missing > 0 ? ` · ${missing} visuel(s) à fournir` : ''}
+          Aperçu interne S03 · muet{missing > 0 ? ` · ${missing} visuel(s) à fournir` : ''}
         </div>
       )}
     </AbsoluteFill>
+    </FinalMode.Provider>
   );
 };

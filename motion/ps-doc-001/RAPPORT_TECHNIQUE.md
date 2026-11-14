@@ -196,6 +196,24 @@ Le détail des 12 visuels reçus est dans `motion/sources/s03-v1.1/recus-2026-11
 - **Signature finale corrigée.** Le carton de fin est désormais rendu **au-dessus** du grain et du vignettage. Logo officiel et signature en Inter 38 px, couleur **#FAFAFA exacte** (mesurée : 250, 250, 250) sur #0E0E10, contraste d'environ 18:1. Bloc centré, mesuré à (959,5 ; 539) pour (960 ; 540). Capture : `out/S03_v1.1_capture-5-signature_855.png`.
 - **En attente** : visuels des démonstrations 02 à 04, détaillés dans `motion/S03_v1.1_COMMANDE_IMAGES.md` (révision 2). Sources et droits : `S03_v1.1_SOURCES_ET_DROITS.md`. La maquette `out/PixelSavane_S03_v1.1_maquette-mise-en-page_1080p25.mp4` (35 s, 875 images) montre l'état actuel.
 
+### Décision DA du 14/11 : finalisation des ressources et verrou d'export
+
+- **Plus aucune version présentée comme définitive avec des cadres vides.** L'ancienne maquette v1.1 et ses captures sont archivées (`out/archives/`). L'aperçu interne se rend dans `work/`, jamais dans `out/`.
+- **Registre des ressources et licences** : `motion/sources/s03-v1.1/REGISTRE_RESSOURCES.json`. Il couvre les 9 ressources principales et la ressource facultative `eclat-affiche-fond`, avec pour chacune le statut, l'original, les dimensions, l'empreinte SHA-256, l'outil, la date de génération, la licence (vérification de l'usage commercial et source des conditions) et le contrôle visuel. Pour Wata Fufu : propriété de la marque et autorisation de publication « à confirmer », plus les 5 originaux avec leur empreinte.
+- **Intégration automatique** : `npm run check:s03` copie les ressources déposées dans `motion/sources/s03-v1.1/` et met à jour le registre. Si un fichier est remplacé, son contrôle visuel est remis à zéro.
+- **Contrôle final automatique** : `scripts/check_s03.py` produit `S03_v1.2_LISTE_DE_CONTROLE.md` et bloque l'export (code 1) dans les cas suivants :
+  - ressource manquante ;
+  - dimensions ou format non conformes ;
+  - empreinte modifiée ;
+  - outil, date ou licence non renseignés ;
+  - contrôle visuel incomplet ;
+  - verrou de code absent.
+
+  Les points Wata Fufu sont signalés comme obligatoires avant toute publication externe.
+- **Verrou dans le code** (`MODE FINAL`) : la composition `S03-Creativite-Final` lève une erreur au lieu d'afficher un cadre « Image à fournir ». Testé : le rendu échoue sur l'UGC (« ressource ugc-3 manquante ») et réussit sur le plan Wata Fufu, qui est complet.
+- **Export v1.2** : `npm run render:s03-final` enchaîne le contrôle, puis le MP4 `out/PixelSavane_S03_Creativite_v1.2_1080p25.mp4` et 5 captures. Il ne s'exécute que si le contrôle est entièrement vert.
+- **État au 14/11** : 0/9 ressources principales reçues, export bloqué.
+
 ## 7. Organisation
 
 ```
@@ -232,6 +250,8 @@ Recommandation pour la suite : quand les rushes et les médias HD arriveront (ce
 - [x] Validation de S02 v1.3 par la DA
 - [x] Revue de S03 v1.0 par la DA (révision v1.1 demandée)
 - [ ] **Images S03 v1.1 à fournir par Oscar** (`motion/S03_v1.1_COMMANDE_IMAGES.md`)
-- [ ] **Validation de S03 v1.1 par la DA** (préalable à S04)
+- [ ] **9 ressources S03 à fournir**, avec outil, date et licence (registre)
+- [ ] Confirmation de la propriété Wata Fufu et de l'autorisation de publication
+- [ ] **Export S03 v1.2** (contrôle entièrement vert), puis validation de la DA (préalable à S04)
 - [ ] Statut de Wata Fufu, outil et licence des visuels IA du site (voir `S03_SOURCES_ET_DROITS.md`)
 - [ ] Enregistrement définitif de la voix off (préalable à toute autre séquence)

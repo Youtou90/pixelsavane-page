@@ -58,3 +58,22 @@ for src in ['1000250101.jpg', '1000250139.jpg', '1000250152.jpg']:
         wf[f'post-{src[:-4]}'] = dict(file=f's03v11/wf-post-{src}', w=w, h=h, src=src)
 json.dump(wf, open('public/s03v11/watafufu-reel.json', 'w'), indent=1)
 print('Wata Fufu (réel) :', ', '.join(wf))
+
+# ——— Mise à jour du registre (statut, fichier original, dimensions, SHA-256) ———
+# Les champs outil, date de génération, licence et contrôle visuel ne sont JAMAIS remplis automatiquement.
+REG = '../sources/s03-v1.1/REGISTRE_RESSOURCES.json'
+if os.path.exists(REG):
+    reg = json.load(open(REG))
+    for r in reg['ressources']:
+        a = avail.get(r['nom'])
+        if a:
+            src = next(f'{SRC}/{r["nom"]}{e}' for e in ('.mp4', '.mov', '.png', '.jpg', '.jpeg', '.webp') if os.path.exists(f'{SRC}/{r["nom"]}{e}'))
+            if r.get('sha256') and r['sha256'] != a['sha256']:
+                print(f'  ⚠️  {r["nom"]} : fichier remplacé (nouvelle empreinte) — contrôle visuel et licence à refaire')
+                r['controle_visuel'] = {k: None for k in r['controle_visuel']}
+            r.update(statut='reçue', fichier_original=src.replace('../', 'motion/'), sha256=a['sha256'], dimensions=[a['w'], a['h']])
+        else:
+            r.update(statut='manquante', fichier_original=None, sha256=None, dimensions=None)
+    json.dump(reg, open(REG, 'w'), indent=1, ensure_ascii=False)
+    print('registre mis à jour :', sum(r['statut'] == 'reçue' for r in reg['ressources'] if r['obligatoire']), '/',
+          sum(r['obligatoire'] for r in reg['ressources']), 'ressources principales reçues')

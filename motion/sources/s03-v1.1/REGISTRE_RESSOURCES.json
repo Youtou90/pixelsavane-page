@@ -1,0 +1,367 @@
+{
+ "description": "Registre des ressources S03 (PS-DOC-001). Champs « outil », « date_generation » et « licence » : à remplir à partir des informations d'Oscar, jamais déduits. « controle_visuel » : rempli après examen de chaque image.",
+ "ressources": [
+  {
+   "nom": "ugc-1",
+   "usage": "02 UGC · A créatrice",
+   "obligatoire": true,
+   "ratio": "9:16",
+   "taille_min": [
+    1080,
+    1920
+   ],
+   "statut": "manquante",
+   "fichier_original": null,
+   "sha256": null,
+   "dimensions": null,
+   "outil": null,
+   "date_generation": null,
+   "licence": {
+    "usage_commercial_verifie": false,
+    "source_conditions": null,
+    "remarque": null
+   },
+   "controle_visuel": {
+    "casting_africain": null,
+    "aucun_texte": null,
+    "aucun_logo_tiers": null,
+    "photorealisme": null,
+    "coherence_campagne": null,
+    "verifie_par": null,
+    "date": null
+   }
+  },
+  {
+   "nom": "ugc-2",
+   "usage": "02 UGC · A créatrice",
+   "obligatoire": true,
+   "ratio": "9:16",
+   "taille_min": [
+    1080,
+    1920
+   ],
+   "statut": "manquante",
+   "fichier_original": null,
+   "sha256": null,
+   "dimensions": null,
+   "outil": null,
+   "date_generation": null,
+   "licence": {
+    "usage_commercial_verifie": false,
+    "source_conditions": null,
+    "remarque": null
+   },
+   "controle_visuel": {
+    "casting_africain": null,
+    "aucun_texte": null,
+    "aucun_logo_tiers": null,
+    "photorealisme": null,
+    "coherence_campagne": null,
+    "verifie_par": null,
+    "date": null
+   }
+  },
+  {
+   "nom": "ugc-3",
+   "usage": "02 UGC · A créatrice",
+   "obligatoire": true,
+   "ratio": "9:16",
+   "taille_min": [
+    1080,
+    1920
+   ],
+   "statut": "manquante",
+   "fichier_original": null,
+   "sha256": null,
+   "dimensions": null,
+   "outil": null,
+   "date_generation": null,
+   "licence": {
+    "usage_commercial_verifie": false,
+    "source_conditions": null,
+    "remarque": null
+   },
+   "controle_visuel": {
+    "casting_africain": null,
+    "aucun_texte": null,
+    "aucun_logo_tiers": null,
+    "photorealisme": null,
+    "coherence_campagne": null,
+    "verifie_par": null,
+    "date": null
+   }
+  },
+  {
+   "nom": "avatar-ia",
+   "usage": "02 UGC · B avatar IA (vidéo .mp4 préférée)",
+   "obligatoire": true,
+   "ratio": "9:16",
+   "taille_min": [
+    1080,
+    1920
+   ],
+   "statut": "manquante",
+   "fichier_original": null,
+   "sha256": null,
+   "dimensions": null,
+   "outil": null,
+   "date_generation": null,
+   "licence": {
+    "usage_commercial_verifie": false,
+    "source_conditions": null,
+    "remarque": null
+   },
+   "controle_visuel": {
+    "casting_africain": null,
+    "aucun_texte": null,
+    "aucun_logo_tiers": null,
+    "photorealisme": null,
+    "coherence_campagne": null,
+    "verifie_par": null,
+    "date": null
+   }
+  },
+  {
+   "nom": "eclat-produit",
+   "usage": "03 ÉCLAT · photographie produit",
+   "obligatoire": true,
+   "ratio": "4:5",
+   "taille_min": [
+    1600,
+    2000
+   ],
+   "statut": "manquante",
+   "fichier_original": null,
+   "sha256": null,
+   "dimensions": null,
+   "outil": null,
+   "date_generation": null,
+   "licence": {
+    "usage_commercial_verifie": false,
+    "source_conditions": null,
+    "remarque": null
+   },
+   "controle_visuel": {
+    "casting_africain": null,
+    "aucun_texte": null,
+    "aucun_logo_tiers": null,
+    "photorealisme": null,
+    "coherence_campagne": null,
+    "verifie_par": null,
+    "date": null
+   }
+  },
+  {
+   "nom": "eclat-portrait",
+   "usage": "03 ÉCLAT · portrait publicitaire",
+   "obligatoire": true,
+   "ratio": "4:5",
+   "taille_min": [
+    1600,
+    2000
+   ],
+   "statut": "manquante",
+   "fichier_original": null,
+   "sha256": null,
+   "dimensions": null,
+   "outil": null,
+   "date_generation": null,
+   "licence": {
+    "usage_commercial_verifie": false,
+    "source_conditions": null,
+    "remarque": null
+   },
+   "controle_visuel": {
+    "casting_africain": null,
+    "aucun_texte": null,
+    "aucun_logo_tiers": null,
+    "photorealisme": null,
+    "coherence_campagne": null,
+    "verifie_par": null,
+    "date": null
+   }
+  },
+  {
+   "nom": "adjoa-45",
+   "usage": "04 Maison Adjoa · publicité",
+   "obligatoire": true,
+   "ratio": "4:5",
+   "taille_min": [
+    1600,
+    2000
+   ],
+   "statut": "manquante",
+   "fichier_original": null,
+   "sha256": null,
+   "dimensions": null,
+   "outil": null,
+   "date_generation": null,
+   "licence": {
+    "usage_commercial_verifie": false,
+    "source_conditions": null,
+    "remarque": null
+   },
+   "controle_visuel": {
+    "casting_africain": null,
+    "aucun_texte": null,
+    "aucun_logo_tiers": null,
+    "photorealisme": null,
+    "coherence_campagne": null,
+    "verifie_par": null,
+    "date": null
+   }
+  },
+  {
+   "nom": "adjoa-11",
+   "usage": "04 Maison Adjoa · publication",
+   "obligatoire": true,
+   "ratio": "1:1",
+   "taille_min": [
+    1600,
+    1600
+   ],
+   "statut": "manquante",
+   "fichier_original": null,
+   "sha256": null,
+   "dimensions": null,
+   "outil": null,
+   "date_generation": null,
+   "licence": {
+    "usage_commercial_verifie": false,
+    "source_conditions": null,
+    "remarque": null
+   },
+   "controle_visuel": {
+    "casting_africain": null,
+    "aucun_texte": null,
+    "aucun_logo_tiers": null,
+    "photorealisme": null,
+    "coherence_campagne": null,
+    "verifie_par": null,
+    "date": null
+   }
+  },
+  {
+   "nom": "adjoa-916",
+   "usage": "04 Maison Adjoa · story",
+   "obligatoire": true,
+   "ratio": "9:16",
+   "taille_min": [
+    1080,
+    1920
+   ],
+   "statut": "manquante",
+   "fichier_original": null,
+   "sha256": null,
+   "dimensions": null,
+   "outil": null,
+   "date_generation": null,
+   "licence": {
+    "usage_commercial_verifie": false,
+    "source_conditions": null,
+    "remarque": null
+   },
+   "controle_visuel": {
+    "casting_africain": null,
+    "aucun_texte": null,
+    "aucun_logo_tiers": null,
+    "photorealisme": null,
+    "coherence_campagne": null,
+    "verifie_par": null,
+    "date": null
+   }
+  },
+  {
+   "nom": "eclat-affiche-fond",
+   "usage": "03 ÉCLAT · fond d’affiche (facultatif)",
+   "obligatoire": false,
+   "ratio": "4:5",
+   "taille_min": [
+    1600,
+    2000
+   ],
+   "statut": "manquante",
+   "fichier_original": null,
+   "sha256": null,
+   "dimensions": null,
+   "outil": null,
+   "date_generation": null,
+   "licence": {
+    "usage_commercial_verifie": false,
+    "source_conditions": null,
+    "remarque": null
+   },
+   "controle_visuel": {
+    "casting_africain": null,
+    "aucun_texte": null,
+    "aucun_logo_tiers": null,
+    "photorealisme": null,
+    "coherence_campagne": null,
+    "verifie_par": null,
+    "date": null
+   }
+  }
+ ],
+ "wata_fufu": {
+  "statut_propriete_marque": "à confirmer par Oscar",
+  "autorisation_publication": "à confirmer par Oscar",
+  "remarque": "Visuels publicitaires de la marque, reçus le 13/11/2026. Textes publicitaires repris mot pour mot ; ne pas les modifier sans autorisation. Confirmation obligatoire avant toute publication externe.",
+  "originaux": [
+   {
+    "fichier": "sources/s03-v1.1/recus-2026-11-13/1000250100.jpg",
+    "sha256": "c0e3236b94fe73252e96bbd489e8da621c3fdbc87137d3ff4edb57b8cd970d43",
+    "dimensions": [
+     1024,
+     1024
+    ],
+    "outil": "à préciser par Oscar",
+    "date_generation": "à préciser",
+    "usage_commercial_verifie": false
+   },
+   {
+    "fichier": "sources/s03-v1.1/recus-2026-11-13/1000250101.jpg",
+    "sha256": "acd52239aee4358c69b8a2f35ce7a2ec836fcab613b79bfaad80b4eae6099594",
+    "dimensions": [
+     1024,
+     1024
+    ],
+    "outil": "à préciser par Oscar",
+    "date_generation": "à préciser",
+    "usage_commercial_verifie": false
+   },
+   {
+    "fichier": "sources/s03-v1.1/recus-2026-11-13/1000250139.jpg",
+    "sha256": "f72464327ac9c224f5509e2a73b649b5772ca237f413aa8bc1f6ae2be6141630",
+    "dimensions": [
+     1024,
+     1024
+    ],
+    "outil": "à préciser par Oscar",
+    "date_generation": "à préciser",
+    "usage_commercial_verifie": false
+   },
+   {
+    "fichier": "sources/s03-v1.1/recus-2026-11-13/1000250140.jpg",
+    "sha256": "8e7c4ff695eeec1c727eed5781534f761d10f592868b55dce398393101a0267c",
+    "dimensions": [
+     1024,
+     1024
+    ],
+    "outil": "à préciser par Oscar",
+    "date_generation": "à préciser",
+    "usage_commercial_verifie": false
+   },
+   {
+    "fichier": "sources/s03-v1.1/recus-2026-11-13/1000250152.jpg",
+    "sha256": "90310f7a0d5272c573c8ee3f59ad9724e3ccbe1d55afb23a80389d99be9afb3d",
+    "dimensions": [
+     1024,
+     1024
+    ],
+    "outil": "à préciser par Oscar",
+    "date_generation": "à préciser",
+    "usage_commercial_verifie": false
+   }
+  ]
+ }
+}
