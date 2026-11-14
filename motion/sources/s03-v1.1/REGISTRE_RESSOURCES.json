@@ -303,9 +303,9 @@
   }
  ],
  "wata_fufu": {
-  "statut_propriete_marque": "à confirmer par Oscar",
-  "autorisation_publication": "à confirmer par Oscar",
-  "remarque": "Visuels publicitaires de la marque, reçus le 13/11/2026. Textes publicitaires repris mot pour mot ; ne pas les modifier sans autorisation. Confirmation obligatoire avant toute publication externe.",
+  "statut_propriete_marque": "confirmée par Oscar YOUTOU le 14/11/2026 : Wata Fufu est sa marque",
+  "autorisation_publication": "accordée par Oscar YOUTOU le 14/11/2026 pour l'utilisation des publications dans le film",
+  "remarque": "Visuels publicitaires de la marque, reçus le 13/11/2026. Textes publicitaires repris mot pour mot ; ne pas les modifier sans autorisation. Reste à préciser : outil et licence de génération des visuels.",
   "originaux": [
    {
     "fichier": "sources/s03-v1.1/recus-2026-11-13/1000250100.jpg",
@@ -363,5 +363,10 @@
     "usage_commercial_verifie": false
    }
   ]
+ },
+ "marques_fictives": {
+  "Maison Adjoa": "Marque FICTIVE inventée pour la démonstration 04 (pâtisserie artisanale). Elle n'appartient ni à Oscar ni à PixelSavane, et ne désigne aucune entreprise réelle. Signalée « marque fictive, projet de démonstration » à l'écran. Oscar précise le 14/11/2026 qu'elle ne lui appartient pas.",
+  "ÉCLAT": "Marque fictive de démonstration (démonstration 03), signalée comme telle à l'écran.",
+  "Bissap Kéla": "Marque fictive de démonstration (démonstration 02), signalée comme telle à l'écran."
  }
 }
