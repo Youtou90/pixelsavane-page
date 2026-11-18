@@ -134,45 +134,59 @@
   var vImg = v.querySelector('img'), vTitre = v.querySelector('.v-titre'), vPrix = v.querySelector('.v-prix'),
       vWa = v.querySelector('.v-wa'), vCompte = v.querySelector('.v-compte'), retourFocus = null, groupe = [], pos = 0;
 
-  function visibles(){ return Array.prototype.filter.call(document.querySelectorAll('img[data-zoom]'), function(i){ return i.offsetParent !== null; }); }
+  var minuterieFermeture = null, jeton = 0;
+
+  // L'album = les photos visibles du MÊME bloc (portables, imprimantes ou projecteurs) : on ne mélange plus les rayons.
+  function album(img){
+    var bloc = img.closest('.machines, .fiches') || document;
+    var liste = Array.prototype.filter.call(bloc.querySelectorAll('img[data-zoom]'), function(i){ return i.getClientRects().length > 0; });
+    return liste.indexOf(img) === -1 ? [img] : liste;
+  }
   function remplir(img){
-    var carte = img.closest('.machine, .fiche');
-    vImg.src = img.dataset.zoom; vImg.alt = img.alt;
+    var carte = img.closest('.machine, .fiche'), monJeton = ++jeton;
+    // 1) on affiche tout de suite la miniature DE CE PRODUIT (déjà chargée) : jamais l'ancienne photo
+    vImg.src = img.currentSrc || img.src; vImg.alt = img.alt;
+    // 2) puis on remplace par la grande version quand elle est prête (si on n'a pas changé de photo entre-temps)
+    var hd = new Image();
+    hd.onload = function(){ if (monJeton === jeton && !v.hidden) vImg.src = hd.src; };
+    hd.src = img.dataset.zoom;
     vTitre.textContent = img.dataset.titre;
     var p = carte && carte.querySelector('.prix-m'); vPrix.textContent = p ? p.textContent : '';
     var w = carte && carte.querySelector('a.btn[href*="wa.me"]');
     vWa.hidden = !w; if (w) vWa.href = w.href;
-    vCompte.textContent = (pos + 1) + ' / ' + groupe.length + ' · glissez ou utilisez les flèches';
+    vCompte.textContent = groupe.length > 1 ? (pos + 1) + ' / ' + groupe.length + ' · glissez ou utilisez les flèches' : '';
+    v.querySelector('.v-prec').hidden = v.querySelector('.v-suiv').hidden = groupe.length < 2;
   }
   function ouvrir(img){
-    groupe = visibles(); pos = groupe.indexOf(img); retourFocus = img;
+    clearTimeout(minuterieFermeture);
+    groupe = album(img); pos = groupe.indexOf(img); retourFocus = img;
     remplir(img); v.hidden = false; document.body.classList.add('verrou');
     requestAnimationFrame(function(){
       v.classList.add('ouverte');
       if (reduit || !vImg.animate) return;
-      var a = img.getBoundingClientRect();
-      var go = function(){
-        var b = vImg.getBoundingClientRect(); if (!b.width) return;
-        vImg.animate([{transform:'translate(' + (a.left - b.left) + 'px,' + (a.top - b.top) + 'px) scale(' + (a.width / b.width) + ',' + (a.height / b.height) + ')'},{transform:'none'}],
-          {duration:340, easing:'cubic-bezier(.22,1,.36,1)'});
-      };
-      vImg.complete ? go() : vImg.addEventListener('load', go, {once:true});
+      var a = img.getBoundingClientRect(), bb = vImg.getBoundingClientRect();
+      if (!bb.width) return;
+      vImg.animate([{transform:'translate(' + (a.left - bb.left) + 'px,' + (a.top - bb.top) + 'px) scale(' + (a.width / bb.width) + ',' + (a.height / bb.height) + ')'},{transform:'none'}],
+        {duration:320, easing:'cubic-bezier(.22,1,.36,1)'});
     });
     v.querySelector('.v-fermer').focus({preventScroll:true});
   }
   function fermer(){
+    if (v.hidden) return;
+    jeton++;
     v.classList.remove('ouverte'); document.body.classList.remove('verrou');
-    setTimeout(function(){ v.hidden = true; vImg.removeAttribute('src'); }, reduit ? 0 : 200);
+    clearTimeout(minuterieFermeture);
+    minuterieFermeture = setTimeout(function(){ v.hidden = true; vImg.removeAttribute('src'); }, reduit ? 0 : 200);
     if (retourFocus) retourFocus.focus({preventScroll:true});
   }
   function aller(d){
     if (groupe.length < 2) return;
     pos = (pos + d + groupe.length) % groupe.length; remplir(groupe[pos]);
-    if (!reduit && vImg.animate) vImg.animate([{opacity:0, transform:'translateX(' + (d * 40) + 'px)'},{opacity:1, transform:'none'}], {duration:260, easing:'cubic-bezier(.22,1,.36,1)'});
+    if (!reduit && vImg.animate) vImg.animate([{opacity:0, transform:'translateX(' + (d * 40) + 'px)'},{opacity:1, transform:'none'}], {duration:240, easing:'cubic-bezier(.22,1,.36,1)'});
   }
   document.addEventListener('click', function(e){
     var img = e.target.closest('img[data-zoom]');
-    if (img){ e.preventDefault(); ouvrir(img); return; }
+    if (img){ e.preventDefault(); ouvrir(img); }
   });
   document.querySelectorAll('img[data-zoom]').forEach(function(i){
     i.tabIndex = 0; i.setAttribute('role','button');
@@ -186,7 +200,12 @@
     if (v.hidden) return;
     if (e.key === 'Escape') fermer(); else if (e.key === 'ArrowRight') aller(1); else if (e.key === 'ArrowLeft') aller(-1);
   });
-  var x0 = null;
-  v.addEventListener('pointerdown', function(e){ x0 = e.clientX; });
-  v.addEventListener('pointerup', function(e){ if (x0 === null) return; var dx = e.clientX - x0; x0 = null; if (Math.abs(dx) > 50) aller(dx < 0 ? 1 : -1); });
+  // Glisser : seulement un vrai geste horizontal, commencé sur la photo (pas sur les boutons)
+  var x0 = null, y0 = null;
+  v.addEventListener('pointerdown', function(e){ if (e.target === vImg){ x0 = e.clientX; y0 = e.clientY; } else { x0 = null; } });
+  v.addEventListener('pointerup', function(e){
+    if (x0 === null) return;
+    var dx = e.clientX - x0, dy = e.clientY - y0; x0 = null;
+    if (Math.abs(dx) > 60 && Math.abs(dx) > Math.abs(dy) * 1.5) aller(dx < 0 ? 1 : -1);
+  });
 })();
