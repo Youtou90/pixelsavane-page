@@ -23,12 +23,48 @@ E = html.escape
 
 
 # ------------------------------------------------------------------ photos
+def filigrane(im):
+    """Version démo : « DÉMO · PixelSavane » répété en diagonale + pastille en bas à gauche. Les sources restent propres."""
+    from PIL import Image, ImageDraw, ImageFont
+    police = RACINE / 'outils/polices/Montserrat-ExtraBold.ttf'
+    def fonte(t):
+        try:
+            return ImageFont.truetype(str(police), t)
+        except OSError:
+            return ImageFont.load_default()
+    l, h = im.size
+    texte = f'DÉMO · {B["realisation"]["nom"]}'
+    # 1) motif diagonal répété, blanc translucide avec un léger contour sombre (lisible sur fond clair comme sombre)
+    f = fonte(max(14, round(l * 0.042)))
+    tl, th = f.getbbox(texte)[2:]
+    tuile = Image.new('RGBA', (tl + 60, th + 20), (0, 0, 0, 0))
+    ImageDraw.Draw(tuile).text((30, 4), texte, font=f, fill=(255, 255, 255, 92),
+                               stroke_width=max(1, round(l / 480)), stroke_fill=(0, 0, 0, 46))
+    tuile = tuile.rotate(28, expand=True, resample=Image.BICUBIC)
+    calque = Image.new('RGBA', (l, h), (0, 0, 0, 0))
+    pas_x, pas_y = round(tuile.width * 0.95), round(tuile.height * 1.15)
+    for i, y in enumerate(range(-tuile.height, h + tuile.height, pas_y)):
+        for x in range(-tuile.width + (i % 2) * pas_x // 2, l + tuile.width, pas_x):
+            calque.alpha_composite(tuile, (x, y))
+    # 2) pastille nette en bas à gauche
+    fp = fonte(max(12, round(l * 0.03)))
+    pl, ph = fp.getbbox(texte)[2:]
+    m, px, py = round(l * .025), round(l * .018), round(l * .012)
+    d = ImageDraw.Draw(calque)
+    d.rounded_rectangle((m, h - m - ph - 2 * py, m + pl + 2 * px, h - m), radius=round(ph * .45), fill=(11, 11, 11, 200))
+    d.text((m + px, h - m - ph - py - fp.getbbox(texte)[1] // 2), texte, font=fp, fill=(245, 196, 0, 255))
+    return Image.alpha_composite(im.convert('RGBA'), calque).convert('RGB')
+
+
 def preparer_photos():
-    """Copie chaque photo produit en JPEG (repli) + WebP 480 et 960 px. Retourne {chemin: (l, h)}."""
+    """Copie chaque photo produit en JPEG (repli) + WebP 480 et 960 px. Filigrane en mode démo. Retourne {chemin: (l, h)}."""
     try:
         from PIL import Image
     except ImportError:
         sys.exit('Pillow manquant : pip install pillow')
+    mode = 'demo' if B['demo'] else 'officiel'
+    temoin = PUB / 'assets/produits/.mode'
+    tout_refaire = not temoin.exists() or temoin.read_text() != mode   # changement démo <-> officiel : on régénère tout
     dims = {}
     for dossier in sorted((SRC / 'assets/produits').iterdir()):
         sortie = PUB / 'assets/produits' / dossier.name
@@ -39,12 +75,15 @@ def preparer_photos():
             if im.width > 960:
                 im = im.resize((960, round(im.height * 960 / im.width)), Image.LANCZOS)
             dims[f'{dossier.name}/{jpg.stem}'] = im.size
-            if base.with_suffix('.jpg').exists() and base.with_suffix('.jpg').stat().st_mtime >= jpg.stat().st_mtime:
+            if not tout_refaire and base.with_suffix('.jpg').exists() and base.with_suffix('.jpg').stat().st_mtime >= jpg.stat().st_mtime:
                 continue  # déjà à jour
+            if B['demo']:
+                im = filigrane(im)
             im.save(base.with_suffix('.jpg'), quality=82, optimize=True, progressive=True)
             for w in (480, 960):
                 r = im if im.width <= w else im.resize((w, round(im.height * w / im.width)), Image.LANCZOS)
                 r.save(f'{base}-{w}.webp', 'WEBP', quality=74, method=6)
+    temoin.write_text(mode)
     return dims
 
 

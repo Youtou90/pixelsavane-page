@@ -101,6 +101,7 @@ Dans `donnees/boutique.json` :
 "url_site": "https://www.votre-domaine.com"
 ```
 Puis relancer la construction. Cela :
+- retire le filigrane « DÉMO · PixelSavane » des photos (les photos d'origine dans `src/` sont toujours restées propres, toutes les photos sont régénérées automatiquement) ;
 - retire la bande « Version démo » (la mention « Site réalisé par PixelSavane » reste en pied de page) ;
 - autorise Google à indexer le site (`robots.txt` et suppression de `noindex`) ;
 - crée `sitemap.xml` et les liens canoniques avec la vraie adresse.
