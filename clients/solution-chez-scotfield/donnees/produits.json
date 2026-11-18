@@ -1,0 +1,527 @@
+{
+  "_note": "Catalogue. prix : nombre en F CFA ou null (= « Prix sur demande »). Photo : assets/produits/<dossier>/<id>.jpg",
+  "portables": [
+    {
+      "id": "lenovo-yoga-slim-7",
+      "nom": "Lenovo Yoga Slim 7",
+      "dossier": "portables",
+      "usages": [
+        "ultra",
+        "pro"
+      ],
+      "prix": 250000,
+      "specs": [
+        {
+          "label": "Processeur",
+          "valeur": "Intel Core i5 11e gén. Evo"
+        },
+        {
+          "label": "Mémoire",
+          "valeur": "16 Go DDR4 3200 MT/s"
+        },
+        {
+          "label": "Stockage",
+          "valeur": "512 Go SSD NVMe"
+        },
+        {
+          "label": "Graphique",
+          "valeur": "Intel Iris Xe"
+        },
+        {
+          "label": "Écran",
+          "valeur": "14 pouces FHD"
+        },
+        {
+          "label": "Autonomie",
+          "valeur": "≈ 8 h"
+        }
+      ],
+      "note": "Ultrafin, poids plume : 1,3 kg",
+      "accueil": true
+    },
+    {
+      "id": "dell-latitude-3540",
+      "nom": "Dell Latitude 3540",
+      "dossier": "portables",
+      "usages": [
+        "pro"
+      ],
+      "prix": 230000,
+      "specs": [
+        {
+          "label": "Processeur",
+          "valeur": "Intel Core i5-1335U (10 cœurs)"
+        },
+        {
+          "label": "Mémoire",
+          "valeur": "32 Go DDR4"
+        },
+        {
+          "label": "Stockage",
+          "valeur": "1 To SSD NVMe PCIe 4"
+        },
+        {
+          "label": "Écran",
+          "valeur": "15,6 pouces FHD"
+        },
+        {
+          "label": "Autonomie",
+          "valeur": "≈ 7 h"
+        }
+      ],
+      "note": "",
+      "accueil": true
+    },
+    {
+      "id": "msi-prestige-14",
+      "nom": "MSI Prestige 14",
+      "dossier": "portables",
+      "usages": [
+        "ultra",
+        "pro"
+      ],
+      "prix": 350000,
+      "specs": [
+        {
+          "label": "Processeur",
+          "valeur": "Intel Core i7-13700H"
+        },
+        {
+          "label": "Mémoire",
+          "valeur": "32 Go DDR5 (soudée)"
+        },
+        {
+          "label": "Stockage",
+          "valeur": "1 To SSD NVMe PCIe 4"
+        },
+        {
+          "label": "Écran",
+          "valeur": "14 pouces FHD+"
+        },
+        {
+          "label": "Autonomie",
+          "valeur": "≈ 7 h"
+        }
+      ],
+      "note": "Certifié Intel Evo",
+      "accueil": true
+    },
+    {
+      "id": "razer-blade-16",
+      "nom": "Razer Blade 16",
+      "dossier": "portables",
+      "usages": [
+        "gaming",
+        "creation"
+      ],
+      "prix": 1600000,
+      "specs": [
+        {
+          "label": "Processeur",
+          "valeur": "Intel Core i9-13950HX (32 threads, 2,2 GHz)"
+        },
+        {
+          "label": "Mémoire",
+          "valeur": "32 Go DDR5"
+        },
+        {
+          "label": "Stockage",
+          "valeur": "1 To SSD NVMe PCIe 4"
+        },
+        {
+          "label": "Graphique",
+          "valeur": "NVIDIA GeForce RTX 4090 16 Go GDDR6"
+        },
+        {
+          "label": "Écran",
+          "valeur": "16 pouces 4K OLED 120 Hz"
+        }
+      ],
+      "note": "Caractéristiques extensibles au besoin",
+      "accueil": true
+    },
+    {
+      "id": "lenovo-thinkpad-l15-gen3",
+      "nom": "Lenovo ThinkPad L15 Gen 3",
+      "dossier": "portables",
+      "usages": [
+        "thinkpad",
+        "pro"
+      ],
+      "prix": null,
+      "specs": [
+        {
+          "label": "Processeur",
+          "valeur": "AMD Ryzen 7 PRO"
+        },
+        {
+          "label": "Mémoire",
+          "valeur": "16 Go DDR4"
+        },
+        {
+          "label": "Stockage",
+          "valeur": "512 Go SSD"
+        },
+        {
+          "label": "Graphique",
+          "valeur": "4 Go vidéo dédiée"
+        },
+        {
+          "label": "Écran",
+          "valeur": "15,6 pouces"
+        },
+        {
+          "label": "Sécurité",
+          "valeur": "Lecteur d’empreintes · Windows 11"
+        }
+      ],
+      "note": "Soldé le mardi, Journée ThinkPad",
+      "accueil": false
+    },
+    {
+      "id": "microsoft-surface-laptop",
+      "nom": "Microsoft Surface Laptop",
+      "dossier": "portables",
+      "usages": [
+        "ultra",
+        "pro"
+      ],
+      "prix": null,
+      "specs": [
+        {
+          "label": "Processeur",
+          "valeur": "Qualcomm Snapdragon X2 Elite"
+        },
+        {
+          "label": "Mémoire",
+          "valeur": "16 Go"
+        },
+        {
+          "label": "Stockage",
+          "valeur": "512 Go SSD"
+        },
+        {
+          "label": "Système",
+          "valeur": "Windows 11"
+        }
+      ],
+      "note": "Puissant, fin, prêt pour l’IA",
+      "accueil": false
+    },
+    {
+      "id": "lenovo-compact",
+      "nom": "Lenovo compact (format étudiant)",
+      "dossier": "portables",
+      "usages": [
+        "pro"
+      ],
+      "prix": null,
+      "specs": [
+        {
+          "label": "Format",
+          "valeur": "Petit portable léger, coque robuste"
+        },
+        {
+          "label": "Système",
+          "valeur": "Windows"
+        }
+      ],
+      "note": "Idéal pour l’école · fiche complète sur demande",
+      "accueil": false
+    },
+    {
+      "id": "asus-rog-zephyrus-g14",
+      "nom": "Asus ROG Zephyrus G14",
+      "dossier": "portables",
+      "usages": [
+        "gaming",
+        "ultra"
+      ],
+      "prix": null,
+      "specs": [
+        {
+          "label": "Processeur",
+          "valeur": "AMD Ryzen 7 5800H"
+        },
+        {
+          "label": "Mémoire",
+          "valeur": "16 Go DDR4"
+        },
+        {
+          "label": "Stockage",
+          "valeur": "1 To SSD (2 × 512 Go)"
+        },
+        {
+          "label": "Graphique",
+          "valeur": "NVIDIA GeForce RTX 3050 4 Go GDDR6"
+        },
+        {
+          "label": "Écran",
+          "valeur": "14 pouces FHD 144 Hz"
+        }
+      ],
+      "note": "",
+      "accueil": false
+    },
+    {
+      "id": "acer-predator-helios-300",
+      "nom": "Acer Predator Helios 300",
+      "dossier": "portables",
+      "usages": [
+        "gaming"
+      ],
+      "prix": null,
+      "specs": [
+        {
+          "label": "Processeur",
+          "valeur": "Intel Core i7 9e gén."
+        },
+        {
+          "label": "Mémoire",
+          "valeur": "16 Go"
+        },
+        {
+          "label": "Stockage",
+          "valeur": "512 Go SSD"
+        },
+        {
+          "label": "Graphique",
+          "valeur": "NVIDIA GeForce GTX 1660 Ti 6 Go GDDR6"
+        },
+        {
+          "label": "Écran",
+          "valeur": "15,6 pouces FHD 144 Hz"
+        }
+      ],
+      "note": "",
+      "accueil": false
+    },
+    {
+      "id": "hp-omen-17",
+      "nom": "HP Omen 17",
+      "dossier": "portables",
+      "usages": [
+        "gaming"
+      ],
+      "prix": null,
+      "specs": [
+        {
+          "label": "Processeur",
+          "valeur": "Intel Core i7 9e gén."
+        },
+        {
+          "label": "Mémoire",
+          "valeur": "16 Go"
+        },
+        {
+          "label": "Stockage",
+          "valeur": "1 To"
+        },
+        {
+          "label": "Graphique",
+          "valeur": "NVIDIA GeForce RTX 2060"
+        },
+        {
+          "label": "Écran",
+          "valeur": "17 pouces FHD"
+        }
+      ],
+      "note": "",
+      "accueil": false
+    },
+    {
+      "id": "dell-latitude-5580",
+      "nom": "Dell Latitude 5580",
+      "dossier": "portables",
+      "usages": [
+        "pro"
+      ],
+      "prix": null,
+      "specs": [
+        {
+          "label": "Processeur",
+          "valeur": "Intel Core i7-7820HQ (2,9 GHz)"
+        },
+        {
+          "label": "Mémoire",
+          "valeur": "16 Go"
+        },
+        {
+          "label": "Écran",
+          "valeur": "15,6 pouces"
+        }
+      ],
+      "note": "Lecteur d’empreintes · fiche complète sur demande",
+      "accueil": false
+    },
+    {
+      "id": "acer-nitro-5",
+      "nom": "Acer Nitro 5",
+      "dossier": "portables",
+      "usages": [
+        "gaming"
+      ],
+      "prix": null,
+      "specs": [
+        {
+          "label": "Processeur",
+          "valeur": "Intel Core i7"
+        },
+        {
+          "label": "Graphique",
+          "valeur": "NVIDIA GeForce GTX"
+        },
+        {
+          "label": "Écran",
+          "valeur": "15,6 pouces FHD 120 Hz"
+        }
+      ],
+      "note": "Clavier rétroéclairé rouge · fiche complète sur demande",
+      "accueil": false
+    },
+    {
+      "id": "asus-rog-strix-17",
+      "nom": "Asus ROG Strix",
+      "dossier": "portables",
+      "usages": [
+        "gaming"
+      ],
+      "prix": null,
+      "specs": [
+        {
+          "label": "Processeur",
+          "valeur": "Intel Core"
+        },
+        {
+          "label": "Graphique",
+          "valeur": "NVIDIA GeForce GTX"
+        },
+        {
+          "label": "Écran",
+          "valeur": "Grand écran FHD"
+        }
+      ],
+      "note": "Clavier rétroéclairé rouge · fiche complète sur demande",
+      "accueil": false
+    },
+    {
+      "id": "acer-aspire-f17",
+      "nom": "Acer F17",
+      "dossier": "portables",
+      "usages": [
+        "pro"
+      ],
+      "prix": null,
+      "specs": [
+        {
+          "label": "Processeur",
+          "valeur": "Intel Core i5 7e gén."
+        },
+        {
+          "label": "Mémoire",
+          "valeur": "8 Go"
+        },
+        {
+          "label": "Écran",
+          "valeur": "17 pouces FHD"
+        }
+      ],
+      "note": "Fiche complète sur demande",
+      "accueil": false
+    }
+  ],
+  "projecteurs": [
+    {
+      "id": "projecteur-a10-led",
+      "nom": "Vidéoprojecteur A10 LED",
+      "dossier": "projecteurs",
+      "usages": [
+        "maison"
+      ],
+      "prix": null,
+      "specs": [
+        {
+          "label": "Technologie",
+          "valeur": "LED"
+        },
+        {
+          "label": "Compatibilité",
+          "valeur": "Signal 4K (selon la boîte)"
+        },
+        {
+          "label": "Connexions",
+          "valeur": "Wi-Fi, Bluetooth"
+        },
+        {
+          "label": "Livré avec",
+          "valeur": "Télécommande"
+        }
+      ],
+      "note": "Neuf en boîte · cinéma à la maison",
+      "accueil": false
+    },
+    {
+      "id": "projecteur-panasonic",
+      "nom": "Vidéoprojecteur Panasonic professionnel",
+      "dossier": "projecteurs",
+      "usages": [
+        "pro"
+      ],
+      "prix": null,
+      "specs": [
+        {
+          "label": "Usage",
+          "valeur": "Salles de réunion, églises, auditoriums"
+        },
+        {
+          "label": "Optique",
+          "valeur": "Zoom, mise au point et décalage d’objectif (lens shift)"
+        }
+      ],
+      "note": "Fiche complète sur demande",
+      "accueil": false
+    }
+  ],
+  "imprimantes": [
+    {
+      "id": "canon-pixma-g3410",
+      "nom": "Canon PIXMA G3410",
+      "dossier": "imprimantes",
+      "barres": [
+        "Impression",
+        "Copie",
+        "Numérisation",
+        "Wi-Fi"
+      ],
+      "puces": [
+        "<b>3-en-1</b> couleur et noir & blanc",
+        "<b>Wi-Fi</b> depuis le téléphone ou le PC",
+        "Jusqu’à <b>4800 × 1200 dpi</b>",
+        "<b>Réservoirs d’encre</b> grande capacité"
+      ],
+      "alt": "Imprimante multifonction Canon PIXMA G3410 à réservoirs d’encre",
+      "prix": null
+    },
+    {
+      "id": "imprimante-thermique-pt210",
+      "nom": "Imprimante thermique Bluetooth PT210",
+      "dossier": "imprimantes",
+      "barres": [
+        "Reçus",
+        "Tickets",
+        "Batterie",
+        "Léger"
+      ],
+      "puces": [
+        "<b>Bluetooth</b> iOS et Android",
+        "Batterie <b>2000 mAh</b>",
+        "Jusqu’à <b>90 mm/s</b>",
+        "Rouleau <b>58 mm</b> · USB et série",
+        "<b>Garantie 2 ans</b>",
+        "Idéale pour la <b>vente et la facturation</b>"
+      ],
+      "alt": "Imprimante thermique mobile PT210 noire et orange",
+      "prix": null
+    }
+  ]
+}

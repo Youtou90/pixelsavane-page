@@ -1,0 +1,174 @@
+{
+  "_note": "Paramètres de la boutique. Modifier ici puis lancer : python3 outils/construire.py",
+  "nom": "Solution Chez Scotfield",
+  "marque_courte": "SCS Info-Télécom",
+  "ville": "Bertoua",
+  "region": "Est",
+  "pays": "CM",
+  "adresse": "Bertoua – en face de la Poste Centrale",
+  "adresse_longue": "Bertoua, Est-Cameroun – en face de la Poste Centrale",
+  "whatsapp": {
+    "numero": "237695317195",
+    "affiche": "(+237) 695 317 195"
+  },
+  "appels": {
+    "numero": "+237676654710",
+    "affiche": "(+237) 676 65 47 10"
+  },
+  "autres_numeros": [
+    {
+      "numero": "+237682979641",
+      "affiche": "(+237) 682 97 96 41"
+    }
+  ],
+  "horaires": {
+    "texte": "Lundi – samedi : 8 h – 19 h",
+    "schema": "Mo-Sa 08:00-19:00",
+    "a_confirmer": true
+  },
+  "tiktok": {
+    "pseudo": "@solution.chez.sco",
+    "url": "https://www.tiktok.com/@solution.chez.sco"
+  },
+  "url_site": "",
+  "demo": true,
+  "realisation": {
+    "nom": "PixelSavane",
+    "whatsapp": "237696229416",
+    "affiche": "+237 696 22 94 16"
+  },
+  "journee_thinkpad": {
+    "actif": true,
+    "vedette": "lenovo-thinkpad-l15-gen3"
+  },
+  "rayons": [
+    {
+      "id": "portables",
+      "icone": "portable",
+      "titre": "Ordinateurs portables",
+      "texte": "Pour les études, le bureau, le jeu et les déplacements. Testés et prêts à l’emploi.",
+      "gammes": [
+        {
+          "titre": "Études & bureautique",
+          "texte": "Word, Excel, internet, cours en ligne : des modèles légers et endurants."
+        },
+        {
+          "titre": "Professionnels",
+          "texte": "Processeurs rapides, plus de mémoire et de stockage pour travailler sans attendre."
+        },
+        {
+          "titre": "Graphisme & montage",
+          "texte": "Écrans de qualité et cartes graphiques pour les créatifs."
+        }
+      ]
+    },
+    {
+      "id": "desktops",
+      "icone": "desktop",
+      "titre": "Ordinateurs de bureau",
+      "texte": "Unités centrales, tout-en-un et écrans pour équiper la maison, l’école ou l’entreprise.",
+      "gammes": [
+        {
+          "titre": "Tout-en-un",
+          "texte": "Écran et ordinateur dans un seul boîtier : peu de câbles, peu de place."
+        },
+        {
+          "titre": "Unités centrales",
+          "texte": "Puissantes et évolutives, à associer à l’écran de votre choix."
+        },
+        {
+          "titre": "Équipement de bureau",
+          "texte": "Plusieurs postes identiques pour une entreprise, une école, un cyber."
+        }
+      ]
+    },
+    {
+      "id": "telephones",
+      "icone": "telephone",
+      "titre": "Téléphones",
+      "texte": "Smartphones de grandes marques et téléphones simples, avec leurs accessoires.",
+      "gammes": [
+        {
+          "titre": "Smartphones",
+          "texte": "Photo, WhatsApp, réseaux sociaux, Mobile Money : choisissez selon votre usage."
+        },
+        {
+          "titre": "Téléphones simples",
+          "texte": "Grande autonomie et robustesse pour appeler et envoyer des SMS."
+        },
+        {
+          "titre": "Accessoires",
+          "texte": "Chargeurs, câbles, écouteurs, coques et protections d’écran."
+        }
+      ]
+    },
+    {
+      "id": "imprimantes",
+      "icone": "imprimante",
+      "titre": "Imprimantes",
+      "texte": "Multifonctions à réservoirs d’encre, imprimantes de bureau et imprimantes thermiques pour reçus.",
+      "gammes": [
+        {
+          "titre": "Réservoirs d’encre",
+          "texte": "Un coût par page très réduit pour imprimer beaucoup."
+        },
+        {
+          "titre": "Multifonctions Wi-Fi",
+          "texte": "Impression, copie et numérisation depuis le téléphone ou le PC."
+        },
+        {
+          "titre": "Thermiques & tickets",
+          "texte": "Reçus et étiquettes pour les commerces et les points de vente."
+        }
+      ]
+    },
+    {
+      "id": "projecteurs",
+      "icone": "projecteur",
+      "titre": "Vidéoprojecteurs",
+      "texte": "Pour les salles de réunion, les écoles, les églises et le cinéma à la maison.",
+      "gammes": [
+        {
+          "titre": "Réunions & cours",
+          "texte": "Projection lumineuse pour présentations et formations."
+        },
+        {
+          "titre": "Cinéma à la maison",
+          "texte": "Grand écran pour les films et les matchs."
+        },
+        {
+          "titre": "Écrans & supports",
+          "texte": "Toiles de projection, supports et câbles HDMI."
+        }
+      ]
+    },
+    {
+      "id": "baffles",
+      "icone": "baffle",
+      "titre": "Baffles & sono",
+      "texte": "Baffles Bluetooth, enceintes amplifiées et sono pour la maison, les fêtes et les événements.",
+      "gammes": [
+        {
+          "titre": "Bluetooth portables",
+          "texte": "Sur batterie, à emporter partout."
+        },
+        {
+          "titre": "Enceintes amplifiées",
+          "texte": "Pour les fêtes, les boutiques et les cérémonies."
+        },
+        {
+          "titre": "Micros & câbles",
+          "texte": "Micros, câbles audio et accessoires de sonorisation."
+        }
+      ]
+    }
+  ],
+  "usages": {
+    "thinkpad": "ThinkPad · mardi",
+    "gaming": "Gaming",
+    "pro": "Bureau & études",
+    "ultra": "Ultraportable",
+    "creation": "Création",
+    "maison": "Maison"
+  }
+}
