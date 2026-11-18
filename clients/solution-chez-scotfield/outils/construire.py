@@ -58,6 +58,9 @@ def ico(n):
 WA_ICO = ico('whatsapp').replace('<svg ', '<svg fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" ')
 RUBAN = '<span class="ruban"><span class="fin">Solution</span> <b>Chez Scotfield</b></span>'
 DIMS = {}
+# Mention de prix identique sur TOUS les articles (aucun prix affiché : le client le demande sur WhatsApp)
+LIBELLE_PRIX = 'Prix en boutique'
+AIDE_PRIX = 'Demandez le prix du jour sur WhatsApp'
 
 def fcfa(n):
     return f'{n:,}'.replace(',', ' ') + ' F CFA'
@@ -76,27 +79,27 @@ def machine(m):
     u0 = m['usages'][0]
     tag = f'<span class="tag{" rouge" if u0 == "thinkpad" else ""}">{USAGES[u0]}</span>'
     specs = ''.join(f'<div><dt>{E(s["label"])}</dt><dd>{E(s["valeur"])}</dd></div>' for s in m['specs'])
-    prix = '<p class="prix-m demande">Prix sur WhatsApp<small>Demandez au vendeur</small></p>'
+    prix = f'<p class="prix-m demande">{LIBELLE_PRIX}<small>{AIDE_PRIX}</small></p>'
     note = f'<p class="note-m">{E(m["note"])}</p>' if m.get('note') else ''
     msg = f"Bonjour {B['nom']}, je suis intéressé(e) par le {m['nom']}. Est-il disponible et quel est son prix ?"
     return f'''<article class="machine" data-usages="{' '.join(m['usages'])}" id="{m['id']}">
   <div class="photo-m">{photo(m['dossier'], m['id'], m['nom'])}<div class="tags">{tag}</div></div>
   <div class="corps-m"><h3>{E(m['nom'])}</h3><dl>{specs}</dl>{note}
-  <div class="pied-m">{prix}<a class="btn btn-vert" href="{wa(msg)}" target="_blank" rel="noopener">{WA_ICO}Je le veux</a></div></div>
+  <div class="pied-m">{prix}<a class="btn btn-vert" href="{wa(msg)}" target="_blank" rel="noopener">{WA_ICO}Commander</a></div></div>
 </article>'''
 
 def affiche(f):
     """Fiche « affiche » façon publicité de la boutique (imprimantes)."""
     barres = ''.join(f'<span>{E(x)}</span>' for x in f['barres'])
     puces = ''.join(f'<li>{p}</li>' for p in f['puces'])
-    prix = fcfa(f['prix']) if f.get('prix') else 'Prix en boutique'
+    prix = LIBELLE_PRIX
     return f'''<article class="fiche" id="{f['id']}">
   {RUBAN}
   <div class="corps">
     <div><h3>{E(f['nom'])}</h3><p class="barres" style="margin-top:.2rem">{barres}</p></div>
     <div class="photo">{photo(f['dossier'], f['id'], f['alt'], '(max-width:820px) 92vw, 560px', f['nom'])}</div>
     <ul>{puces}</ul>
-    <div class="pied"><p class="prix" style="margin:0">{prix}<small>Demandez le prix du jour sur WhatsApp</small></p>
+    <div class="pied"><p class="prix" style="margin:0">{prix}<small>{AIDE_PRIX}</small></p>
     <a class="btn btn-vert" href="{wa(f"Bonjour, je suis intéressé(e) par : {f['nom']}. Quel est le prix ?")}" target="_blank" rel="noopener">{WA_ICO}Commander</a></div>
   </div>
 </article>'''
@@ -146,7 +149,7 @@ def pied():
 <div class="visionneuse" id="visionneuse" role="dialog" aria-modal="true" aria-label="Photo du produit" hidden>
   <button class="v-fermer" type="button" aria-label="Fermer">×</button>
   <button class="v-nav v-prec" type="button" aria-label="Photo précédente">‹</button>
-  <figure><img alt=""><figcaption><b class="v-titre"></b><span class="v-prix"></span><a class="btn btn-vert v-wa" target="_blank" rel="noopener">{WA_ICO}Je le veux</a><span class="v-compte"></span></figcaption></figure>
+  <figure><img alt=""><figcaption><b class="v-titre"></b><span class="v-prix"></span><a class="btn btn-vert v-wa" target="_blank" rel="noopener">{WA_ICO}Commander</a><span class="v-compte"></span></figcaption></figure>
   <button class="v-nav v-suiv" type="button" aria-label="Photo suivante">›</button>
 </div>'''
 

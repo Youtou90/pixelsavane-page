@@ -151,7 +151,7 @@
     hd.onload = function(){ if (monJeton === jeton && !v.hidden) vImg.src = hd.src; };
     hd.src = img.dataset.zoom;
     vTitre.textContent = img.dataset.titre;
-    var p = carte && carte.querySelector('.prix-m'); vPrix.textContent = p ? p.childNodes[0].textContent : '';
+    var p = carte && carte.querySelector('.prix-m, .prix'); vPrix.textContent = p ? p.childNodes[0].textContent : '';
     var w = carte && carte.querySelector('a.btn[href*="wa.me"]');
     vWa.hidden = !w; if (w) vWa.href = w.href;
     vCompte.textContent = groupe.length > 1 ? (pos + 1) + ' / ' + groupe.length + ' · glissez ou utilisez les flèches' : '';
