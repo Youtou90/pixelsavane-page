@@ -387,10 +387,21 @@ body.verrou .wa-flottant{display:none}.visionneuse{background:rgba(10,12,9,.96)}
   .demo-badge{font-size:.68rem;letter-spacing:.08em;padding:.28rem .45rem}
   .demo .demo-lien{font-size:.76rem;padding:.3rem .55rem}
 }
-@media (max-width:389px){.demo-txt{display:none}}
 @media (max-width:360px){
   .marque{gap:6px}.marque img{width:56px}
   .marque .ruban{font-size:.7rem;padding:.5rem 1.35rem}
   .nav a{padding:.45rem .55rem;font-size:.84rem}
   .nav .btn{padding:.5rem .7rem}
+}
+
+/* Bandeau démo sur téléphone : PixelSavane toujours visible ; le numéro passe à la ligne si l'écran est étroit */
+@media (max-width:620px){
+  .demo .wrap{flex-wrap:wrap;justify-content:center;row-gap:5px;column-gap:8px}
+  .demo-txt{display:inline;white-space:nowrap;font-size:.86rem}
+  .demo-txt b{color:#F5C400;font-weight:800}
+}
+@media (max-width:380px){
+  .demo-badge{font-size:.66rem;letter-spacing:.06em;padding:.26rem .42rem}
+  .demo-txt{font-size:.82rem}
+  .demo .demo-lien{font-size:.74rem;padding:.26rem .6rem}
 }

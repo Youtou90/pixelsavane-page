@@ -119,7 +119,7 @@ def bande_demo():
     lien = wa(f"Bonjour {r['nom']}, j'ai vu la démo du site {B['nom']}.", r['whatsapp'])
     return (f'<div class="demo" role="note" aria-label="Version de démonstration"><div class="wrap">'
             f'<span class="demo-badge">Version démo</span>'
-            f'<span class="demo-txt"><span class="long">Site de démonstration réalisé par </span><span class="court">Par </span><b>{r["nom"]}</b></span>'
+            f'<span class="demo-txt"><span class="long">Site de démonstration réalisé par </span><span class="court">Réalisé par </span><b>{r["nom"]}</b></span>'
             f'<a class="demo-lien" href="{lien}" target="_blank" rel="noopener"><span class="long">WhatsApp </span>{r["affiche"]}</a></div></div>')
 
 def bande_mardi():
