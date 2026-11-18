@@ -74,6 +74,20 @@ cd public && python3 -m http.server 8000   # puis ouvrir http://localhost:8000
    - `accueil: true` : le produit apparaît sur la page d'accueil (4 au maximum).
 3. Relancer `python3 outils/construire.py`. Les versions WebP et JPEG de la photo sont créées automatiquement.
 
+### Photos sur fond blanc studio
+Les photos d'ordinateurs sont détourées et posées sur un fond blanc avec une ombre douce : plus de canapé, de table ni de parquet.
+1. Déposer la photo d'origine dans `src/assets/produits-originaux/portables/<id>.jpg`.
+2. Ajouter `"<id>": {"modele": "isnet-general-use"}` dans `donnees/photos_studio.json`.
+3. Lancer `python3 outils/fond_studio.py --tout <id>`, puis `python3 outils/construire.py`.
+
+Il faut `pip install "rembg[cpu]" scipy`. Le modèle est téléchargé au premier lancement.
+
+Si le résultat n'est pas propre, plusieurs options existent :
+- `"modele": "birefnet-general"` : plus précis (clavier clair sur sol clair, écran très lumineux), mais plus lourd. À lancer un produit à la fois.
+- `"modele": "fond-clair"` : pour une photo déjà sur fond blanc ou gris clair.
+- `"convexe": true` : pour un ordinateur fermé, à plat.
+- `"pied": true` : retire un pied de support ou un bord de table sous l'ordinateur.
+
 ### Retirer un produit vendu
 Supprimer son entrée dans `produits.json`, puis relancer la construction.
 
