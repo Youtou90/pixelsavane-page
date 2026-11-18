@@ -58,7 +58,7 @@ cd public && python3 -m http.server 8000   # puis ouvrir http://localhost:8000
      "nom": "HP EliteBook 840 G8",
      "dossier": "portables",
      "usages": ["pro"],
-     "prix": 280000,
+     "prix": null,
      "specs": [
        {"label": "Processeur", "valeur": "Intel Core i5 11e gén."},
        {"label": "Mémoire", "valeur": "16 Go"},
@@ -69,24 +69,10 @@ cd public && python3 -m http.server 8000   # puis ouvrir http://localhost:8000
      "accueil": false
    }
    ```
-   - `prix` : un nombre en F CFA, ou `null` pour afficher « Prix sur demande ».
+   - `prix` : laisser `null`. Aucun prix n'est affiché sur le site : le client demande le prix au vendeur sur WhatsApp.
    - `usages` : `thinkpad`, `gaming`, `pro`, `ultra`, `creation`. Le premier usage de la liste sert de badge sur la photo.
    - `accueil: true` : le produit apparaît sur la page d'accueil (4 au maximum).
 3. Relancer `python3 outils/construire.py`. Les versions WebP et JPEG de la photo sont créées automatiquement.
-
-### Photos sur fond blanc studio
-Les photos d'ordinateurs sont détourées et posées sur un fond blanc avec une ombre douce : plus de canapé, de table ni de parquet.
-1. Déposer la photo d'origine dans `src/assets/produits-originaux/portables/<id>.jpg`.
-2. Ajouter `"<id>": {"modele": "isnet-general-use"}` dans `donnees/photos_studio.json`.
-3. Lancer `python3 outils/fond_studio.py --tout <id>`, puis `python3 outils/construire.py`.
-
-Il faut `pip install "rembg[cpu]" scipy`. Le modèle est téléchargé au premier lancement.
-
-Si le résultat n'est pas propre, plusieurs options existent :
-- `"modele": "birefnet-general"` : plus précis (clavier clair sur sol clair, écran très lumineux), mais plus lourd. À lancer un produit à la fois.
-- `"modele": "fond-clair"` : pour une photo déjà sur fond blanc ou gris clair.
-- `"convexe": true` : pour un ordinateur fermé, à plat.
-- `"pied": true` : retire un pied de support ou un bord de table sous l'ordinateur.
 
 ### Retirer un produit vendu
 Supprimer son entrée dans `produits.json`, puis relancer la construction.
@@ -150,5 +136,4 @@ Le contenu du dossier `public/` suffit. Trois options :
 - **Orthographe du nom :** « Scotfield » (site) ou « Scofield » (affiches).
 - **État des portables :** neuf ou occasion.
 - **Fiches incomplètes :** caractéristiques complètes de l'Acer Nitro 5, de l'Asus ROG Strix, de l'Acer F17, du Lenovo compact et du Panasonic.
-- **Prix :** prix des produits marqués « Prix sur demande ».
 - **Numéro 674 827 999 :** il figure sur l'affiche ThinkPad. Faut-il l'ajouter ?

@@ -76,9 +76,9 @@ def machine(m):
     u0 = m['usages'][0]
     tag = f'<span class="tag{" rouge" if u0 == "thinkpad" else ""}">{USAGES[u0]}</span>'
     specs = ''.join(f'<div><dt>{E(s["label"])}</dt><dd>{E(s["valeur"])}</dd></div>' for s in m['specs'])
-    prix = f'<p class="prix-m">{fcfa(m["prix"])}</p>' if m['prix'] else '<p class="prix-m demande">Prix sur demande</p>'
+    prix = '<p class="prix-m demande">Prix sur WhatsApp<small>Demandez au vendeur</small></p>'
     note = f'<p class="note-m">{E(m["note"])}</p>' if m.get('note') else ''
-    msg = f"Bonjour {B['nom']}, je suis intéressé(e) par le {m['nom']}" + (f" à {fcfa(m['prix'])}" if m['prix'] else '') + '. Est-il disponible ?'
+    msg = f"Bonjour {B['nom']}, je suis intéressé(e) par le {m['nom']}. Est-il disponible et quel est son prix ?"
     return f'''<article class="machine" data-usages="{' '.join(m['usages'])}" id="{m['id']}">
   <div class="photo-m">{photo(m['dossier'], m['id'], m['nom'])}<div class="tags">{tag}</div></div>
   <div class="corps-m"><h3>{E(m['nom'])}</h3><dl>{specs}</dl>{note}
@@ -280,7 +280,7 @@ def page_accueil():
 </div></section>
 <section class="section"><div class="wrap">
   <div class="section-tete"><div><p class="etiquette">Arrivage · Ordinateurs portables</p><h2>Les portables du moment</h2>
-  <p>Photos réelles des machines disponibles. Prix indiqués en F CFA, à confirmer sur WhatsApp selon le stock.</p></div>
+  <p>Photos réelles des machines disponibles. Pour le prix, écrivez au vendeur sur WhatsApp : il vous répond selon le stock.</p></div>
   <a class="btn btn-noir" href="produits.html#portables">Voir les {len(P['portables'])} portables</a></div>
   <div class="machines">{''.join(machine(m) for m in selection)}</div>
 </div></section>

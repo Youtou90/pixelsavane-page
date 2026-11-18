@@ -1,5 +1,5 @@
 {
-  "_note": "Catalogue. prix : nombre en F CFA ou null (= « Prix sur demande »). Photo : assets/produits/<dossier>/<id>.jpg",
+  "_note": "Catalogue. Pas de prix affiché : le client demande le prix au vendeur sur WhatsApp. Photo : src/assets/produits/<dossier>/<id>.jpg",
   "portables": [
     {
       "id": "lenovo-yoga-slim-7",
@@ -9,7 +9,7 @@
         "ultra",
         "pro"
       ],
-      "prix": 250000,
+      "prix": null,
       "specs": [
         {
           "label": "Processeur",
@@ -46,7 +46,7 @@
       "usages": [
         "pro"
       ],
-      "prix": 230000,
+      "prix": null,
       "specs": [
         {
           "label": "Processeur",
@@ -80,7 +80,7 @@
         "ultra",
         "pro"
       ],
-      "prix": 350000,
+      "prix": null,
       "specs": [
         {
           "label": "Processeur",
@@ -114,7 +114,7 @@
         "gaming",
         "creation"
       ],
-      "prix": 1600000,
+      "prix": null,
       "specs": [
         {
           "label": "Processeur",

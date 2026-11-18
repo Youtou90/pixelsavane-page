@@ -405,3 +405,4 @@ body.verrou .wa-flottant{display:none}.visionneuse{background:rgba(10,12,9,.96)}
   .demo-txt{font-size:.82rem}
   .demo .demo-lien{font-size:.74rem;padding:.26rem .6rem}
 }
+.prix-m.demande small{display:block;font-family:var(--f-texte);font-weight:400;font-size:.8rem;color:var(--gris-doux)}
